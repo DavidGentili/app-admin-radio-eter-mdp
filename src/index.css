@@ -1,0 +1,38 @@
+/*
+Breakpoints:
+1024px
+768px
+640px
+*/
+
+*{
+    font-family: 'Roboto', 'Segoe-UI', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+:root{
+    --purple: #B67DEF;
+    --lightBlue: #4BC1EA;
+    --pink: #FF90E8;
+    --yellow: #FFF030;
+    --green: #C4F300;
+    --blue: #5148F7;
+    --black: #242424;
+    --lightBlack: #404040;
+    --white: #FFFFFF;
+    --lightGrey: #F6F6F6;
+}
+
+.container{
+    max-width: 1280px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+}
+
+button{
+    cursor: pointer;
+}
