@@ -52,6 +52,10 @@ button{
     color: var(--lightBlue);
 }
 
+.primaryBtn.loadingBtn{
+    animation: loadingBtn 1s alternate infinite;
+}
+
 .messageError{
     background-color: #DC3545A0;
     padding: 16px 36px;
@@ -60,6 +64,31 @@ button{
     border-radius: 12px;
     text-align: center;
 }
+
+.loadingPage{
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FFFFFFA0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--blue);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
 
 @keyframes showElement {
     from{
@@ -80,3 +109,17 @@ button{
         opacity: 1;
     }
 }
+
+@keyframes loadingBtn {
+    from{ background-color: #4BC1EA;}
+    to{ background-color: #4BC1EA30;}
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 

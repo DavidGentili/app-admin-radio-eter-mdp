@@ -1,15 +1,18 @@
 import { React } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import arrow from '../../../assets/arrow.png'
 
 import './header.css'
 
 const Header = ({ userName, location, subMenus }) => {
+
+    const navigate = useNavigate();
+
     return( 
         <header>
             <div className="actions">
-                <button> <img src={arrow} alt="volver atras" /> </button>
+                <button onClick={() => {navigate(-1)}}> <img src={arrow} alt="volver atras" /> </button>
                 <h3>{location}</h3>
                 <Link to='/myUser'>{userName}</Link>
             </div>
