@@ -1,21 +1,18 @@
-import React from 'react'
+import { React, useState } from 'react'
 
-import Header from '../../componets/general/header/Header'
+import Header from '../../componets/header/Header'
+import ModalNewUser from '../../componets/modalNewuser/ModalNewUser'
 import edit from '../../../assets/edit.png'
 
 import './users.css';
 
 const UserPage = () => {
+
+    const [openModal, setOpenModal] = useState(false);
+
     return (
         <>
-            <Header 
-            userName='Carlos' 
-            location={'Usuarios'} 
-            subMenus={[
-                {text: 'Usuarios', goTo: '/usuarios'},   
-            ]} />
             <main>
-
                 <table>
                     <thead>
                         <tr>
@@ -37,8 +34,13 @@ const UserPage = () => {
                     </tbody>
                 </table>
 
-                <button>Nuevo usuario</button>
+                <button 
+                className='primaryBtn'
+                onClick={() => {setOpenModal(true)}}>
+                    Nuevo usuario
+                </button>
             </main>
+            {openModal && <ModalNewUser closeModal={() => {setOpenModal(false)}} />}
         </>
     )
 }

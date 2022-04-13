@@ -1,7 +1,7 @@
 import { React } from 'react';
 import { Link } from 'react-router-dom'
 
-import arrow from '../../../../assets/arrow.png'
+import arrow from '../../../assets/arrow.png'
 
 import './header.css'
 

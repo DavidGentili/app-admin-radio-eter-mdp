@@ -68,18 +68,8 @@ main table tbody button img{
 
 main button{
     display: flex;
-    background-color: var(--lightBlue);
-    border: 3px solid var(--lightBlue);
-    color: var(--white);
     font-size: 16px;
     font-weight: 500;
     padding: 12px 24px;
     margin-left: auto;
-    transition: .6s;
 }
-
-main button:hover{
-    background: none;
-    color: var(--lightBlue);
-}
-

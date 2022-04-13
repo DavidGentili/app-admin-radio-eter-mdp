@@ -36,3 +36,35 @@ Breakpoints:
 button{
     cursor: pointer;
 }
+
+.primaryBtn{
+    border: 2px solid var(--lightBlue);
+    background-color: var(--lightBlue);
+    color: var(--white);
+    transition: .6s;
+}
+
+.primaryBtn:hover{
+    background: none;
+    color: var(--lightBlue);
+}
+
+@keyframes showElement {
+    from{
+        transform: translateY(30%);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes appearElement {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
