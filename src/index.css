@@ -24,6 +24,7 @@ Breakpoints:
     --lightBlack: #404040;
     --white: #FFFFFF;
     --lightGrey: #F6F6F6;
+    --errorColor: #DC3545;
 }
 
 .container{
@@ -44,9 +45,20 @@ button{
     transition: .6s;
 }
 
-.primaryBtn:hover{
+.primaryBtn:hover,
+.primaryBtn:active,
+.primaryBtn:focus{
     background: none;
     color: var(--lightBlue);
+}
+
+.messageError{
+    background-color: #DC3545A0;
+    padding: 16px 36px;
+    margin: 16px auto;
+    width: 460px;
+    border-radius: 12px;
+    text-align: center;
 }
 
 @keyframes showElement {

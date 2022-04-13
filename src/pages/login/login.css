@@ -47,17 +47,6 @@
     font-weight: 500;
     padding: 8px 24px;
     margin-top: 16px;
-    color: var(--white);
-    background-color: var(--lightBlue);
-    border: 2px solid var(--lightBlue);
-    transition: .4s;
-}
-
-.loginForm button:hover,
-.loginForm button:active,
-.loginForm button:focus{
-    background: none;
-    color: var(--lightBlue);
 }
 
 
