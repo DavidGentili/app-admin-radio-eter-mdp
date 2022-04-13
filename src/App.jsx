@@ -47,7 +47,7 @@ import './App.css'
 function App() {
 
     return (
-        <div className="App">
+        <div className="App grid">
             <Nav menuOptions={ menuOptions.filter(option => option.goTo === '/usuarios')}/>
             <UserPage />
 

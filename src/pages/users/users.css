@@ -1,0 +1,84 @@
+main{
+    padding: 64px 7%;
+    width: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+main table{
+    width: 100%;
+    margin: auto;
+    border-collapse: collapse;
+    color: var(--black);
+}
+
+main table thead{
+    display: table-header-group
+}
+
+main table thead tr{
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid var(--black);
+    text-align: left;
+}
+
+main table thead tr th{
+    padding: 8px 12px;
+}
+
+
+main table thead tr th:last-child{
+    text-align: center;
+}
+
+main table tbody tr th{
+    text-align: left;
+    padding: 12px;
+    font-weight: 300;
+}
+
+main table tbody tr{
+    border-bottom: 1px solid #909090;
+}
+
+main table tbody tr th:last-child{
+    text-align: center;
+}
+
+main table tbody button{
+    background: none;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    transition: .6s;
+}
+
+main table tbody button:hover{
+    background-color: #90909060;    
+}
+
+main table tbody button img{
+    width: 24px;
+    height: auto;
+}
+
+main button{
+    display: flex;
+    background-color: var(--lightBlue);
+    border: 3px solid var(--lightBlue);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 24px;
+    margin-left: auto;
+    transition: .6s;
+}
+
+main button:hover{
+    background: none;
+    color: var(--lightBlue);
+}
+

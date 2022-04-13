@@ -1,8 +1,28 @@
 .App{
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     overflow: hidden;
     background-color: var(--lightGrey);
-    display: flex;
+    overflow: hidden;
+}
+
+.App.grid{
+    display: grid;
+    grid-template-columns: fit-content(220px) 1fr;
+    grid-template-rows: .3fr 1fr;
+    grid-template-areas: "nav header"
+                         "nav main";
+}
+
+nav{
+    grid-area: nav;
+}
+
+header{
+    grid-area: header;
+}
+
+main{
+    grid-area: main;
 }
