@@ -54,6 +54,7 @@ main table tbody button{
     padding: 8px;
     border-radius: 8px;
     transition: .6s;
+    margin: auto;
 }
 
 main table tbody button:hover{
