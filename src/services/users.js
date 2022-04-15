@@ -3,6 +3,9 @@ const instance = axios.create({
     baseURL: 'https://api-radio-eter-mdp.herokuapp.com/users',
 });
 
+const headers = {
+    authorization: localStorage.getItem('userToken')
+}
 
 const authUser = async () => {
     if(!localStorage.getItem('userToken'))
@@ -16,7 +19,7 @@ const authUser = async () => {
     
 }
 
-const loginUser = async (email, password) => {
+const loginUser = async ({email, password}) => {
     try{
         const res = await instance.post('/login',{email,password})
         return res.data.token;
@@ -28,12 +31,19 @@ const loginUser = async (email, password) => {
 }
 
 const getUsers = async (id) => {
-    const { data } = await instance(`${id ? ('id=' + id) : ''}`,{
-        headers: {
-            authorization: localStorage.getItem('userToken')
-        }
-    });
+    const { data } = await instance(`${id ? ('id=' + id) : ''}`,{headers});
     return data
+}
+
+const signupUser = async ({name, email, securityLevel}) => {
+    try{
+        const { data } = await instance.post('signup',{name,email,securityLevel},{headers})
+        return data;
+    }
+    catch(e){
+        throw e.response.data.message
+    }
+
 }
 
 
@@ -41,4 +51,5 @@ export default {
     authUser,
     loginUser,
     getUsers,
+    signupUser,
 }

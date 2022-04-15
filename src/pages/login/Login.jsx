@@ -33,7 +33,7 @@ const Login = () => {
         const {email, password} = Object.fromEntries(new FormData(e.target));
         setMessageError(null);
         setLoadingButton(true);
-        loginUser(email, password)
+        loginUser({email, password})
         .then((token) => {
             localStorage.setItem('userToken',token);
             navigate('/')
@@ -54,7 +54,7 @@ const Login = () => {
                 <form className='loginForm' onSubmit={handlerSubmit}>
                     <input type="email" placeholder='Email' name='email'/>
                     <input type="password" placeholder='Password' name='password'/>
-                    <button type='submit' className={`primaryBtn${loadingButton ? ' loadingBtn' : ''}`}>{!loadingButton ? 'Login' : 'Loading'}</button>
+                    <button type='submit' className={`primaryBtn${loadingButton ? ' loadingBtn' : ''}`} disabled={loadingButton} >{!loadingButton ? 'Login' : 'Loading'}</button>
                 </form>
                 {messageError && <p className='messageError'>{messageError}</p>}
             </div>

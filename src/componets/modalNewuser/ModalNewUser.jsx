@@ -1,10 +1,30 @@
-import React from 'react'
+import { React, useState } from 'react'
 
 import close from '../../../assets/close.png'
+import usersAPI from '../../services/users';
+
+const { signupUser } = usersAPI;
 
 import './modalNewUser.css'
 
-const ModalNewUser = ({ closeModal }) => {
+const ModalNewUser = ({ closeModal, refreshUsers, setLoadingPage }) => {
+
+    const [messageError, setMessageError] = useState('');
+
+    const handlerNewUser = (e) => {
+        e.preventDefault();
+        const {name, email, securityLevel} = Object.fromEntries(new FormData(e.target))
+        signupUser({name, email, securityLevel})
+        .then((data) => {
+            setLoadingPage(true);
+            refreshUsers();
+        })
+        .catch((e) => {
+            setMessageError(e);
+        })
+        
+    } 
+
     return (
         <section className='modalContainer'>
             <div className='modalWindow'>
@@ -14,10 +34,10 @@ const ModalNewUser = ({ closeModal }) => {
                     <button onClick={closeModal}> <img src={close} alt="close" /></button>
                 </div>
 
-                <form>
-                    <input type="text" name='userName' placeholder='Nombre de usuario'/>
-                    <input type="mail" name="userEmail" placeholder='Mail'/>
-                    <select name="" id="">
+                <form onSubmit={handlerNewUser}>
+                    <input type="text" name='name' placeholder='Nombre de usuario'/>
+                    <input type="mail" name="email" placeholder='Mail'/>
+                    <select name="securityLevel" id="">
                         <option value="master">Master</option>
                         <option value="admin">Admin</option>
                         <option value="editor">Editor</option>
@@ -25,6 +45,7 @@ const ModalNewUser = ({ closeModal }) => {
                     <button className='primaryBtn'>Agregar Usuario</button>
                 </form>
             </div>
+            {messageError && <p className='messageError'>{messageError}</p>}
         </section>
     )
 }
