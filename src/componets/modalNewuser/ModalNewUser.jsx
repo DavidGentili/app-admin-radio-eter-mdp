@@ -17,6 +17,7 @@ const ModalNewUser = ({ closeModal, refreshUsers, setLoadingPage }) => {
         signupUser({name, email, securityLevel})
         .then((data) => {
             setLoadingPage(true);
+            closeModal();
             refreshUsers();
         })
         .catch((e) => {
