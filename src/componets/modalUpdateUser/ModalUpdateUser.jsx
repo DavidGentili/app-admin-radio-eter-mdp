@@ -26,7 +26,10 @@ const ModalUpdateUser = ({ closeModal, user }) => {
                         <option value="active">Activo</option>
                         <option value="suspended">Suspendido</option>
                     </select>
-                    <button className='primaryBtn'>Actualizar Usuario</button>
+                    <div className="btnPanel">
+                        <button type='button' className='dangerBtn'> Eliminar Usuario </button>
+                        <button type='submit' className='primaryBtn'>Actualizar Usuario</button>
+                    </div>
                 </form>
             </div>
         </section>

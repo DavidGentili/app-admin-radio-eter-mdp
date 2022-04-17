@@ -25,6 +25,7 @@ const Login = () => {
         })
         .catch((e) => {
             setLoadingPage(false);
+            
         })
     }, [])
 
@@ -52,7 +53,7 @@ const Login = () => {
             <div className='container'>
                 <img src={logo} alt="Radio Eter Mdp" className='logo' />
                 <form className='loginForm' onSubmit={handlerSubmit}>
-                    <input type="email" placeholder='Email' name='email'/>
+                    <input type="email" autoFocus placeholder='Email' name='email'/>
                     <input type="password" placeholder='Password' name='password'/>
                     <button type='submit' className={`primaryBtn${loadingButton ? ' loadingBtn' : ''}`} disabled={loadingButton} >{!loadingButton ? 'Login' : 'Loading'}</button>
                 </form>

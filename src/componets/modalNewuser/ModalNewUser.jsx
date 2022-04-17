@@ -5,7 +5,6 @@ import usersAPI from '../../services/users';
 
 const { signupUser } = usersAPI;
 
-import './modalNewUser.css'
 
 const ModalNewUser = ({ closeModal, refreshUsers, setLoadingPage }) => {
 
@@ -24,7 +23,7 @@ const ModalNewUser = ({ closeModal, refreshUsers, setLoadingPage }) => {
             setMessageError(e);
         })
         
-    } 
+    }
 
     return (
         <section className='modalContainer'>
