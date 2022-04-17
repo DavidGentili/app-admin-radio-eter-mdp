@@ -21,6 +21,9 @@ const authUser = async () => {
 
 const loginUser = async ({email, password}) => {
     try{
+        if(!email || email.length < 4 || !password || password.length < 4)
+            throw 'wrong user or password input';
+        email = email.toLowerCase();
         const res = await instance.post('/login',{email,password})
         return res.data.token;
     }

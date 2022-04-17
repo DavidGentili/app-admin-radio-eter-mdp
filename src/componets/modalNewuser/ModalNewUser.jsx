@@ -13,7 +13,7 @@ const ModalNewUser = ({ closeModal, refreshUsers, setLoadingPage }) => {
 
     const handlerNewUser = (e) => {
         e.preventDefault();
-        const {name, email, securityLevel} = Object.fromEntries(new FormData(e.target))
+        const {name, email, securityLevel} = Object.fromEntries(new FormData(e.target));
         signupUser({name, email, securityLevel})
         .then((data) => {
             setLoadingPage(true);
