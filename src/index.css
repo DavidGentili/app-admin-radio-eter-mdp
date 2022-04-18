@@ -34,6 +34,14 @@ Breakpoints:
     z-index: 2;
 }
 
+main{
+    padding: 36px 7%;
+    width: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /*-------------------BUTTON----------------------*/
 
 button{

@@ -37,7 +37,7 @@ const UserPage = () => {
     }
 
     return (
-        <main style={loadingPage ? {position:'relative'} : {}}>
+        <main className='usersMain' style={loadingPage ? {position:'relative'} : {}}>
             {loadingPage ? <LoadingPage />
             :
             <>

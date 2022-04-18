@@ -1,0 +1,94 @@
+.myUserMain section{
+    width: 100%;
+    margin: auto;
+    margin-bottom: 16px;
+    color: var(--balck);
+}
+
+.myUserInformation{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.myUserMain h3{
+    width: 100%;
+    border-bottom: 3px solid var(--black);
+    margin-bottom: 16px;
+    font-size: 24px;
+    padding: 6px;
+    text-transform: uppercase;
+}
+
+.myUserInformation h4,
+.myUserInformation h5{
+    border-bottom: 2px solid var(--lightBlack);
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+}
+
+.myUserInformation h4{
+    width: 65%;
+}
+
+.myUserInformation h4 span,
+.myUserInformation h5 span{
+    position: absolute;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--lightBlack);
+}
+
+.myUserInformation h4 span{
+    left: 136px;
+}
+
+.myUserInformation h5 span{
+    left: 96px;
+}
+
+
+.myUserInformation h5{
+    width: 30%;
+}
+
+
+.myUserForm form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.myUserForm form input{
+    padding: 8px;
+    width: 40%;
+    background: none;
+    border: none;
+    border-bottom: 2px solid var(--lightBlack);
+    font-size: 16px;
+}
+
+.myUserForm form button{
+    display: flex;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--lightBlue);
+    padding: 8px;
+    border-radius: 12px;
+    opacity: .7;
+    transition: .6s;
+}
+
+.myUserForm form button:hover{
+    opacity: 1;
+}
+

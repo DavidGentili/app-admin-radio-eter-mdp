@@ -6,6 +6,7 @@ import UserContext from '../context/userContext';
 import Nav from '../componets/nav/Nav';
 import Header from '../componets/header/Header'; 
 import UserPage from './users/Users';
+import MyUser from './myuser/MyUser'
 import LoadingPage from '../componets/LoadingPage';
 
 import podcastIcon from '../../assets/podcast.png';
@@ -74,11 +75,12 @@ const PanelPage = () => {
             loadingPage ? <LoadingPage />
             :
             <div className='panelPage'>
-                <Nav menuOptions={ menuOptions}/>
-                <Header userName={user ? user.name : 'Mi usuario'} location={'Usuarios'} subMenus={[{text: 'Usuarios', goTo: '/usuarios'}]}/>
+                <Nav menuOptions={ menuOptions.filter(option => option.goTo === '/usuarios')}/>
+                <Header userName={user ? user.name : 'Mi usuario'} location={'Usuarios'} />
                 
                 <Routes >
                     <Route path='/usuarios' element={<UserPage />} />
+                    <Route path='/my-user' element={ <MyUser/> } />
                     <Route path='/' element={<UserPage />} />
                     <Route path='*' element={ <h3>No esta </h3>}/>
                 </Routes>
