@@ -58,10 +58,20 @@ const updateUser = async (updateData) => {
     }
 }
 
+const removeUser = async (userId) => {
+    try{
+        const { data } = await instance.delete('',{headers, data: {id: userId}});
+        return data;
+    } catch{
+        throw e.response.data.message;
+    }
+}
+
 export default {
     authUser,
     loginUser,
     getUsers,
     signupUser,
     updateUser,
+    removeUser,
 }

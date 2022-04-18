@@ -5,7 +5,7 @@ import useUser from '../../hooks/useUser';
 import close from '../../../assets/close.png'
 
 import usersAPI from '../../services/users';
-const { updateUser } = usersAPI;
+const { updateUser, removeUser } = usersAPI;
 
 const getCorrectData = (state, securityLevel, user) => {
     const updateData = {};
@@ -19,6 +19,7 @@ const getCorrectData = (state, securityLevel, user) => {
 const ModalUpdateUser = ({ closeModal, user, refreshUsers }) => {
 
     const [messageError, setMessageError] = useState('');
+    const [loadingButton, setLoadingButton] = useState(false);
     const localUser = useUser();
 
     const refButton = useRef(null)
@@ -28,6 +29,7 @@ const ModalUpdateUser = ({ closeModal, user, refreshUsers }) => {
     const handlerUpdateUser = (e) => {
         e.preventDefault();
         setMessageError('');
+        setLoadingButton(true);
         const {state, securityLevel} = Object.fromEntries(new FormData(e.target))
         const updateData = getCorrectData(state, securityLevel, user);
         if(updateData){
@@ -38,12 +40,24 @@ const ModalUpdateUser = ({ closeModal, user, refreshUsers }) => {
             })
             .catch(e => {
                 setMessageError(e);
-            }) 
+            })
+            .finally(() => {setLoadingButton(false)})
         } 
     }
 
     const handlerRemoveUser = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        setMessageError('');
+        setLoadingButton(true);
+        removeUser(user.id)
+        .then((res) => {
+            closeModal();
+            refreshUsers();
+        })
+        .catch((e) => {
+            setMessageError(e);
+        })
+        .finally(() => {setLoadingButton(false)})
     }
 
     const handlerChange = (e) => {
@@ -73,8 +87,9 @@ const ModalUpdateUser = ({ closeModal, user, refreshUsers }) => {
                             <option value="suspended">Suspendido</option>
                         </select>
                         <div className="btnPanel">
-                            {localUser.id !== user.id && <button type='button' className='dangerBtn' onClick={handlerRemoveUser}> Eliminar Usuario </button>}
-                            <button type='submit' className='primaryBtn' ref={refButton} disabled >Actualizar Usuario</button>
+                            {localUser.id !== user.id && 
+                            <button type='button' className={'dangerBtn ' + (loadingButton ? 'loadingBtn' : '') } disabled={loadingButton} onClick={handlerRemoveUser}> {loadingButton ? 'Loading' : 'Eliminar Usuario'} </button>}
+                            <button type='submit' className={'primaryBtn ' + (loadingButton ? 'loadingBtn' : '')} ref={refButton} disabled >{loadingButton ? 'Loading' : 'Actualizar Usuario'}</button>
                         </div>
                     </form>
                 </div>

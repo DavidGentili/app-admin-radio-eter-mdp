@@ -9,9 +9,11 @@ const { signupUser } = usersAPI;
 const ModalNewUser = ({ closeModal, refreshUsers, setLoadingPage }) => {
 
     const [messageError, setMessageError] = useState('');
+    const [loadingButton, setLoadingButton] = useState(false);
 
     const handlerNewUser = (e) => {
         e.preventDefault();
+        setLoadingButton(true);
         const {name, email, securityLevel} = Object.fromEntries(new FormData(e.target));
         signupUser({name, email, securityLevel})
         .then((data) => {
@@ -22,6 +24,7 @@ const ModalNewUser = ({ closeModal, refreshUsers, setLoadingPage }) => {
         .catch((e) => {
             setMessageError(e);
         })
+        .finally(() => {setLoadingButton(false)})
         
     }
 
@@ -42,7 +45,7 @@ const ModalNewUser = ({ closeModal, refreshUsers, setLoadingPage }) => {
                         <option value="admin">Admin</option>
                         <option value="editor">Editor</option>
                     </select>
-                    <button className='primaryBtn'>Agregar Usuario</button>
+                    <button type='submit' className={'primaryBtn ' + (loadingButton ? 'loadingBtn' : '')}>{loadingButton ? 'Loading' : 'Agregar Usuario'}</button>
                 </form>
             </div>
             {messageError && <p className='messageError'>{messageError}</p>}

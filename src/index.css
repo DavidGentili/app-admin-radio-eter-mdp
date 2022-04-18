@@ -55,7 +55,7 @@ button{
 }
 
 .primaryBtn.loadingBtn{
-    animation: loadingBtn 1s alternate infinite;
+    animation: loadingPrimaryBtn 1s alternate infinite;
 }
 
 .primaryBtn:disabled,
@@ -75,6 +75,10 @@ button{
     opacity: .7;
     font-weight: 500;
     transition: .6s;
+}
+
+.dangerBtn.loadingBtn{
+    animation: loadingDangerBtn 1s alternate infinite
 }
 
 .dangerBtn:hover,
@@ -251,9 +255,14 @@ button{
     }
 }
 
-@keyframes loadingBtn {
+@keyframes loadingPrimaryBtn {
     from{ background-color: #4BC1EA;}
     to{ background-color: #4BC1EA30;}
+}
+
+@keyframes loadingDangerBtn {
+    from{ background-color: #DC354560;}
+    to{ background-color: #DC354500;}
 }
 
 @keyframes rotation {
