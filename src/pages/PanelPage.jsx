@@ -74,7 +74,7 @@ const PanelPage = () => {
             loadingPage ? <LoadingPage />
             :
             <div className='panelPage'>
-                <Nav menuOptions={ menuOptions.filter(option => option.goTo === '/usuarios')}/>
+                <Nav menuOptions={ menuOptions}/>
                 <Header userName={user ? user.name : 'Mi usuario'} location={'Usuarios'} subMenus={[{text: 'Usuarios', goTo: '/usuarios'}]}/>
                 
                 <Routes >
