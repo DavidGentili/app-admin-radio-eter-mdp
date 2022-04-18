@@ -49,10 +49,19 @@ const signupUser = async ({name, email, securityLevel}) => {
 
 }
 
+const updateUser = async (updateData) => {
+    try{
+        const { data } = await instance.put('',updateData,{headers});
+        return data;
+    } catch(e){
+        throw e.response.data.message;
+    }
+}
 
 export default {
     authUser,
     loginUser,
     getUsers,
     signupUser,
+    updateUser,
 }

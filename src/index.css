@@ -58,6 +58,16 @@ button{
     animation: loadingBtn 1s alternate infinite;
 }
 
+.primaryBtn:disabled,
+.primaryBtn:disabled:hover,
+.primaryBtn:disabled:active,
+.primaryBtn:disabled:focus{
+    background-color: #404040A0;
+    border: 2px solid var(--lightBlack);
+    color: var(--white);
+    transition: .6s;
+}
+
 .dangerBtn{
     background: none;
     border: none;
@@ -77,6 +87,15 @@ button{
 
 .messageError{
     background-color: #DC3545A0;
+    padding: 16px 36px;
+    margin: 16px auto;
+    width: 460px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.messageWarning{
+    background-color: #FFC107A0 ;
     padding: 16px 36px;
     margin: 16px auto;
     width: 460px;
@@ -202,6 +221,12 @@ button{
 
 .modalWindow form > button{
     margin-left: auto;
+}
+
+.modalWindow form .btnPanel{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 /*-------------------ANIMATIONS----------------------*/

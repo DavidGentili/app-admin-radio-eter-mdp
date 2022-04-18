@@ -63,7 +63,7 @@ const UserPage = () => {
             </>
             }
             {openModal && <ModalNewUser refreshUsers={refreshUsers} setLoadingPage={setLoadingPage} closeModal={() => {setOpenModal(false)}} />}
-            {selectedUser && <ModalUpdateUser user={selectedUser}  closeModal={() => {setSelectedUser(null)}} />}
+            {selectedUser && <ModalUpdateUser user={selectedUser} refreshUsers={refreshUsers}  closeModal={() => {setSelectedUser(null)}} />}
         </main>
     )
 }

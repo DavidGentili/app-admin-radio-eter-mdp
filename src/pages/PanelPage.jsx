@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
+import UserContext from '../context/userContext';
 
 import Nav from '../componets/nav/Nav';
 import Header from '../componets/header/Header'; 
@@ -69,7 +70,7 @@ const PanelPage = () => {
     
     
     return (
-        <>{ 
+        <UserContext.Provider value={user}>{ 
             loadingPage ? <LoadingPage />
             :
             <div className='panelPage'>
@@ -83,7 +84,7 @@ const PanelPage = () => {
                 </Routes>
             
             </div>
-        }</>
+        }</UserContext.Provider>
     )
 }
 
