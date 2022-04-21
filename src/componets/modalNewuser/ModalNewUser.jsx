@@ -6,7 +6,7 @@ import usersAPI from '../../services/users';
 const { signupUser } = usersAPI;
 
 
-const ModalNewUser = ({ closeModal, refreshUsers, setLoadingPage }) => {
+const ModalNewUser = ({ closeModal, refreshUsers }) => {
 
     const [messageError, setMessageError] = useState('');
     const [loadingButton, setLoadingButton] = useState(false);
@@ -17,9 +17,8 @@ const ModalNewUser = ({ closeModal, refreshUsers, setLoadingPage }) => {
         const {name, email, securityLevel} = Object.fromEntries(new FormData(e.target));
         signupUser({name, email, securityLevel})
         .then((data) => {
-            setLoadingPage(true);
-            closeModal();
             refreshUsers();
+            closeModal();
         })
         .catch((e) => {
             setMessageError(e);

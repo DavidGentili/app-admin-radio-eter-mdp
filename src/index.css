@@ -85,9 +85,6 @@ button{
     transition: .6s;
 }
 
-.dangerBtn.loadingBtn{
-    animation: loadingDangerBtn 1s alternate infinite
-}
 
 .dangerBtn:hover,
 .dangerBtn:active,
@@ -95,7 +92,49 @@ button{
     opacity: 1;
 }
 
+.textBtn{
+    display: flex;
+    background: none;
+    border: none;
+    font-size: 20px;
+
+    padding: 8px;
+    border-radius: 12px;
+    opacity: .7;
+    transition: .6s;
+}
+
+.textBtn:hover{
+    opacity: 1;
+}
+
+.dangerBtn.loading,
+.textBtn.loading{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 1;
+}
+
+.dangerBtn.loading::after,
+.textBtn.loading::after{
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: var(--lightBlue);
+    animation: textLoadingEffect 1s infinite;
+}
+
 /*-------------------MESSAGES----------------------*/
+
+.messageSuccess{
+    background-color: #28A745A0;
+    padding: 16px 36px;
+    margin: 16px auto;
+    width: 460px;
+    border-radius: 12px;
+    text-align: center;
+}
 
 .messageError{
     background-color: #DC3545A0;
@@ -128,17 +167,6 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.loader {
-    width: 48px;
-    height: 48px;
-    border: 5px solid var(--blue);
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
 }
 
 /*-------------------MODAL----------------------*/
@@ -268,10 +296,6 @@ button{
     to{ background-color: #4BC1EA30;}
 }
 
-@keyframes loadingDangerBtn {
-    from{ background-color: #DC354560;}
-    to{ background-color: #DC354500;}
-}
 
 @keyframes rotation {
     0% {
@@ -281,3 +305,13 @@ button{
         transform: rotate(360deg);
     }
 } 
+
+@keyframes textLoadingEffect {
+    from{
+        transform: translateX(-100%);
+    }
+    to{ 
+        transform: translateX(100%);
+    }
+
+}

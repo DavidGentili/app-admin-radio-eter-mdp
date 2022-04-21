@@ -35,8 +35,8 @@ const ModalUpdateUser = ({ closeModal, user, refreshUsers }) => {
         if(updateData){
             updateUser({... updateData, idUser: user.id})
             .then((res) => {
-                closeModal();
                 refreshUsers();
+                closeModal();
             })
             .catch(e => {
                 setMessageError(e);
@@ -50,9 +50,9 @@ const ModalUpdateUser = ({ closeModal, user, refreshUsers }) => {
         setMessageError('');
         setLoadingButton(true);
         removeUser(user.id)
-        .then((res) => {
-            closeModal();
+        .then((res) => {3
             refreshUsers();
+            closeModal();
         })
         .catch((e) => {
             setMessageError(e);

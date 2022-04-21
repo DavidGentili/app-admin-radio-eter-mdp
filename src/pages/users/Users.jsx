@@ -22,6 +22,8 @@ const UserPage = () => {
     },[])
 
     const refreshUsers = () => {
+        if(!loadingPage)
+            setLoadingPage(true);
         getUsers()
         .then((data) => {
             setUsers(data.users);

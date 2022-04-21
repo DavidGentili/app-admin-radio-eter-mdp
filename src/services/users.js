@@ -3,20 +3,19 @@ const instance = axios.create({
     baseURL: 'https://api-radio-eter-mdp.herokuapp.com/users',
 });
 
-const headers = {
-    authorization: localStorage.getItem('userToken')
+const getHeaders = () => {
+    return {authorization: localStorage.getItem('userToken')}
 }
 
 const authUser = async () => {
     if(!localStorage.getItem('userToken'))
         throw {message: 'unauthorized user'}
-    const res = await instance.get('/auth',{
-        headers: {
-            authorization: localStorage.getItem('userToken'),
-        }
-    })
-    return res.data;
-    
+    try{
+        const res = await instance.get('/auth',{headers: getHeaders()})
+        return res.data;
+    } catch(e){
+        throw e.response.data.message;
+    }
 }
 
 const loginUser = async ({email, password}) => {
@@ -34,24 +33,24 @@ const loginUser = async ({email, password}) => {
 }
 
 const getUsers = async (id) => {
-    const { data } = await instance(`${id ? ('id=' + id) : ''}`,{headers});
+    const { data } = await instance(`${id ? ('id=' + id) : ''}`,{headers: getHeaders()});
     return data
 }
 
 const signupUser = async ({name, email, securityLevel}) => {
     try{
-        const { data } = await instance.post('signup',{name,email,securityLevel},{headers})
+        const { data } = await instance.post('signup',{name,email,securityLevel},{headers: getHeaders()})
         return data;
     }
     catch(e){
-        throw e.response.data.message
+        throw e.response.data.message;
     }
 
 }
 
 const updateUser = async (updateData) => {
     try{
-        const { data } = await instance.put('',updateData,{headers});
+        const { data } = await instance.put('',updateData,{headers: getHeaders()});
         return data;
     } catch(e){
         throw e.response.data.message;
@@ -60,9 +59,18 @@ const updateUser = async (updateData) => {
 
 const removeUser = async (userId) => {
     try{
-        const { data } = await instance.delete('',{headers, data: {id: userId}});
+        const { data } = await instance.delete('',{headers: getHeaders(), data: {id: userId}});
         return data;
-    } catch{
+    } catch(e) {
+        throw e.response.data.message;
+    }
+}
+
+const changePassword = async (currentPassword, newPassword) => {
+    try{
+        const { data } = await instance.put('password', { currentPassword, newPassword }, {headers: getHeaders()});
+        return data;
+    } catch (e) {
         throw e.response.data.message;
     }
 }
@@ -74,4 +82,5 @@ export default {
     signupUser,
     updateUser,
     removeUser,
+    changePassword,
 }

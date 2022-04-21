@@ -77,18 +77,10 @@
 }
 
 .myUserForm form button{
-    display: flex;
-    background: none;
-    border: none;
-    font-size: 20px;
     color: var(--lightBlue);
-    padding: 8px;
-    border-radius: 12px;
-    opacity: .7;
-    transition: .6s;
 }
 
-.myUserForm form button:hover{
-    opacity: 1;
+.myUserMain > .textBtn{
+    color: var(--errorColor);
 }
 
