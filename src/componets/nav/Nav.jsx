@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 
 import NavIcon from './NavIcon'
-import menuIcon from '../../../../assets/menu.png';
+import menuIcon from '../../../assets/menu.png';
 
 
 import './nav.css'
