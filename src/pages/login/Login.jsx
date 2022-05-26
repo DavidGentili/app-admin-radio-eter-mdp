@@ -25,7 +25,6 @@ const Login = () => {
         })
         .catch((e) => {
             setLoadingPage(false);
-            
         })
     }, [])
 
@@ -37,12 +36,13 @@ const Login = () => {
         loginUser({email, password})
         .then((token) => {
             localStorage.setItem('userToken',token);
+            setLoadingButton(false)
             navigate('/')
         })
         .catch((e) => {
             setMessageError(e);
+            setLoadingButton(false)
         })
-        .finally(() => {setLoadingButton(false)})
     }
 
 
@@ -55,7 +55,7 @@ const Login = () => {
                 <form className='loginForm' onSubmit={handlerSubmit}>
                     <input type="email" autoFocus placeholder='Email' name='email'/>
                     <input type="password" placeholder='Password' name='password'/>
-                    <button type='submit' className={`primaryBtn${loadingButton ? ' loadingBtn' : ''}`} disabled={loadingButton} >{!loadingButton ? 'Login' : 'Loading'}</button>
+                    <button type='submit' className={`primaryBtn${loadingButton ? ' loadingBtn' : ''}`} disabled={loadingButton} >Login</button>
                 </form>
                 {messageError && <p className='messageError'>{messageError}</p>}
             </div>
