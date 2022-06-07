@@ -32,20 +32,7 @@
     animation: appearElement 1s;
 }
 
-.loginForm input{
-    width: 80%;
-    margin: 16px 0;
-    font-size: 16px;
-    padding: 8px 4px;
-    border: none;
-    border-bottom: 2px solid #707070;
-    color: var(--lightBlack);
-}
-
 .loginForm button{
-    font-size: 20px;
-    font-weight: 500;
-    padding: 8px 24px;
     margin-top: 16px;
 }
 

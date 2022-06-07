@@ -1,6 +1,9 @@
 import axios from 'axios';
+
+// 'https://api-radio-eter-mdp.herokuapp.com/users'
+
 const instance = axios.create({
-    baseURL: 'https://api-radio-eter-mdp.herokuapp.com/users',
+    baseURL: 'http://localhost:9000/users',
 });
 
 const getHeaders = () => {

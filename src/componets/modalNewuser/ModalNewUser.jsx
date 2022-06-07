@@ -2,6 +2,7 @@ import { React, useState } from 'react'
 
 import close from '../../../assets/close.png'
 import usersAPI from '../../services/users';
+import CustomInput from '../CustomInput'
 
 const { signupUser } = usersAPI;
 
@@ -18,13 +19,13 @@ const ModalNewUser = ({ closeModal, refreshUsers }) => {
         signupUser({name, email, securityLevel})
         .then((data) => {
             refreshUsers();
+            setLoadingButton(false)
             closeModal();
         })
         .catch((e) => {
             setMessageError(e);
-        })
-        .finally(() => {setLoadingButton(false)})
-        
+            setLoadingButton(false)
+        }) 
     }
 
     return (
@@ -37,14 +38,15 @@ const ModalNewUser = ({ closeModal, refreshUsers }) => {
                 </div>
 
                 <form onSubmit={handlerNewUser}>
-                    <input type="text" name='name' placeholder='Nombre de usuario'/>
-                    <input type="mail" name="email" placeholder='Mail'/>
+
+                    <CustomInput type="text" name="name" placeholder="Nombre de usuario" focus={true}/>
+                    <CustomInput type="mail" name="email" placeholder="Mail" />
                     <select name="securityLevel" id="">
                         <option value="master">Master</option>
                         <option value="admin">Admin</option>
                         <option value="editor">Editor</option>
                     </select>
-                    <button type='submit' className={'primaryBtn ' + (loadingButton ? 'loadingBtn' : '')}>{loadingButton ? 'Loading' : 'Agregar Usuario'}</button>
+                    <button type='submit' className={'primaryBtn ' + (loadingButton ? 'loadingBtn' : '')} disabled={loadingButton}>Agregar Usuario</button>
                 </form>
             </div>
             {messageError && <p className='messageError'>{messageError}</p>}

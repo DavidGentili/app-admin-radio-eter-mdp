@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import Isotipo from '../../componets/Isotipo'
 import logo from '../../../assets/logo.png'
 import LoadingPage from '../../componets/LoadingPage';
+import CustomInput from '../../componets/CustomInput';
 
 import userAPI from '../../services/users';
 
@@ -36,7 +37,6 @@ const Login = () => {
         loginUser({email, password})
         .then((token) => {
             localStorage.setItem('userToken',token);
-            setLoadingButton(false)
             navigate('/')
         })
         .catch((e) => {
@@ -53,8 +53,8 @@ const Login = () => {
             <div className='container'>
                 <img src={logo} alt="Radio Eter Mdp" className='logo' />
                 <form className='loginForm' onSubmit={handlerSubmit}>
-                    <input type="email" autoFocus placeholder='Email' name='email'/>
-                    <input type="password" placeholder='Password' name='password'/>
+                    <CustomInput focus={true} placeholder="Mail" type="email" name="email"/>
+                    <CustomInput placeholder="Contraseña" type="password" name="password"/>
                     <button type='submit' className={`primaryBtn${loadingButton ? ' loadingBtn' : ''}`} disabled={loadingButton} >Login</button>
                 </form>
                 {messageError && <p className='messageError'>{messageError}</p>}

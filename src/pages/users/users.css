@@ -64,7 +64,5 @@ main table tbody button img{
 main.usersMain > button{
     display: flex;
     font-size: 16px;
-    font-weight: 500;
-    padding: 12px 24px;
     margin-left: auto;
 }
