@@ -9,11 +9,8 @@ import UserPage from './users/Users';
 import MyUser from './myuser/MyUser'
 import LoadingPage from '../componets/LoadingPage';
 
-import podcastIcon from '../../assets/podcast.png';
-import reportsIcon from '../../assets/reports.png';
-import programsIcon from '../../assets/programs.png';
-import adIcon from '../../assets/ad.png';
-import userIcon from '../../assets/user.png';
+import  { UserIcon, PodcastIcon, ReportsIcon, ProgramsIcon, AdIcon }  from '../componets/Icons';
+
 
 import userAPI from '../services/users';
 
@@ -21,34 +18,34 @@ const { authUser } = userAPI;
 
 const menuOptions = [
     {
-        icon: podcastIcon,
+        Icon: PodcastIcon,
         text: 'Podcast',
         goTo: '/podcast',
-        securtyRequired: 'editor',
+        aceptedSecurityLevels: ['editor', 'admin', 'master'],
     },
     {
-        icon: reportsIcon,
+        Icon: ReportsIcon,
         text: 'Informes',
         goTo: '/informes',
-        securtyRequired: 'editor',
+        aceptedSecurityLevels: ['editor', 'admin', 'master'],
     },
     {
-        icon: programsIcon,
+        Icon: ProgramsIcon,
         text: 'Programas',
         goTo: '/programas',
-        securtyRequired: 'editor',
+        aceptedSecurityLevels: ['admin', 'master'],
     },
     {
-        icon: adIcon,
+        Icon: AdIcon,
         text: 'Publicidad',
         goTo: '/publicidad',
-        securtyRequired: 'admin',
+        aceptedSecurityLevels: ['admin', 'master'],
     },
     {
-        icon: userIcon,
+        Icon: UserIcon,
         text: 'Usuarios',
         goTo: '/usuarios',
-        securtyRequired: 'master',
+        aceptedSecurityLevels: ['master'],
     }
 ]
 
@@ -75,7 +72,12 @@ const PanelPage = () => {
             loadingPage ? <LoadingPage />
             :
             <div className='panelPage'>
-                <Nav menuOptions={ menuOptions.filter(option => option.goTo === '/usuarios')}/>
+                {/* <Nav menuOptions={ menuOptions.filter(option => option.goTo === '/usuarios')}/> */}
+                <Nav menuOptions={ user ? menuOptions.filter(function(option){ 
+                    if(option.aceptedSecurityLevels.includes(user.securityLevel))
+                        return option;
+                }) : []}/>
+
                 <Header userName={user ? user.name : 'Mi usuario'} location={'Usuarios'} />
                 
                 <Routes >

@@ -56,20 +56,29 @@ nav a:hover{
     background-color: #FFFFFF30;
 }
 
-nav a img{
+.navIconContainer{
+    height: 36px;
     width: 36px;
-    height: auto;
+    display: flex;
+    justify-content: center;
     margin: 0 3px;
 }
 
+.navIcon{
+    width: auto;
+    height: 100%;
+    fill: var(--lightGrey);
+    transition: .6s;
+}
 
 nav a span{
     position: absolute;
     left: 64px;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 400;
     text-transform: uppercase;
     opacity: 0;
+    letter-spacing: 1px;
     transition: .4s;
 }
 
@@ -80,7 +89,10 @@ nav.collapsed a span{
 
 nav a.active {
     color: var(--lightBlue);
-    transition: .6s;
+}
+
+a.active .navIcon{
+    fill: var(--lightBlue);
 }
 
 @media (max-width: 768px){
