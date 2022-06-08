@@ -5,13 +5,13 @@ import { EditIcon } from './Icons';
 
 const UserRow = ({ user , openModal}) => {
   return (
-    <tr key={user.id}>
-        <th>{user.name}</th>
-        <th>{user.email}</th>
-        <th>{user.securityLevel}</th>
-        <th>{user.state}</th>
-        <th><button onClick={openModal}> <EditIcon /> </button></th>
-    </tr>
+    <div className='userRow' key={user.id}>
+        <p>{user.name}</p>
+        <p>{user.email}</p>
+        <p>{user.securityLevel}</p>
+        <p>{user.state}</p>
+        <button onClick={openModal}> <EditIcon /> </button>
+    </div>
   )
 }
 

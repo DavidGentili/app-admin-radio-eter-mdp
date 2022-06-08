@@ -209,6 +209,19 @@ button:disabled{
     align-items: center;
 }
 
+.loader{
+    width: 64px;
+    height: 64px;
+    border: 6px solid;
+    border-radius: 100%;
+    border-bottom-color: #4BC1EA00;
+    border-left-color: #4BC1EA55;
+    border-right-color: #4BC1EAAA;
+    border-top-color: #4BC1EA;
+    animation: spiner infinite linear .5s;
+
+}
+
 /*-------------------MODAL----------------------*/
 
 .modalContainer{
@@ -372,7 +385,6 @@ select:hover{
  select:focus{
     border-bottom: 2px solid var(--lightBlue);
 }
-
 
 /*-------------------ANIMATIONS----------------------*/
 

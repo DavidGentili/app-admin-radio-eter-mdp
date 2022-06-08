@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react'
+import { React, useState, useEffect, useCallback } from 'react'
 
 import ModalNewUser from '../../componets/modalNewuser/ModalNewUser'
 import ModalUpdateUser from '../../componets/modalUpdateUser/ModalUpdateUser';
@@ -21,6 +21,15 @@ const UserPage = () => {
         refreshUsers();
     },[])
 
+    const sortUser = useCallback((key) => {
+        const sortArray = [...users]
+        sortArray.sort(function(a ,b ){
+            return (a[key] <= b[key]) ? -1 : 1
+        })
+
+        setUsers(sortArray);
+    }, [users])
+
     const refreshUsers = () => {
         if(!loadingPage)
             setLoadingPage(true);
@@ -39,34 +48,34 @@ const UserPage = () => {
     }
 
     return (
-        <main className='usersMain' style={loadingPage ? {position:'relative'} : {}}>
-            {loadingPage ? <LoadingPage />
-            :
-            <>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Usuario</th>
-                            <th>Mail</th>
-                            <th>Nivel</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>                        
-                    </thead>
-                    <tbody>
+        <>
+            <main className='usersMain' style={loadingPage ? {position:'relative'} : {}}>
+                {loadingPage ? <LoadingPage />
+                :
+                <>
+                    <section className='userPanel'>
+                        <div className="headerPanel">
+                            <button onClick={(e) => {sortUser('name')}}>Usuario</button>
+                            <button onClick={(e) => {sortUser('email')}}>Mail</button>
+                            <button onClick={(e) => {sortUser('securityLevel')}}>Nivel de seguridad</button>
+                            <button onClick={(e) => {sortUser('state')}}>Estado</button>
+                            <p>Acciones</p>
+                        </div>
                         {
                             users.length === 0 ? <p>No hay usuarios</p>
                             :
                             users.map((user) => <UserRow key={user.id} user={user} openModal={selectUser(user)} />)
                         }
-                    </tbody>
-                </table>
-                <button className='primaryBtn' onClick={() => {setOpenModal(true)}}> Nuevo usuario </button>  
-            </>
-            }
+                    </section>
+                    <button className='primaryBtn' onClick={() => {setOpenModal(true)}}> Nuevo usuario </button>  
+
+                </>
+                
+                }
+            </main>
             {openModal && <ModalNewUser refreshUsers={refreshUsers} setLoadingPage={setLoadingPage} closeModal={() => {setOpenModal(false)}} />}
             {selectedUser && <ModalUpdateUser user={selectedUser} refreshUsers={refreshUsers}  closeModal={() => {setSelectedUser(null)}} />}
-        </main>
+        </>
     )
 }
 
