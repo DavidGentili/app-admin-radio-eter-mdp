@@ -8,6 +8,7 @@ import Header from '../componets/header/Header';
 import UserPage from './users/Users';
 import MyUser from './myuser/MyUser';
 import HomePage from '../pages/HomePage/HomePage'
+import ErrorPage from '..//pages/errorPage/ErrorPage'
 import LoadingPage from '../componets/LoadingPage';
 
 import  { UserIcon, PodcastIcon, ReportsIcon, ProgramsIcon, AdIcon }  from '../componets/Icons';
@@ -89,7 +90,7 @@ const PanelPage = () => {
                     <Route path='/usuarios' element={<UserPage />} />
                     <Route path='/my-user' element={ <MyUser/> } />
                     <Route path='/' element={<HomePage menuOptions={ user ? filterOptions(menuOptions,user) : []}/>} />
-                    <Route path='*' element={ <h3>No esta </h3>}/>
+                    <Route path='*' element={ <ErrorPage /> }/>
                 </Routes>
             
             </div>

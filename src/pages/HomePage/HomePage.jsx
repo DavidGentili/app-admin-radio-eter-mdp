@@ -8,7 +8,7 @@ import './homePage.css'
 const HomePage = ({menuOptions}) => {
     return (
         <main className='homePage'>
-            <h2>Bienvenido al panel de gestion</h2>
+            <h2>Bienvenido al panel principal</h2>
             <div className="options">{ 
                 menuOptions.map(({goTo, Icon, text}) => {
                     return (<Link key={goTo} to={goTo}>
