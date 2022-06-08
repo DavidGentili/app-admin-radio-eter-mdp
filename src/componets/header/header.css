@@ -13,7 +13,7 @@ header{
 header .actions{
     display: flex;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -22,26 +22,19 @@ header .actions button{
     border: none;
     opacity: .7;
     transition: 0.6s;
+    margin-right: auto;
 }
 
 header .actions button:hover{
     opacity: 1;
 }
 
-header .actions button .arrowIcon{
+header .actions .icon{
     width: 24px;
 }
 
-header .actions h3{
-    margin: 0 24px;
-    font-size: 18px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: var(--black);
-}
-
 header .actions a{
-    margin-left: auto;
+    margin: 0 16px;
     color: var(--black);
     font-weight: 400;
     font-size: 16px;
