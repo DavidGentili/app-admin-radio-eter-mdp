@@ -4,8 +4,8 @@ import { React, useState, forwardRef } from "react";
 const supportedTypes = ["text", "email", "password"];
 
 const CustomInput = forwardRef( (props, ref) => {
-    const { name, type, id, placeholder, focus} = props
-    const [notEmptyInput, setNotEmptyInput] = useState(false);
+    const { name, type, id, placeholder, focus, value, disabled} = props
+    const [notEmptyInput, setNotEmptyInput] = useState( value ? true : false);
 
   return (
         <label
@@ -17,7 +17,8 @@ const CustomInput = forwardRef( (props, ref) => {
                 name={name ? name : ''}
                 id={id ? id : ''}
                 autoFocus={focus ? true : false}
-
+                defaultValue={value ? value : false}
+                disabled={disabled ? true : false}
                 onChange={(e) => {
                     setNotEmptyInput(e.target.value.length === 0 ? false : true);
                 }}
