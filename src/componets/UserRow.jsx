@@ -1,6 +1,6 @@
 import React from 'react'
 
-import edit from '../../assets/edit.png'
+import { EditIcon } from './Icons';
 
 
 const UserRow = ({ user , openModal}) => {
@@ -10,7 +10,7 @@ const UserRow = ({ user , openModal}) => {
         <th>{user.email}</th>
         <th>{user.securityLevel}</th>
         <th>{user.state}</th>
-        <th><button onClick={openModal}><img src={edit} alt="Editar" /></button></th>
+        <th><button onClick={openModal}> <EditIcon /> </button></th>
     </tr>
   )
 }

@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import useUser from '../../hooks/useUser'
 
 import userAPI from '../../services/users';
+import CustomInput from '../../componets/CustomInput'
+
 const { changePassword } = userAPI;
 
 import './myUser.css'
@@ -48,22 +50,22 @@ const MyUser = () => {
                     <section className='myUserInformation'>
                         <h3>Datos</h3>
                         <h4>Usuario: <span>{localUser.name}</span></h4>
-                        <h5>Nivel: <span>{localUser.securityLevel}</span></h5>
                         <h4>Mail: <span>{localUser.email}</span></h4>
-                        <h5>Estado: <span>{localUser.state}</span></h5>
+                        <h4>Nivel: <span>{localUser.securityLevel}</span></h4>
+                        <h4>Estado: <span>{localUser.state}</span></h4>
                     </section>
 
                     <section className='myUserForm'>
-                        <h3>Cambiar Contraseña</h3>
+                        <h3>Cambiar contraseña</h3>
                         <form onSubmit={handlerChangePassword}>
-                            <input type="password" name='currentPassword' placeholder='Contraseña actual'/>
-                            <input type="password" name='newPassword' placeholder='Nueva contraseña'/>
-                            <input type="password" name='confirmPassword' placeholder='Confirmar contraseña'/>
-                            <button type='submit' className={'textBtn' + (loadingButton ? ' loading' : '')}>Cambiar contraseña</button>
+                            <CustomInput type="password" name='currentPassword' placeholder='Contraseña actual'/>
+                            <CustomInput type="password" name='newPassword' placeholder='Nueva contraseña'/>
+                            <CustomInput type="password" name='confirmPassword' placeholder='Confirmar contraseña'/>
+                            <button type='submit' className={'secondaryBtn' + (loadingButton ? ' loading' : '')}>Cambiar contraseña</button>
                         </form>
                         {messageError && <p className='messageError'>{messageError}</p>}
                     </section>
-                    <button className='textBtn' onClick={handlerLogout} >Cerrar sesion</button>
+                    <button className='dangerBtn' onClick={handlerLogout} >Cerrar sesion</button>
                 </>
                 :
                 <h1>opps, ¡sorry! we had a server error</h1>

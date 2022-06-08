@@ -6,49 +6,55 @@ import UserContext from '../context/UserContext';
 import Nav from '../componets/nav/Nav';
 import Header from '../componets/header/Header'; 
 import UserPage from './users/Users';
-import MyUser from './myuser/MyUser'
+import MyUser from './myuser/MyUser';
+import HomePage from '../pages/HomePage/HomePage'
+import ErrorPage from '..//pages/errorPage/ErrorPage'
 import LoadingPage from '../componets/LoadingPage';
 
-import podcastIcon from '../../assets/podcast.png';
-import reportsIcon from '../../assets/reports.png';
-import programsIcon from '../../assets/programs.png';
-import adIcon from '../../assets/ad.png';
-import userIcon from '../../assets/user.png';
+import  { UserIcon, PodcastIcon, ReportsIcon, ProgramsIcon, AdIcon }  from '../componets/Icons';
+
 
 import userAPI from '../services/users';
 
 const { authUser } = userAPI;
 
+const filterOptions = (options, user) => {
+    return options.filter(function(option){
+        if(option.aceptedSecurityLevels.includes(user.securityLevel))
+            return option;
+    })
+}
+
 const menuOptions = [
     {
-        icon: podcastIcon,
+        Icon: PodcastIcon,
         text: 'Podcast',
         goTo: '/podcast',
-        securtyRequired: 'editor',
+        aceptedSecurityLevels: ['editor', 'admin', 'master'],
     },
     {
-        icon: reportsIcon,
+        Icon: ReportsIcon,
         text: 'Informes',
         goTo: '/informes',
-        securtyRequired: 'editor',
+        aceptedSecurityLevels: ['editor', 'admin', 'master'],
     },
     {
-        icon: programsIcon,
+        Icon: ProgramsIcon,
         text: 'Programas',
         goTo: '/programas',
-        securtyRequired: 'editor',
+        aceptedSecurityLevels: ['admin', 'master'],
     },
     {
-        icon: adIcon,
+        Icon: AdIcon,
         text: 'Publicidad',
         goTo: '/publicidad',
-        securtyRequired: 'admin',
+        aceptedSecurityLevels: ['admin', 'master'],
     },
     {
-        icon: userIcon,
+        Icon: UserIcon,
         text: 'Usuarios',
         goTo: '/usuarios',
-        securtyRequired: 'master',
+        aceptedSecurityLevels: ['master'],
     }
 ]
 
@@ -75,14 +81,16 @@ const PanelPage = () => {
             loadingPage ? <LoadingPage />
             :
             <div className='panelPage'>
-                <Nav menuOptions={ menuOptions.filter(option => option.goTo === '/usuarios')}/>
+                {/* <Nav menuOptions={ menuOptions.filter(option => option.goTo === '/usuarios')}/> */}
+                <Nav menuOptions={ user ? filterOptions(menuOptions,user) : []}/>
+
                 <Header userName={user ? user.name : 'Mi usuario'} location={'Usuarios'} />
                 
                 <Routes >
                     <Route path='/usuarios' element={<UserPage />} />
                     <Route path='/my-user' element={ <MyUser/> } />
-                    <Route path='/' element={<UserPage />} />
-                    <Route path='*' element={ <h3>No esta </h3>}/>
+                    <Route path='/' element={<HomePage menuOptions={ user ? filterOptions(menuOptions,user) : []}/>} />
+                    <Route path='*' element={ <ErrorPage /> }/>
                 </Routes>
             
             </div>

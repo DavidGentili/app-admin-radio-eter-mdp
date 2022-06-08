@@ -14,7 +14,7 @@
     background-color: var(--lightGrey);
     display: grid;
     grid-template-columns: fit-content(220px) 1fr;
-    grid-template-rows: .3fr 1fr;
+    grid-template-rows: .13fr 1fr;
     grid-template-areas: "nav header"
                          "nav main";
 }

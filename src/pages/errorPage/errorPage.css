@@ -1,0 +1,45 @@
+.errorPage{
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+.errorPage img{
+    margin: 0 auto;
+    max-width: 256px;
+}
+
+.errorPage h2{
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--black);
+    margin: 36px auto 18px auto;
+    max-width: 384px;
+    letter-spacing: 1px;
+}
+
+.errorPage h3{
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--lightBlack);
+    max-width: 384px;
+    letter-spacing: .5px;
+    line-height: 28px;
+}
+
+.errorPage a{
+    text-decoration: none;
+    margin-top: 16px;
+    padding-bottom: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--lightBlue);
+    border-bottom: 2px solid var(--lightBlue);
+    transition: .6s;
+    opacity: .8;
+}
+
+.errorPage a:hover{
+    opacity: 1;
+}
