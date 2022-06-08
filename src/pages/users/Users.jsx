@@ -5,6 +5,8 @@ import ModalUpdateUser from '../../componets/modalUpdateUser/ModalUpdateUser';
 import LoadingPage from '../../componets/LoadingPage';
 import UserRow from '../../componets/UserRow';
 
+import { ChevronIcon } from '../../componets/Icons'
+
 import usersAPI from '../../services/users'
 const { getUsers } = usersAPI;
 
@@ -55,10 +57,10 @@ const UserPage = () => {
                 <>
                     <section className='userPanel'>
                         <div className="headerPanel">
-                            <button onClick={(e) => {sortUser('name')}}>Usuario</button>
-                            <button onClick={(e) => {sortUser('email')}}>Mail</button>
-                            <button onClick={(e) => {sortUser('securityLevel')}}>Nivel de seguridad</button>
-                            <button onClick={(e) => {sortUser('state')}}>Estado</button>
+                            <button onClick={(e) => {sortUser('name')}}>Usuario <ChevronIcon/> </button>
+                            <button onClick={(e) => {sortUser('email')}}>Mail <ChevronIcon/></button>
+                            <button onClick={(e) => {sortUser('securityLevel')}}>Nivel de seguridad <ChevronIcon/></button>
+                            <button onClick={(e) => {sortUser('state')}}>Estado <ChevronIcon/></button>
                             <p>Acciones</p>
                         </div>
                         {

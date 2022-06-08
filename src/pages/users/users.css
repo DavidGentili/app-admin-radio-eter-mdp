@@ -15,24 +15,43 @@
     width: 100%;
     display: grid;
     grid-template-columns: .5fr 1fr .5fr .5fr .2fr;
+    gap: 12px;
     padding: 16px 24px;
     border-bottom: 2px solid var(--lightBlack);
     color: var(--lightBlack);
 }
 
+.userPanel .headerPanel p{
+    padding: 6px 12px;
+}
+
 .userPanel .headerPanel button{
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     background: none;
     border: none;
     font-size: 16px;
     color: var(--black);
     font-weight: 400;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: .6s;
+}
+
+.userPanel .headerPanel button:hover{
+    background-color: #4BC1EA30;
+}
+
+.userPanel .headerPanel button .icon{
+    width: 8px;
 }
 
 .userRow{
     margin: 8px auto;
     display: grid;
     grid-template-columns: .5fr 1fr .5fr .5fr .2fr;
+    gap: 12px;
     align-items: center;
     text-align: start;
     width: 100%;
@@ -48,6 +67,7 @@
     overflow: hidden;
     font-size: 16px;
     font-weight: 400;
+    padding: 0 16px;
 }
 
 .userRow:hover{
