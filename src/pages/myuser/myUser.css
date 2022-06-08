@@ -1,86 +1,73 @@
-.myUserMain section{
-    width: 100%;
-    margin: auto;
-    margin-bottom: 16px;
-    color: var(--balck);
+.myUserMain{
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-.myUserInformation{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
+.myUserMain section{
+    width: 48%;
+    margin: auto;
+    color: var(--black);
+    padding: 36px;
+    border-radius: 36px;
+    background-color: var(--white);
+    box-shadow: 5px 5px 20px #24242440;
 }
 
 .myUserMain h3{
-    width: 100%;
-    border-bottom: 3px solid var(--black);
-    margin-bottom: 16px;
     font-size: 24px;
-    padding: 6px;
-    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
-.myUserInformation h4,
-.myUserInformation h5{
-    border-bottom: 2px solid var(--lightBlack);
-    display: flex;
-    align-items: center;
-    padding: 6px;
-    margin-bottom: 12px;
-    font-size: 20px;
-    font-weight: 500;
-    position: relative;
+.myUserInformation{
+    padding: 36px;
+    border-radius: 36px;
+    background-color: var(--white);
+    box-shadow: 5px 5px 20px #24242440;
 }
+
+
 
 .myUserInformation h4{
-    width: 65%;
+    font-size: 14px;
+    margin-right: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    margin: 16px 0;
+    color: var(--lightBlack);
+    position: relative;
+    min-width: 300px;
+    padding: 16px;
+    border-bottom: 1px solid #24242440;
+    transition: .6s;
 }
 
-.myUserInformation h4 span,
-.myUserInformation h5 span{
-    position: absolute;
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--lightBlack);
+.myUserInformation h4:hover{
+    background-color: #70707010;
 }
 
 .myUserInformation h4 span{
-    left: 136px;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--black);
+    position: absolute;
+    left: 86px;
 }
-
-.myUserInformation h5 span{
-    left: 96px;
-}
-
-
-.myUserInformation h5{
-    width: 30%;
-}
-
 
 .myUserForm form{
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 24px;
+    gap: 12px;
 }
 
-.myUserForm form input{
-    padding: 8px;
-    width: 40%;
-    background: none;
-    border: none;
-    border-bottom: 2px solid var(--lightBlack);
-    font-size: 16px;
+.myUserForm .customInput{
+    width: 100%;
+    margin: 16px 0;
 }
 
-.myUserForm form button{
-    color: var(--lightBlue);
-}
 
-.myUserMain > .textBtn{
-    color: var(--errorColor);
-}
+
 

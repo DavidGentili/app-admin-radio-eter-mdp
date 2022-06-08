@@ -1,7 +1,8 @@
 import { React } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 
-import arrow from '../../../assets/arrow.png'
+
+import { ArrowIcon, HomeIcon } from '../Icons';
 
 import './header.css'
 
@@ -12,8 +13,8 @@ const Header = ({ userName, location, subMenus }) => {
     return( 
         <header>
             <div className="actions">
-                <button onClick={() => {navigate(-1)}}> <img src={arrow} alt="volver atras" /> </button>
-                <h3>{location}</h3>
+                <button onClick={() => {navigate(-1)}}> <ArrowIcon/> </button>
+                <Link to='/'> <HomeIcon/> </Link>
                 <Link to='/my-user'>{userName}</Link>
             </div>
 

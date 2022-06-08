@@ -1,0 +1,65 @@
+.homePage{
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.homePage h2{
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--lightBlack);
+}
+
+.homePage .options{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.homePage a{
+    padding: 36px;
+    height: 180px;
+    width: 180px;
+    text-align: center;
+    background-color: var(--white);
+    border-radius: 36px;
+    margin: 36px auto;
+    box-shadow: 5px 5px 25px #24242430;
+    text-decoration: none;
+    transition: .6s;
+}
+
+.homePage a:hover{
+    box-shadow: 5px 15px 25px #24242430;
+    transform: translateY(-10px);
+}
+
+.homePage a .navIconContainer{
+    width: auto;
+    height: 48px;
+    margin: 16px auto;
+    transition: .6s;
+}
+
+.homePage a:hover .navIconContainer{
+    transform: translateY(-10px) scale(1.1);
+}
+
+.homePage a .icon{
+    fill: var(--lightBlue);
+}
+
+.homePage h4{
+    font-weight: 600;
+    color: var(--lightBlack);
+    letter-spacing: 1px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--white);
+    transition: .6s;
+}
+
+.homePage a:hover h4{
+    border-bottom: 1px solid var(--lightBlue);
+    color: var(--lightBlue);
+}
