@@ -1,8 +1,9 @@
 import { React, useState } from 'react'
 
-import close from '../../../assets/close.png'
 import usersAPI from '../../services/users';
 import CustomInput from '../CustomInput'
+
+import { CloseIcon } from '../Icons';
 
 const { signupUser } = usersAPI;
 
@@ -34,7 +35,7 @@ const ModalNewUser = ({ closeModal, refreshUsers }) => {
                 
                 <div className="headerModal">
                     <h4>Nuevo Usuario</h4>
-                    <button onClick={closeModal}> <img src={close} alt="close" /></button>
+                    <button onClick={closeModal}> <CloseIcon /> </button>
                 </div>
 
                 <form onSubmit={handlerNewUser}>

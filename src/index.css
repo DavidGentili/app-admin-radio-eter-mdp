@@ -264,9 +264,14 @@ button:disabled{
     opacity: 1;
 }
 
-.modalWindow .headerModal button img{
+.modalWindow .headerModal button .closeIcon{
     width: 16px;
     height: auto;
+    transition: .6s;
+}
+
+.modalWindow .headerModal button:hover .closeIcon{
+    fill: var(--errorColor);
 }
 
 .modalWindow form{

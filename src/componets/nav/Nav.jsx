@@ -3,6 +3,8 @@ import { React, useState } from 'react';
 import NavIcon from './NavIcon'
 import menuIcon from '../../../assets/menu.png';
 
+import { MenuIcon } from '../Icons';
+
 
 import './nav.css'
 
@@ -18,7 +20,7 @@ const Nav = ({ menuOptions }) => {
 
     return(
         <nav className={collapsed ? 'collapsed' : ''} >
-            <button onClick={collapsedHandler} ><img src={menuIcon} alt="" /></button>
+            <button onClick={collapsedHandler} > <MenuIcon/> </button>
             <div className="menuOptions">
             {
                 menuOptions.map(option => <NavIcon key={option.goTo} {...option} />)

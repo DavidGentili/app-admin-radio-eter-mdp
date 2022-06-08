@@ -73,10 +73,12 @@ const PanelPage = () => {
             :
             <div className='panelPage'>
                 {/* <Nav menuOptions={ menuOptions.filter(option => option.goTo === '/usuarios')}/> */}
-                <Nav menuOptions={ user ? menuOptions.filter(function(option){ 
-                    if(option.aceptedSecurityLevels.includes(user.securityLevel))
-                        return option;
-                }) : []}/>
+                <Nav menuOptions={ user ? 
+                    menuOptions.filter(function(option){ 
+                        if(option.aceptedSecurityLevels.includes(user.securityLevel))
+                            return option;
+                        }) 
+                    : []}/>
 
                 <Header userName={user ? user.name : 'Mi usuario'} location={'Usuarios'} />
                 

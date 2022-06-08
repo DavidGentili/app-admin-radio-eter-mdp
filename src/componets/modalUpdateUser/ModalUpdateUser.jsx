@@ -2,8 +2,9 @@ import { React, useState, useRef } from 'react'
 
 import useUser from '../../hooks/useUser';
 
-import close from '../../../assets/close.png'
 import CustomInput from '../CustomInput'
+
+import { CloseIcon } from '../Icons';
 
 import usersAPI from '../../services/users';
 const { updateUser, removeUser } = usersAPI;
@@ -74,7 +75,7 @@ const ModalUpdateUser = ({ closeModal, user, refreshUsers }) => {
                     
                     <div className="headerModal">
                         <h4>Editar Usuario</h4>
-                        <button onClick={closeModal}> <img src={close} alt="close" /></button>
+                        <button onClick={closeModal}> <CloseIcon/> </button>
                     </div>
 
                     <form onSubmit={handlerUpdateUser} onChange={handlerChange} >

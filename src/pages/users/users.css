@@ -53,12 +53,19 @@ main table tbody button{
 }
 
 main table tbody button:hover{
-    background-color: #90909060;    
+    background-color: #90909020;    
 }
 
-main table tbody button img{
+main table tbody button .editIcon{
     width: 24px;
     height: auto;
+    fill: var(--black);
+    opacity: .8;
+    transition: .6s;
+}
+
+main table tbody button:hover .editIcon{
+    opacity: 1;
 }
 
 main.usersMain > button{

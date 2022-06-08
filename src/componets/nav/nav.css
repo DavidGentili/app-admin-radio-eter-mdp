@@ -25,20 +25,21 @@ nav .menuOptions{
 nav button{
     background: none;
     border: none;
-    width: 56px;
-    height: 56px;
-    border-radius: 100%;
     transition: .6s;
     margin: 0 5px;
 }
 
-nav button:hover{
-    background-color: #FFFFFF30;
+
+nav button .menuIcon{
+    width: 32px;
+    height: 32px;
+    fill: var(--lightGrey);
+    margin: auto;
+    transition: .6s;
 }
 
-nav button img{
-    width: 32px;
-    height: auto;
+nav button:hover .menuIcon{
+    fill: var(--lightBlue);
 }
 
 nav a{

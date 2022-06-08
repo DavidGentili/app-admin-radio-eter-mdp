@@ -28,7 +28,7 @@ header .actions button:hover{
     opacity: 1;
 }
 
-header .actions button img{
+header .actions button .arrowIcon{
     width: 24px;
 }
 
