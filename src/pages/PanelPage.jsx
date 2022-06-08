@@ -6,7 +6,8 @@ import UserContext from '../context/UserContext';
 import Nav from '../componets/nav/Nav';
 import Header from '../componets/header/Header'; 
 import UserPage from './users/Users';
-import MyUser from './myuser/MyUser'
+import MyUser from './myuser/MyUser';
+import HomePage from '../pages/HomePage/HomePage'
 import LoadingPage from '../componets/LoadingPage';
 
 import  { UserIcon, PodcastIcon, ReportsIcon, ProgramsIcon, AdIcon }  from '../componets/Icons';
@@ -15,6 +16,13 @@ import  { UserIcon, PodcastIcon, ReportsIcon, ProgramsIcon, AdIcon }  from '../c
 import userAPI from '../services/users';
 
 const { authUser } = userAPI;
+
+const filterOptions = (options, user) => {
+    return options.filter(function(option){
+        if(option.aceptedSecurityLevels.includes(user.securityLevel))
+            return option;
+    })
+}
 
 const menuOptions = [
     {
@@ -73,19 +81,14 @@ const PanelPage = () => {
             :
             <div className='panelPage'>
                 {/* <Nav menuOptions={ menuOptions.filter(option => option.goTo === '/usuarios')}/> */}
-                <Nav menuOptions={ user ? 
-                    menuOptions.filter(function(option){ 
-                        if(option.aceptedSecurityLevels.includes(user.securityLevel))
-                            return option;
-                        }) 
-                    : []}/>
+                <Nav menuOptions={ user ? filterOptions(menuOptions,user) : []}/>
 
                 <Header userName={user ? user.name : 'Mi usuario'} location={'Usuarios'} />
                 
                 <Routes >
                     <Route path='/usuarios' element={<UserPage />} />
                     <Route path='/my-user' element={ <MyUser/> } />
-                    <Route path='/' element={<UserPage />} />
+                    <Route path='/' element={<HomePage menuOptions={ user ? filterOptions(menuOptions,user) : []}/>} />
                     <Route path='*' element={ <h3>No esta </h3>}/>
                 </Routes>
             

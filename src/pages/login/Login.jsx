@@ -22,7 +22,7 @@ const Login = () => {
     useEffect(() => {
         authUser()
         .then(() => {
-            navigate('/my-user');
+            navigate('/');
         })
         .catch((e) => {
             setLoadingPage(false);
