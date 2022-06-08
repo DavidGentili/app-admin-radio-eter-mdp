@@ -17,7 +17,7 @@ const CustomInput = forwardRef( (props, ref) => {
                 name={name ? name : ''}
                 id={id ? id : ''}
                 autoFocus={focus ? true : false}
-                defaultValue={value ? value : false}
+                defaultValue={value ? value : ''}
                 disabled={disabled ? true : false}
                 onChange={(e) => {
                     setNotEmptyInput(e.target.value.length === 0 ? false : true);
