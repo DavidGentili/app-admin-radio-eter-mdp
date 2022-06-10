@@ -42,6 +42,7 @@ const ModalNewUser = ({ closeModal, refreshUsers }) => {
 
                     <CustomInput type="text" name="name" placeholder="Nombre de usuario" focus={true}/>
                     <CustomInput type="mail" name="email" placeholder="Mail" />
+                    <label htmlFor="securityLevel" className='label'>Nivel de seguridad</label>
                     <select name="securityLevel" id="">
                         <option value="master">Master</option>
                         <option value="admin">Admin</option>

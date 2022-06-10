@@ -19,7 +19,7 @@ const ModalNewAd = ({closeModal}) => {
                     <form >
 
                         <CustomInput name='name' focus placeholder='Nombre' type='text' />
-                        <CustomInput />
+                        <textarea />
                         
                     </form>
                 </div>

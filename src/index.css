@@ -290,7 +290,7 @@ button:disabled{
 .modalWindow form{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 24px;
 }
 
@@ -384,6 +384,15 @@ select:hover{
 
  select:focus{
     border-bottom: 2px solid var(--lightBlue);
+}
+
+/*-------------------LABELS----------------------*/
+
+.modalWindow form .label{
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 4px;
+    color: var(--lightBlack);
 }
 
 /*-------------------ANIMATIONS----------------------*/
