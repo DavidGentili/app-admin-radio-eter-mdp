@@ -82,13 +82,13 @@ const ModalUpdateUser = ({ closeModal, user, refreshUsers }) => {
                         <CustomInput focus type="text" value={user.name} name='userName' placeholder='Nombre de usuario' />
                         <CustomInput type="mail" disabled value={user.email} name="userEmail" placeholder='Mail'/>
                         <label htmlFor="securityLevel" className='label'>Nivel de seguridad</label>
-                        <select name="securityLevel" defaultValue={user.securityLevel} ref={levelSelect} >
+                        <select name="securityLevel" defaultValue={user.securityLevel} ref={levelSelect} id="securityLevel">
                             <option value="master">Master</option>
                             <option value="admin">Admin</option>
                             <option value="editor">Editor</option>
                         </select>
                         <label htmlFor="state" className='label'>Estado</label>
-                        <select name="state" defaultValue={user.state} ref={stateSelect} >
+                        <select name="state" defaultValue={user.state} ref={stateSelect} id="state" >
                             <option value="active">Activo</option>
                             <option value="suspended">Suspendido</option>
                         </select>
