@@ -29,4 +29,5 @@ header{
 
 main{
     grid-area: main;
+    position: relative;
 }

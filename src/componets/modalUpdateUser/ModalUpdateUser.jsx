@@ -79,7 +79,7 @@ const ModalUpdateUser = ({ closeModal, user, refreshUsers }) => {
                     </div>
 
                     <form onSubmit={handlerUpdateUser} onChange={handlerChange} >
-                        <CustomInput focus={true} type="text" value={user.name} name='userName' placeholder='Nombre de usuario' />
+                        <CustomInput focus type="text" value={user.name} name='userName' placeholder='Nombre de usuario' />
                         <CustomInput type="mail" disabled value={user.email} name="userEmail" placeholder='Mail'/>
                         <select name="securityLevel" defaultValue={user.securityLevel} ref={levelSelect} >
                             <option value="master">Master</option>
