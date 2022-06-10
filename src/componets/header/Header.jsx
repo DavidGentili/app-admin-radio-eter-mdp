@@ -1,5 +1,5 @@
 import { React } from 'react';
-import { Link, useNavigate } from 'react-router-dom'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
 
 
 import { ArrowIcon, HomeIcon } from '../Icons';
@@ -14,7 +14,7 @@ const Header = ({ userName, location, subMenus }) => {
         <header>
             <div className="actions">
                 <button onClick={() => {navigate(-1)}}> <ArrowIcon/> </button>
-                <Link to='/'> <HomeIcon/> </Link>
+                <NavLink to='/'> <HomeIcon/> </NavLink>
                 <Link to='/my-user'>{userName}</Link>
             </div>
 

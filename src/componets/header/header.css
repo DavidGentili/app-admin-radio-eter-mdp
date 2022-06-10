@@ -43,8 +43,13 @@ header .actions a{
     transition: .6s;
 }
 
+header .actions a.active,
 header .actions a:hover{
     opacity: 1;
+}
+
+header .actions a.active .icon{
+    fill: var(--lightBlue);
 }
 
 .subMenus{
