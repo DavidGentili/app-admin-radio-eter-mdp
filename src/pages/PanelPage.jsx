@@ -7,6 +7,7 @@ import Nav from '../componets/nav/Nav';
 import Header from '../componets/header/Header'; 
 import UserPage from './users/Users';
 import MyUser from './myuser/MyUser';
+import AdPage from './adPage/AdPage';
 import HomePage from '../pages/HomePage/HomePage'
 import ErrorPage from '..//pages/errorPage/ErrorPage'
 import LoadingPage from '../componets/LoadingPage';
@@ -89,6 +90,7 @@ const PanelPage = () => {
                 <Routes >
                     <Route path='/usuarios' element={<UserPage />} />
                     <Route path='/my-user' element={ <MyUser/> } />
+                    <Route path='/publicidad' element={ <AdPage /> } />
                     <Route path='/' element={<HomePage menuOptions={ user ? filterOptions(menuOptions,user) : []}/>} />
                     <Route path='*' element={ <ErrorPage /> }/>
                 </Routes>
