@@ -1,7 +1,7 @@
 import { React, useState, useEffect, useCallback } from 'react'
 
-import ModalNewUser from '../../componets/modalNewuser/ModalNewUser'
-import ModalUpdateUser from '../../componets/modalUpdateUser/ModalUpdateUser';
+import ModalNewUser from '../../componets/modals/ModalNewUser'
+import ModalUpdateUser from '../../componets/modals/ModalUpdateUser';
 import LoadingPage from '../../componets/LoadingPage';
 import UserRow from '../../componets/UserRow';
 
@@ -51,7 +51,7 @@ const UserPage = () => {
 
     return (
         <>
-            <main className='usersMain' style={loadingPage ? {position:'relative'} : {}}>
+            <main className='usersMain'>
                 {loadingPage ? <LoadingPage />
                 :
                 <>
