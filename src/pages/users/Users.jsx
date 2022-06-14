@@ -49,31 +49,27 @@ const UserPage = () => {
         }
     }
 
+    if(loadingPage)
+        return ( <main className='userMain'> <LoadingPage/> </main>)
+
     return (
         <>
             <main className='usersMain'>
-                {loadingPage ? <LoadingPage />
-                :
-                <>
-                    <section className='userPanel'>
-                        <div className="headerPanel">
-                            <button onClick={(e) => {sortUser('name')}}>Usuario <ChevronIcon/> </button>
-                            <button onClick={(e) => {sortUser('email')}}>Mail <ChevronIcon/></button>
-                            <button onClick={(e) => {sortUser('securityLevel')}}>Nivel de seguridad <ChevronIcon/></button>
-                            <button onClick={(e) => {sortUser('state')}}>Estado <ChevronIcon/></button>
-                            <p>Acciones</p>
-                        </div>
-                        {
-                            users.length === 0 ? <p>No hay usuarios</p>
-                            :
-                            users.map((user) => <UserRow key={user.id} user={user} openModal={selectUser(user)} />)
-                        }
-                    </section>
-                    <button className='primaryBtn' onClick={() => {setOpenModal(true)}}> Nuevo usuario </button>  
-
-                </>
-                
-                }
+                <section className='userPanel'>
+                    <div className="headerPanel">
+                        <button onClick={(e) => {sortUser('name')}}>Usuario <ChevronIcon/> </button>
+                        <button onClick={(e) => {sortUser('email')}}>Mail <ChevronIcon/></button>
+                        <button onClick={(e) => {sortUser('securityLevel')}}>Nivel de seguridad <ChevronIcon/></button>
+                        <button onClick={(e) => {sortUser('state')}}>Estado <ChevronIcon/></button>
+                        <p>Acciones</p>
+                    </div>
+                    {
+                        users.length === 0 ? <p>No hay usuarios</p>
+                        :
+                        users.map((user) => <UserRow key={user.id} user={user} selectUser={selectUser(user)} />)
+                    }
+                </section>
+                <button className='primaryBtn' onClick={() => {setOpenModal(true)}}> Nuevo usuario </button>  
             </main>
             {openModal && <ModalNewUser refreshUsers={refreshUsers} setLoadingPage={setLoadingPage} closeModal={() => {setOpenModal(false)}} />}
             {selectedUser && <ModalUpdateUser user={selectedUser} refreshUsers={refreshUsers}  closeModal={() => {setSelectedUser(null)}} />}

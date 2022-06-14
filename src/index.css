@@ -23,7 +23,7 @@ Breakpoints:
     --black: #242424;
     --lightBlack: #404040;
     --white: #FFFFFF;
-    --lightGrey: #F6F6F6;
+    --lightGrey: #F9F9FA;
     --errorColor: #DC3545;
     --mediumGrey: #707070;
 }
@@ -243,7 +243,7 @@ button:disabled{
 .modalWindow{
     width: 640px;
     height: auto;
-    max-height: 90vh;
+    max-height: 95vh;
     padding: 48px 64px;
     background-color: var(--white);
     border-radius: 16px;
@@ -401,6 +401,11 @@ select:hover{
     cursor: pointer;
 }
 
+.modalWindow form .label span{
+    margin-left: 6px;
+    opacity: .6;
+}
+
 
 /*-------------------TEXTAREA----------------------*/
 
@@ -435,6 +440,7 @@ select:hover{
     border-radius: 12px;
     padding: 16px;
     margin-bottom: 16px;
+    background-color: var(--lightGrey); 
 }
 
 .modalWindow form .labelInputFile .icon{
@@ -442,6 +448,10 @@ select:hover{
     height: auto;
 }
 
+/*-------------------SCROLLBAR----------------------*/
+::-webkit-scrollbar{
+    display: none;
+}
 
 /*-------------------ANIMATIONS----------------------*/
 
