@@ -82,7 +82,6 @@ const PanelPage = () => {
             loadingPage ? <LoadingPage />
             :
             <div className='panelPage'>
-                {/* <Nav menuOptions={ menuOptions.filter(option => option.goTo === '/usuarios')}/> */}
                 <Nav menuOptions={ user ? filterOptions(menuOptions,user) : []}/>
 
                 <Header userName={user ? user.name : 'Mi usuario'} location={'Usuarios'} />
