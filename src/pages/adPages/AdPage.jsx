@@ -1,9 +1,11 @@
 import {React, useEffect, useState} from 'react'
+import { Routes, Route} from 'react-router-dom';
 
 import ModalNewAd from '../../componets/modals/ModalNewAd';
 import LoadingPage from '../../componets/LoadingPage';
 import { getAds } from '../../services/ad';
-import SingleAd from '../../componets/SingleAd';
+import NewAdPage from './newAdPage';
+import AdPanel from './AdPanel';
 
 import './adPage.css'
 
@@ -41,19 +43,15 @@ const AdPage = () => {
         return (<main className='adPage'> <LoadingPage/></main>)
 
     return (
-        <>
-            <main className='adPage'>
-                <div className="adPanel">
-                    { (ads.length > 0) &&
-                        ads.map(ad => <SingleAd key={ad.id} {...ad} selectAd={selectAd(ad)}/>)        
-                    }
-                </div>
-                
-                <button className='primaryBtn' onClick={(e) => {setOpenModal(true)}}> + </button>
-            </main>
+        <main className='adPage'>
+            <Routes >
+                <Route path='newAd' element={ <NewAdPage /> } /> 
+                <Route path='' element={ <AdPanel selectAd={selectAd} ads={ads} />} />  
+            </Routes>
+        </main>
 
-            {openModal && <ModalNewAd closeModal={closeModal} />}
-        </>
+            // {openModal && <ModalNewAd closeModal={closeModal} />}
+
     )
 }
 

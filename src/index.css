@@ -45,6 +45,10 @@ main{
 
 /*-------------------BUTTON----------------------*/
 
+a{
+    text-decoration: none;
+}
+
 button{
     cursor: pointer;
 }
@@ -391,27 +395,27 @@ select:hover{
 
 /*-------------------LABELS----------------------*/
 
-.modalWindow form .label{
+form .label{
     font-size: 16px;
     font-weight: 300;
-    margin-left: 4px;
     color: var(--lightBlack);
+    margin-left: 4px;
     margin-bottom: -12px;
     margin: 12px 0 -12px 4px;
     cursor: pointer;
+    display: inline-block;
 }
 
-.modalWindow form .label span{
+form .label span{
     margin-left: 6px;
-    opacity: .6;
+    color: var(--mediumGrey);
 }
 
 
 /*-------------------TEXTAREA----------------------*/
-
-.modalWindow form textarea{
-    width: 100%;
+form textarea{
     resize: none;
+    width: 80%;
     min-height: 48px;
     border-radius: 12px;
     padding: 6px 12px;
@@ -419,16 +423,25 @@ select:hover{
     color: var(--black);
 }
 
-.modalWindow form textarea::placeholder{
+form textarea:active,
+form textarea:focus{
+    border: 2px solid var(--lightBlue);
+}
+
+
+form textarea::placeholder{
     color: var(--mediumGrey);
 }
 
 /*-------------------INPUT FILE----------------------*/
-.modalWindow form input[type=file] button{
+form input[type=file] button{
     display: none;
 }
 
-.modalWindow form .labelInputFile{
+form .labelInputFile{
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--lightBlack);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -443,7 +456,7 @@ select:hover{
     background-color: var(--lightGrey); 
 }
 
-.modalWindow form .labelInputFile .icon{
+form .labelInputFile .icon{
     width: 36px;
     height: auto;
 }
