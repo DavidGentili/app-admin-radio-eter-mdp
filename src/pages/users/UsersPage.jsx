@@ -10,9 +10,9 @@ import { ChevronIcon } from '../../componets/Icons'
 import usersAPI from '../../services/users'
 const { getUsers } = usersAPI;
 
-import './users.css';
+import './usersPage.css';
 
-const UserPage = () => {
+const UsersPage = () => {
 
     const [openModal, setOpenModal] = useState(false);
     const [loadingPage, setLoadingPage] = useState(true);
@@ -77,4 +77,4 @@ const UserPage = () => {
     )
 }
 
-export default UserPage
+export default UsersPage
