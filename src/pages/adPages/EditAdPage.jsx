@@ -29,7 +29,6 @@ const EditAdPage = ( { currentAd, refreshPanel } ) => {
             refreshPanel().then(() => { navigate('../')});
         })
         .catch(e => {
-            console.log(e)
             setLoadingPrimaryBtn(false);
             setMessageError(e);
         })
@@ -45,7 +44,6 @@ const EditAdPage = ( { currentAd, refreshPanel } ) => {
             refreshPanel().then(() => navigate('../'))
         })
         .catch(e => {
-            console.log(e);
             setLoadingDangerBtn(false);
             setMessageError(e);
         })

@@ -32,12 +32,14 @@ const createFormDataNewAd = (form) => {
 }
 
 export async function createNewAd(form){
-    checkDataNewAd(form);
-    instance.post('', createFormDataNewAd(form), {
-        headers: { "Content-Type" : "multipart/form-data", ... getHeaders()},
-    })
-    .then(data => { return data})
-    .catch(e => console.log(e))   
+    try{
+        checkDataNewAd(form)
+        return await instance.post('', createFormDataNewAd(form), {
+            headers: { "Content-Type" : "multipart/form-data", ... getHeaders()},
+        })
+    } catch(e){
+        throw e.response.data.messsage;
+    }  
 }
 
 export async function getAds(){

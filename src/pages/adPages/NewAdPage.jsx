@@ -16,13 +16,13 @@ const NewAdPage = ({refreshPanel}) => {
         e.preventDefault();
         setMessageError('');
         setLoadingBtn(true);
-        const form = Object.fromEntries(new FormData(e.target));
-        createNewAd(form)
+        const newAd = Object.fromEntries(new FormData(e.target));
+        createNewAd(newAd)
         .then(() => {
             setLoadingBtn(false);
             refreshPanel().then(() => {
                 navigate('../')
-            })
+            }) 
         })
         .catch((e) => {
             setLoadingBtn(false);

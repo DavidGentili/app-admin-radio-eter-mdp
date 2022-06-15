@@ -6,6 +6,42 @@
     width: 100%;
 }
 
+.adPanel .headerPanel{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr .4fr .2fr;
+    gap: 12px;
+    padding: 16px 24px;
+    border-bottom: 2px solid var(--lightBlack);
+    color: var(--lightBlack);
+}
+
+.adPanel .headerPanel p{
+    padding: 6px 12px;
+}
+
+.adPanel .headerPanel button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: var(--black);
+    font-weight: 400;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: .6s;
+}
+
+.adPanel .headerPanel button:hover{
+    background-color: #4BC1EA30;
+}
+
+.adPanel .headerPanel button .icon{
+    width: 8px;
+}
+
 .adPage > .primaryBtn{
     width: 56px;
     height: 56px;
@@ -15,8 +51,8 @@
     font-weight: 400;
     padding: 0;
     position: absolute;
-    bottom: 48px;
-    right: 48px;
+    bottom: 64px;
+    right: 64px;
 }
 
 .adPage .adRow{

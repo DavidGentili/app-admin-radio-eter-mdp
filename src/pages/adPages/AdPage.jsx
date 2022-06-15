@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from 'react'
+import {React, useCallback, useEffect, useState} from 'react'
 import { Routes, Route, useNavigate} from 'react-router-dom';
 
 
@@ -43,6 +43,16 @@ const AdPage = () => {
         }
     } 
 
+    const sortAd = useCallback(function(key){
+        if(ads[0][key]){
+            const sortAds = [...ads];
+            sortAds.sort(function(a , b){
+                return (a[key] <= b[key]) ? -1 : 1; 
+            })
+            setAds(sortAds);
+        }
+    }, [ads])
+
     if(loadingPage)
         return (<main className='adPage'> <LoadingPage/></main>)
 
@@ -50,7 +60,7 @@ const AdPage = () => {
         <main className='adPage'>
             <Routes >
                 <Route path='newAd' element={ <NewAdPage refreshPanel={refreshPanel} /> } /> 
-                <Route path='' element={ <AdPanel {...{refreshPanel, selectAd, ads}} />} />  
+                <Route path='' element={ <AdPanel {...{refreshPanel, selectAd, ads, sortAd}} />} />  
                 <Route path='editad' element={<EditAdPage {...{currentAd, refreshPanel}}/>  }/>
             </Routes>
         </main>
