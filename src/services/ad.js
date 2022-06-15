@@ -44,14 +44,38 @@ export async function getAds(){
     try{
         return await instance.get('',{ headers : getHeaders() });
     }catch(e){
-        return e.response.data.message
+        throw e.response.data.message
     }
 }
 
 export async function deleteAd(id){
     try{
-        return await instance.delete('',{adId : id}, { headers : getHeaders()});
+        return await instance.delete('', { data: { adId : id }, headers: getHeaders() });
     } catch(e){
-        return e.response.data.message
+        throw e.response.data.message
+    }
+}
+
+//retorna el payload requerido para hacer un put, en caso de no haber cambios retorna null
+const getUpdateData = (newAd, currentAd) => {
+    const updateData = {};
+    const keys = ['name', 'altText', 'link', 'type'];
+    keys.forEach(key => {
+        if(newAd[key] !== currentAd[key])
+            updateData[key] = newAd[key];
+    })
+    return (Object.keys(updateData).length) ? {... updateData, adId: currentAd.id } : null
+
+}
+
+export async function updateAd(newAd, currentAd){
+    const updateData = getUpdateData(newAd, currentAd);
+    if(!updateData)
+        throw 'No ha ingresado ningun cambio'
+    try{
+        console.log(updateData);
+        return await instance.put('', updateData, {headers: getHeaders()});   
+    } catch(e){
+        throw e.response ? e.response.data.message : e
     }
 }
