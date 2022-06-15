@@ -47,3 +47,11 @@ export async function getAds(){
         return e.response.data.message
     }
 }
+
+export async function deleteAd(id){
+    try{
+        return await instance.delete('',{adId : id}, { headers : getHeaders()});
+    } catch(e){
+        return e.response.data.message
+    }
+}

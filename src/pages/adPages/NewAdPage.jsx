@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 
 import CustomInput from '../../componets/CustomInput'
 import { ImageIcon } from '../../componets/Icons'
+import { createNewAd } from '../../services/ad';
 
-const NewAdPage = () => {
 
+const NewAdPage = ({refreshPanel}) => {
+ 
     const [loadingBtn, setLoadingBtn] = useState(false);
     const [messageError, setMessageError] = useState('')
     const navigate = useNavigate();
@@ -16,15 +18,18 @@ const NewAdPage = () => {
         setLoadingBtn(true);
         const form = Object.fromEntries(new FormData(e.target));
         createNewAd(form)
-        .then((res) => {
+        .then(() => {
             setLoadingBtn(false);
-            navigate('../')
+            refreshPanel().then(() => {
+                navigate('../')
+            })
         })
         .catch((e) => {
             setLoadingBtn(false);
             setMessageError(e);
         })
     }
+
     return (
         <form onSubmit={handlerNewAd} encType='multipart/form-data'>
             <CustomInput name='name' focus placeholder='Nombre' type='text' />
