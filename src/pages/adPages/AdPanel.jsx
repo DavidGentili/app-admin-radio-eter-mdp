@@ -21,7 +21,7 @@ const AdPanel = ({selectAd, ads, sortAd}) => {
                     ads.map(ad => <SingleAd key={ad.id} {...ad} selectAd={selectAd(ad)}/>)        
                 }
             </div>
-            <Link to='./newAd' className='primaryBtn'> + </Link>
+            <Link to='./nuevo' className='primaryBtn'> + </Link>
         </>
     )
 }

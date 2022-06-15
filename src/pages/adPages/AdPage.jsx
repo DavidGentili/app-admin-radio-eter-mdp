@@ -39,7 +39,7 @@ const AdPage = () => {
         return (e) => {
             e.preventDefault();
             setCurrentAd(ad);
-            navigate('./editad')
+            navigate('./editar')
         }
     } 
 
@@ -59,9 +59,9 @@ const AdPage = () => {
     return (
         <main className='adPage'>
             <Routes >
-                <Route path='newAd' element={ <NewAdPage refreshPanel={refreshPanel} /> } /> 
+                <Route path='nuevo' element={ <NewAdPage refreshPanel={refreshPanel} /> } /> 
                 <Route path='' element={ <AdPanel {...{refreshPanel, selectAd, ads, sortAd}} />} />  
-                <Route path='editad' element={<EditAdPage {...{currentAd, refreshPanel}}/>  }/>
+                <Route path='editar' element={<EditAdPage {...{currentAd, refreshPanel}}/>  }/>
             </Routes>
         </main>
     )
