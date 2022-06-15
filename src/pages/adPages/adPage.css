@@ -53,52 +53,9 @@
     margin-left: auto;
 }
 
-.adPage .adRow{
-    width: 100%;
-    display: grid;
+.adPage .single{
     grid-template-columns: 1fr 1fr .4fr .2fr;
-    margin: auto;
-    color: var(--black);
-    margin: 8px auto;
-    gap: 12px;
-    align-items: center;
-    text-align: start;
-    background-color: var(--white);
-    padding: 16px;
-    border-radius: 12px;
-    box-shadow: 5px 5px 15px #24242430;
-    overflow: hidden;
-    transition: .3s;
 }
-
-.adPage .adRow:hover{
-    transform: scale(1.01);
-    background-color: #4BC1EA30;
-}
-
-.adPage .adRow span{
-    color: var(--lightBlack);
-    opacity: .8;
-}
-
-.adPage .adRow button{
-    display: flex;
-    background: none;
-    border: none;
-    opacity: .7;
-    transition: .6;
-    justify-content: center;
-}
-
-.adPage .adRow button:hover{
-    opacity: 1;
-}
-
-.adPage .adRow button .icon{
-    width: 24px;
-    fill: var(--black);
-}
-
 
 .adPage > form{
     width: 80%;

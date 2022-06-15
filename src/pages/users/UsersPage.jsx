@@ -3,7 +3,7 @@ import { React, useState, useEffect, useCallback } from 'react'
 import ModalNewUser from '../../componets/modals/ModalNewUser'
 import ModalUpdateUser from '../../componets/modals/ModalUpdateUser';
 import LoadingPage from '../../componets/LoadingPage';
-import UserRow from '../../componets/UserRow';
+import SingleUser from '../../componets/SingleUser';
 
 import { ChevronIcon } from '../../componets/Icons'
 
@@ -66,7 +66,7 @@ const UsersPage = () => {
                     {
                         users.length === 0 ? <p>No hay usuarios</p>
                         :
-                        users.map((user) => <UserRow key={user.id} user={user} selectUser={selectUser(user)} />)
+                        users.map((user) => <SingleUser key={user.id} user={user} selectUser={selectUser(user)} />)
                     }
                 </section>
                 <button className='primaryBtn' onClick={() => {setOpenModal(true)}}> + </button>  

@@ -7,7 +7,7 @@ const SingleAd = (props) => {
     const { name, link, type, urlImage, selectAd} = props;
 
     return (
-        <div className="adRow">
+        <div className="single">
             <p>{name}</p>
             {link ? <p>{ link }</p> : <span>No hay link</span>}
             <p>{type}</p>

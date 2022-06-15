@@ -466,6 +466,50 @@ form .labelInputFile .icon{
     display: none;
 }
 
+/*-------------------SINGLE ELEMENTS----------------------*/
+.single{
+    margin: 8px auto;
+    display: grid;
+    gap: 12px;
+    align-items: center;
+    text-align: start;
+    width: 100%;
+    background-color: var(--white);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 5px 5px 15px #24242430;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.single p{
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 16px;
+}
+
+.single:hover{
+    transform: scale(1.01);
+    background-color: #4BC1EA30;
+}
+
+.single .icon{
+    width: 24px;
+    fill: var(--black);
+}
+
+.single button{
+    background: none;
+    border: none;
+    opacity: .7;
+    transition: .6s;
+}
+
+.single button:hover{
+    opacity: 1;
+}
+
 /*-------------------ANIMATIONS----------------------*/
 
 @keyframes showElement {
