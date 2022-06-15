@@ -50,9 +50,7 @@
     font-size: 36px;
     font-weight: 400;
     padding: 0;
-    position: absolute;
-    bottom: 64px;
-    right: 64px;
+    margin-left: auto;
 }
 
 .adPage .adRow{

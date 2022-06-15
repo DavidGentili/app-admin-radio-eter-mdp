@@ -69,7 +69,7 @@ const UsersPage = () => {
                         users.map((user) => <UserRow key={user.id} user={user} selectUser={selectUser(user)} />)
                     }
                 </section>
-                <button className='primaryBtn' onClick={() => {setOpenModal(true)}}> Nuevo usuario </button>  
+                <button className='primaryBtn' onClick={() => {setOpenModal(true)}}> + </button>  
             </main>
             {openModal && <ModalNewUser refreshUsers={refreshUsers} setLoadingPage={setLoadingPage} closeModal={() => {setOpenModal(false)}} />}
             {selectedUser && <ModalUpdateUser user={selectedUser} refreshUsers={refreshUsers}  closeModal={() => {setSelectedUser(null)}} />}
