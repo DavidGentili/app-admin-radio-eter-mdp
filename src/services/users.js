@@ -1,10 +1,8 @@
 import axios from 'axios';
-
-// 'https://api-radio-eter-mdp.herokuapp.com/users'
-// 'http://localhost:9000/users'
+import { urlBase } from './config';
 
 const instance = axios.create({
-    baseURL: 'http://localhost:9000/users',
+    baseURL: `${urlBase}/users`,
 });
 
 const getHeaders = () => {

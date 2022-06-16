@@ -1,10 +1,8 @@
 import axios from 'axios';
-
-// 'https://api-radio-eter-mdp.herokuapp.com/ad'
-// 'http://localhost:9000/ad'
+import { urlBase } from './config';
 
 const instance = axios.create({
-    baseURL: 'http://localhost:9000/ad',
+    baseURL: `${urlBase}/ad`,
 });
 
 const getHeaders = () => {
@@ -38,6 +36,7 @@ export async function createNewAd(form){
             headers: { "Content-Type" : "multipart/form-data", ... getHeaders()},
         })
     } catch(e){
+        console.log(e);
         throw e.response.data.messsage;
     }  
 }

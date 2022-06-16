@@ -12,7 +12,7 @@ const EditAdPage = ( { currentAd, refreshPanel } ) => {
     const [loadingPrimaryBtn, setLoadingPrimaryBtn] = useState(false);
     const [loadingDangerBtn, setLoadingDangerBtn] = useState(false);
     const { urlImage, altText, name, link, type} = currentAd ? currentAd : {};
-
+    
     useEffect(() => {
         if(!currentAd)
             navigate('../');
