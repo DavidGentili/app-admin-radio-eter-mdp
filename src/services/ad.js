@@ -21,7 +21,7 @@ const checkDataNewAd = (form) => {
 const createFormDataNewAd = (form) => {
     const { name, file, type, altText, link } = form;
     const formData = new FormData();
-    formData.append('ad', file);
+    formData.append('imageFile', file);
     formData.append('name', name);
     formData.append('type', type);
     formData.append('link', link);
@@ -36,8 +36,7 @@ export async function createNewAd(form){
             headers: { "Content-Type" : "multipart/form-data", ... getHeaders()},
         })
     } catch(e){
-        console.log(e);
-        throw e.response.data.messsage;
+        throw e.response ? e.response.data.message : e;
     }  
 }
 
@@ -45,7 +44,7 @@ export async function getAds(){
     try{
         return await instance.get('',{ headers : getHeaders() });
     }catch(e){
-        throw e.response.data.message
+        throw e.response ? e.response.data.message : e;
     }
 }
 
@@ -53,7 +52,7 @@ export async function deleteAd(id){
     try{
         return await instance.delete('', { data: { adId : id }, headers: getHeaders() });
     } catch(e){
-        throw e.response.data.message
+        throw e.response ? e.response.data.message : e;
     }
 }
 
