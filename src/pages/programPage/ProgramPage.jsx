@@ -2,9 +2,14 @@ import React from 'react'
 
 import ProgramPanel from './ProgramPanel'
 
+import './programPage.css';
+
 const ProgramPage = () => {
-  return (
-    <ProgramPanel />
+    return (
+        <main className='programPage'>
+            <ProgramPanel />
+
+        </main>   
   )
 }
 

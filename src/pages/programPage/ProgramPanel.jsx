@@ -14,10 +14,9 @@ const ProgramPanel = () => {
     }, [])
 
     return (
-        <>
-        {console.log(programs)}
-        <div>ProgramPanel</div>
-        </>
+        <div className='programPanel'>
+
+        </div>
     )
 }
 
