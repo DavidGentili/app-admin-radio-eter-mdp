@@ -92,7 +92,7 @@ const PanelPage = () => {
                     <Route path='my-user' element={ <MyUser/> } />
                     <Route path='publicidad/*' element={ <AdPage /> } />
                     <Route path='' element={<HomePage menuOptions={ user ? filterOptions(menuOptions,user) : []}/>} />
-                    <Route path='programas/*' element={ <ProgramPage/> } />
+                    {/* <Route path='programas/*' element={ <ProgramPage/> } /> */}
                     <Route path='*' element={ <ErrorPage /> }/>
                 </Routes>
             
