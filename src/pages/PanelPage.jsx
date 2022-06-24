@@ -11,6 +11,7 @@ import AdPage from './adPages/AdPage';
 import HomePage from '../pages/HomePage/HomePage'
 import ErrorPage from '..//pages/errorPage/ErrorPage'
 import LoadingPage from '../componets/LoadingPage';
+import ProgramPage from './programPage/ProgramPage';
 
 import  { UserIcon, PodcastIcon, ReportsIcon, ProgramsIcon, AdIcon }  from '../componets/Icons';
 
@@ -91,6 +92,7 @@ const PanelPage = () => {
                     <Route path='my-user' element={ <MyUser/> } />
                     <Route path='publicidad/*' element={ <AdPage /> } />
                     <Route path='' element={<HomePage menuOptions={ user ? filterOptions(menuOptions,user) : []}/>} />
+                    <Route path='programas/*' element={ <ProgramPage/> } />
                     <Route path='*' element={ <ErrorPage /> }/>
                 </Routes>
             

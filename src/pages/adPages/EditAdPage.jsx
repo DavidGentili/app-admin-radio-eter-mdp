@@ -6,6 +6,8 @@ import CustomInput from '../../componets/CustomInput';
 import { deleteAd, updateAd } from '../../services/ad';
 
 const EditAdPage = ( { currentAd, refreshPanel } ) => {
+    
+
 
     const navigate = useNavigate();
     const [messageError, setMessageError] = useState('');
@@ -50,7 +52,8 @@ const EditAdPage = ( { currentAd, refreshPanel } ) => {
     }
 
     if(!currentAd)
-        return <></>
+    return <></>
+
 
     return (
         <div className="currentAd">
