@@ -1,14 +1,4 @@
-import axios from 'axios';
-import { urlBase } from './config';
-
-const instance = axios.create({
-    baseURL: `${urlBase}/ad`,
-});
-
-const getHeaders = () => {
-    return {"authorization" : localStorage.getItem('userToken')}
-};
-
+import { instance, getHeaders } from './config';
 
 const checkDataNewAd = (form) => {
     const { name, file } = form
@@ -32,7 +22,7 @@ const createFormDataNewAd = (form) => {
 export async function createNewAd(form){
     try{
         checkDataNewAd(form)
-        return await instance.post('', createFormDataNewAd(form), {
+        return await instance.post('/ad', createFormDataNewAd(form), {
             headers: { "Content-Type" : "multipart/form-data", ... getHeaders()},
         })
     } catch(e){
@@ -42,7 +32,7 @@ export async function createNewAd(form){
 
 export async function getAds(){
     try{
-        return await instance.get('',{ headers : getHeaders() });
+        return await instance.get('/ad',{ headers : getHeaders() });
     }catch(e){
         throw e.response ? e.response.data.message : e;
     }
@@ -50,7 +40,7 @@ export async function getAds(){
 
 export async function deleteAd(id){
     try{
-        return await instance.delete('', { data: { adId : id }, headers: getHeaders() });
+        return await instance.delete('/ad', { data: { adId : id }, headers: getHeaders() });
     } catch(e){
         throw e.response ? e.response.data.message : e;
     }
@@ -74,7 +64,7 @@ export async function updateAd(newAd, currentAd){
         throw 'No ha ingresado ningun cambio'
     try{
         console.log(updateData);
-        return await instance.put('', updateData, {headers: getHeaders()});   
+        return await instance.put('/ad', updateData, {headers: getHeaders()});   
     } catch(e){
         throw e.response ? e.response.data.message : e
     }
