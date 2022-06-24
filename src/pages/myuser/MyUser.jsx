@@ -42,34 +42,31 @@ const MyUser = () => {
         navigate('/login');
     }
 
+    if(!localUser)
+        return <h1>opps, ¡sorry! we had a server error</h1>
+
     return (
         <main className='myUserMain'>
-            { localUser ?
-                <>
-                    {successMessage && <p className='messageSuccess'>{successMessage}</p>}
-                    <section className='myUserInformation'>
-                        <h3>Datos</h3>
-                        <h4>Usuario: <span>{localUser.name}</span></h4>
-                        <h4>Mail: <span>{localUser.email}</span></h4>
-                        <h4>Nivel: <span>{localUser.securityLevel}</span></h4>
-                        <h4>Estado: <span>{localUser.state}</span></h4>
-                    </section>
+            {successMessage && <p className='messageSuccess'>{successMessage}</p>}
+            <section className='myUserInformation'>
+                <h3>Datos</h3>
+                <h4>Usuario: <span>{localUser.name}</span></h4>
+                <h4>Mail: <span>{localUser.email}</span></h4>
+                <h4>Nivel: <span>{localUser.securityLevel}</span></h4>
+                <h4>Estado: <span>{localUser.state}</span></h4>
+            </section>
 
-                    <section className='myUserForm'>
-                        <h3>Cambiar contraseña</h3>
-                        <form onSubmit={handlerChangePassword}>
-                            <CustomInput type="password" name='currentPassword' placeholder='Contraseña actual'/>
-                            <CustomInput type="password" name='newPassword' placeholder='Nueva contraseña'/>
-                            <CustomInput type="password" name='confirmPassword' placeholder='Confirmar contraseña'/>
-                            <button type='submit' className={'secondaryBtn' + (loadingButton ? ' loading' : '')}>Cambiar contraseña</button>
-                        </form>
-                        {messageError && <p className='messageError'>{messageError}</p>}
-                    </section>
-                    <button className='dangerBtn' onClick={handlerLogout} >Cerrar sesion</button>
-                </>
-                :
-                <h1>opps, ¡sorry! we had a server error</h1>
-            }
+            <section className='myUserForm'>
+                <h3>Cambiar contraseña</h3>
+                <form onSubmit={handlerChangePassword}>
+                    <CustomInput type="password" name='currentPassword' placeholder='Contraseña actual'/>
+                    <CustomInput type="password" name='newPassword' placeholder='Nueva contraseña'/>
+                    <CustomInput type="password" name='confirmPassword' placeholder='Confirmar contraseña'/>
+                    <button type='submit' className={'secondaryBtn' + (loadingButton ? ' loading' : '')}>Cambiar contraseña</button>
+                </form>
+                {messageError && <p className='messageError'>{messageError}</p>}
+            </section>
+            <button className='dangerBtn' onClick={handlerLogout} >Cerrar sesion</button>
         </main>
     )
 }

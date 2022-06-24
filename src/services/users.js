@@ -1,21 +1,11 @@
-import axios from 'axios';
+import { instance, getHeaders } from './config';
 
-// 'https://api-radio-eter-mdp.herokuapp.com/users'
-// 'http://localhost:9000/users'
-
-const instance = axios.create({
-    baseURL: 'https://api-radio-eter-mdp.herokuapp.com/users',
-});
-
-const getHeaders = () => {
-    return {authorization: localStorage.getItem('userToken')}
-}
 
 const authUser = async () => {
     if(!localStorage.getItem('userToken'))
         throw {message: 'unauthorized user'}
     try{
-        const res = await instance.get('/auth',{headers: getHeaders()})
+        const res = await instance.get('users/auth',{headers: getHeaders()})
         return res.data;
     } catch(e){
         throw e.response.data.message;
@@ -27,7 +17,7 @@ const loginUser = async ({email, password}) => {
         if(!email || email.length < 4 || !password || password.length < 4)
             throw 'Usuario o contraseñas incorrecta';
         email = email.toLowerCase();
-        const res = await instance.post('/login',{email,password})
+        const res = await instance.post('users/login',{email,password})
         return res.data.token;
     }
     catch(e){
@@ -37,13 +27,13 @@ const loginUser = async ({email, password}) => {
 }
 
 const getUsers = async (id) => {
-    const { data } = await instance(`${id ? ('id=' + id) : ''}`,{headers: getHeaders()});
+    const { data } = await instance(`users${id ? ('/id=' + id) : ''}`,{headers: getHeaders()});
     return data
 }
 
 const signupUser = async ({name, email, securityLevel}) => {
     try{
-        const { data } = await instance.post('signup',{name,email,securityLevel},{headers: getHeaders()})
+        const { data } = await instance.post('users/signup',{name,email,securityLevel},{headers: getHeaders()})
         return data;
     }
     catch(e){
@@ -54,7 +44,7 @@ const signupUser = async ({name, email, securityLevel}) => {
 
 const updateUser = async (updateData) => {
     try{
-        const { data } = await instance.put('',updateData,{headers: getHeaders()});
+        const { data } = await instance.put('/users',updateData,{headers: getHeaders()});
         return data;
     } catch(e){
         throw e.response.data.message;
@@ -63,7 +53,7 @@ const updateUser = async (updateData) => {
 
 const removeUser = async (userId) => {
     try{
-        const { data } = await instance.delete('',{headers: getHeaders(), data: {id: userId}});
+        const { data } = await instance.delete('/users',{headers: getHeaders(), data: {id: userId}});
         return data;
     } catch(e) {
         throw e.response.data.message;
@@ -72,7 +62,7 @@ const removeUser = async (userId) => {
 
 const changePassword = async (currentPassword, newPassword) => {
     try{
-        const { data } = await instance.put('password', { currentPassword, newPassword }, {headers: getHeaders()});
+        const { data } = await instance.put('users/password', { currentPassword, newPassword }, {headers: getHeaders()});
         return data;
     } catch (e) {
         throw e.response.data.message;

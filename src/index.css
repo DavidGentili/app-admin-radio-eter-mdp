@@ -23,8 +23,9 @@ Breakpoints:
     --black: #242424;
     --lightBlack: #404040;
     --white: #FFFFFF;
-    --lightGrey: #F6F6F6;
+    --lightGrey: #F9F9FA;
     --errorColor: #DC3545;
+    --mediumGrey: #707070;
 }
 
 .container{
@@ -43,6 +44,10 @@ main{
 }
 
 /*-------------------BUTTON----------------------*/
+
+a{
+    text-decoration: none;
+}
 
 button{
     cursor: pointer;
@@ -242,11 +247,13 @@ button:disabled{
 .modalWindow{
     width: 640px;
     height: auto;
+    max-height: 95vh;
     padding: 48px 64px;
     background-color: var(--white);
     border-radius: 16px;
     box-shadow: 0 0 20px #24242460;
     color: var(--black);
+    overflow-y: scroll;
     animation: showElement 1s;
 }
 
@@ -290,7 +297,7 @@ button:disabled{
 .modalWindow form{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 24px;
 }
 
@@ -324,7 +331,7 @@ button:disabled{
     z-index: 2;
     outline: none;
     border: none;
-    border-bottom: 2px solid #707070;
+    border-bottom: 2px solid var(--mediumGrey);
     color: var(--black);
     padding: 12px;
     font-size: 16px;
@@ -342,7 +349,7 @@ button:disabled{
     left: 12px;
     top: 25%;
     font-size: 16px;
-    color: #707070;
+    color: var(--mediumGrey);
     transition: 0.3s;
     z-index: 1;
 }
@@ -372,7 +379,7 @@ select{
     padding: 6px;
     background: none;
     border: none;
-    border-bottom: 2px solid #707070;
+    border-bottom: 2px solid var(--mediumGrey);
     color: var(--black);
     border-radius: 4px 4px 0 0;
     transition: .6s;
@@ -384,6 +391,123 @@ select:hover{
 
  select:focus{
     border-bottom: 2px solid var(--lightBlue);
+}
+
+/*-------------------LABELS----------------------*/
+
+form .label{
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--lightBlack);
+    margin-left: 4px;
+    margin-bottom: -12px;
+    margin: 12px 0 -12px 4px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+form .label span{
+    margin-left: 6px;
+    color: var(--mediumGrey);
+}
+
+
+/*-------------------TEXTAREA----------------------*/
+form textarea{
+    resize: none;
+    width: 80%;
+    min-height: 48px;
+    border-radius: 12px;
+    padding: 6px 12px;
+    border: 2px solid var(--mediumGrey);
+    color: var(--black);
+}
+
+form textarea:active,
+form textarea:focus{
+    border: 2px solid var(--lightBlue);
+}
+
+
+form textarea::placeholder{
+    color: var(--mediumGrey);
+}
+
+/*-------------------INPUT FILE----------------------*/
+form input[type=file] button{
+    display: none;
+}
+
+form .labelInputFile{
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--lightBlack);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid var(--mediumGrey);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: var(--lightGrey); 
+}
+
+form .labelInputFile .icon{
+    width: 36px;
+    height: auto;
+}
+
+/*-------------------SCROLLBAR----------------------*/
+::-webkit-scrollbar{
+    display: none;
+}
+
+/*-------------------SINGLE ELEMENTS----------------------*/
+.single{
+    margin: 8px auto;
+    display: grid;
+    gap: 12px;
+    align-items: center;
+    text-align: start;
+    width: 100%;
+    background-color: var(--white);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 5px 5px 15px #24242430;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.single p{
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 16px;
+}
+
+.single:hover{
+    transform: scale(1.01);
+    background-color: #4BC1EA30;
+}
+
+.single .icon{
+    width: 24px;
+    fill: var(--black);
+}
+
+.single button{
+    background: none;
+    border: none;
+    opacity: .7;
+    transition: .6s;
+}
+
+.single button:hover{
+    opacity: 1;
 }
 
 /*-------------------ANIMATIONS----------------------*/

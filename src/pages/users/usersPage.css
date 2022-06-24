@@ -2,8 +2,15 @@
     align-content: space-between;
 }
 
-.usersMain > button{
+.usersMain > .primaryBtn{
     margin-left: auto;
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+    border: 4px solid var(--lightBlue);
+    font-size: 36px;
+    font-weight: 400;
+    padding: 0;
 }
 
 .userPanel{
@@ -63,31 +70,6 @@
     transition: .3s;
 }
 
-.userRow p{
-    overflow: hidden;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 0 16px;
-}
-
-.userRow:hover{
-    transform: scale(1.01);
-    background-color: #4BC1EA30;
-}
-
-.userRow .icon{
-    width: 24px;
-    fill: var(--black);
-}
-
-.userRow button{
-    width: 36px;
-    background: none;
-    border: none;
-    opacity: .7;
-    transition: .6s;
-}
-
-.userRow button:hover{
-    opacity: 1;
+.usersMain .single{
+    grid-template-columns: .5fr 1fr .5fr .5fr .2fr;
 }

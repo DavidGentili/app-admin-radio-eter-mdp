@@ -5,11 +5,13 @@ import UserContext from '../context/UserContext';
 
 import Nav from '../componets/nav/Nav';
 import Header from '../componets/header/Header'; 
-import UserPage from './users/Users';
+import UsersPage from './users/UsersPage';
 import MyUser from './myuser/MyUser';
+import AdPage from './adPages/AdPage';
 import HomePage from '../pages/HomePage/HomePage'
 import ErrorPage from '..//pages/errorPage/ErrorPage'
 import LoadingPage from '../componets/LoadingPage';
+import ProgramPage from './programPage/ProgramPage';
 
 import  { UserIcon, PodcastIcon, ReportsIcon, ProgramsIcon, AdIcon }  from '../componets/Icons';
 
@@ -81,15 +83,16 @@ const PanelPage = () => {
             loadingPage ? <LoadingPage />
             :
             <div className='panelPage'>
-                {/* <Nav menuOptions={ menuOptions.filter(option => option.goTo === '/usuarios')}/> */}
                 <Nav menuOptions={ user ? filterOptions(menuOptions,user) : []}/>
 
                 <Header userName={user ? user.name : 'Mi usuario'} location={'Usuarios'} />
                 
                 <Routes >
-                    <Route path='/usuarios' element={<UserPage />} />
-                    <Route path='/my-user' element={ <MyUser/> } />
-                    <Route path='/' element={<HomePage menuOptions={ user ? filterOptions(menuOptions,user) : []}/>} />
+                    <Route path='usuarios' element={<UsersPage />} />
+                    <Route path='my-user' element={ <MyUser/> } />
+                    <Route path='publicidad/*' element={ <AdPage /> } />
+                    <Route path='' element={<HomePage menuOptions={ user ? filterOptions(menuOptions,user) : []}/>} />
+                    <Route path='programas/*' element={ <ProgramPage/> } />
                     <Route path='*' element={ <ErrorPage /> }/>
                 </Routes>
             
