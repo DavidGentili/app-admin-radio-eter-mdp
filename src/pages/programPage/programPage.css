@@ -1,0 +1,33 @@
+.programPage .programPanel{
+    width: 100%;
+}
+
+.programPage .programPanel .single{
+    grid-template-columns: .6fr .8fr .5fr .3fr .3fr .2fr;
+}
+
+.programPage .programPanel .single .days span{
+    font-size: 12px;
+    font-weight: 300;
+    margin: 2px;
+    padding: 2px 4px;
+    background-color: var(--mediumGrey);
+    border-radius: 4px;
+    color: var(--white);
+    opacity: .8;
+    cursor: default;
+}
+
+.programPage .programPanel .single .days span.activeDay{
+    opacity: 1;
+    background-color: var(--lightBlue);
+}
+
+.programPage .programPanel .single p.normal{
+    color: var(--mediumGrey);
+    opacity: .7;
+}
+
+.programPage .programPanel .single p.highlighted{
+    color: var(--lightBlue);
+}
