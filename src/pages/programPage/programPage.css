@@ -1,5 +1,20 @@
+.programPage{
+    align-content: space-between;
+}
+
 .programPage .programPanel{
     width: 100%;
+}
+
+.programPage > .primaryBtn{
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+    border: 4px solid var(--lightBlue);
+    font-size: 36px;
+    font-weight: 400;
+    padding: 0;
+    margin-left: auto;
 }
 
 .programPage .programPanel .single{
@@ -30,4 +45,80 @@
 
 .programPage .programPanel .single p.highlighted{
     color: var(--lightBlue);
+}
+
+.programPage > form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin: auto;
+    width: 80%;
+    background-color: var(--white);
+    border-radius: 36px;
+    box-shadow: 5px 5px 20px #24242440;
+    padding: 36px 48px;
+}
+
+.programPage form .customInput{
+   margin: 8px 0;
+}
+
+.programPage form .days{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 8px 0;
+}
+
+.programPage form .hours{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin: 8px 0;
+}
+
+.programPage form .hours input{
+    margin: 0 12px;
+}
+
+.programPage form .primaryBtn{
+    margin-left: auto;
+}
+
+.programPage .currentProgram{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 36px;
+    box-shadow: 5px 5px 20px #24242440;
+    padding: 36px 48px;
+}
+
+.programPage .currentProgram .imageContainer{
+    width: 30%;
+}
+
+.programPage .currentProgram .imageContainer img{
+    width: 100%;
+    height: auto;
+}
+
+.programPage .currentProgram .imageContainer p{
+    font-weight: 300;
+    font-size: 16px;
+    text-align: center;
+    margin: auto;
+    color: var(--mediumGrey);    
+}
+
+.programPage .currentProgram form{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }

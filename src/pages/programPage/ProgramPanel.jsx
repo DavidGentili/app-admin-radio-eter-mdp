@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import { getPrograms } from '../../services/programs'
 import SingleProgram from '../../componets/SingleProgram';
 
-const ProgramPanel = () => {
+const ProgramPanel = ({ programs, setPrograms, selectCurrentProgram}) => {
 
-    const [ programs, setPrograms] = useState([]);
     
     useEffect(() => {
         getPrograms()
@@ -15,11 +15,14 @@ const ProgramPanel = () => {
     }, [])
 
     return (
-        <div className='programPanel'>
-            { programs.length !== 0 &&
-                programs.map(program => <SingleProgram key={program.id} {...program} />)
-            }
-        </div>
+        <>
+            <div className='programPanel'>
+                { programs.length !== 0 &&
+                    programs.map(program => <SingleProgram key={program.id} {...program} selectCurrentProgram={selectCurrentProgram(program)} />)
+                }
+            </div>
+            <Link to='./nuevo' className='primaryBtn'> + </Link>
+        </>
     )
 }
 

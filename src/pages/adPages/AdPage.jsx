@@ -7,6 +7,7 @@ import { getAds } from '../../services/ad';
 import NewAdPage from './newAdPage';
 import AdPanel from './AdPanel';
 import EditAdPage from './EditAdPage';
+import ErrorPage from '../errorPage/ErrorPage';
 
 import './adPage.css'
 
@@ -62,6 +63,7 @@ const AdPage = () => {
                 <Route path='nuevo' element={ <NewAdPage refreshPanel={refreshPanel} /> } /> 
                 <Route path='' element={ <AdPanel {...{refreshPanel, selectAd, ads, sortAd}} />} />  
                 <Route path='editar' element={<EditAdPage {...{currentAd, refreshPanel}}/>  }/>
+                <Route path='*' element={ <ErrorPage/> } />
             </Routes>
         </main>
     )

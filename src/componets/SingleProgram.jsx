@@ -6,7 +6,7 @@ const arrayOfDays = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
 
 const SingleProgram = (props) => {
 
-    const { name, startHour, finishHour, days, highlighted } = props;
+    const { name, startHour, finishHour, days, highlighted, selectCurrentProgram } = props;
 
     return (
         <div className="single">
@@ -19,7 +19,7 @@ const SingleProgram = (props) => {
                 <p className={highlighted ? 'highlighted' : 'normal' }>Destacado</p>
                 <p>{startHour}</p>
                 <p>{finishHour}</p>
-                <button onClick={() => {}}> <EditIcon/></button>
+                <button onClick={selectCurrentProgram}> <EditIcon/></button>
             </div>
     )
 }
