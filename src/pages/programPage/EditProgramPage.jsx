@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import CustomInput from '../../componets/CustomInput';
 import { ImageIcon } from '../../componets/Icons'
 import { daysValues } from './daysValue';
+import CustomButton from '../../componets/CustomButton';
+import { deleteProgram, updateProgram } from '../../services/programs';
 
 
 function EditProgramPage({ currentProgram }) {
@@ -14,19 +17,48 @@ function EditProgramPage({ currentProgram }) {
     const [ loadingPrimaryBtn, setLoadingPrimaryBtn ] = useState(false);
     const [ loadingDangerBtn, setLoadingDangerBtn ] = useState(false)
     const [ messageError, setMessageError ] = useState('');
+    const navigate = useNavigate();
 
-    console.log(currentProgram)
+    const updateHandler = (e) => {
+        e.preventDefault();
+        setLoadingPrimaryBtn(true);
+        setMessageError('');
+        const form = Object.fromEntries(new FormData(e.target));
+        updateProgram(form, currentProgram)
+        .then(response => {
+            navigate('../');
+            // setLoadingPrimaryBtn(false);
+        })
+        .catch(e => {
+            setLoadingPrimaryBtn(false);
+            setMessageError(e);
+        })
+    }
 
+    const deleteHandler = (e) => {
+        setLoadingDangerBtn(true);
+        setMessageError('');
+        deleteProgram(currentProgram.id)
+        .then(response => {
+            navigate('../');
+        })
+        .catch(e => {
+            setLoadingDangerBtn(false);
+            setMessageError(e);
+        })
+    }
+
+    
     return (
         <div className='currentProgram'>
             <div className="imageContainer">
                 {urlImage ? <img src={urlImage} alt={name} /> : <p>El programa no tiene una imagen</p>}
             </div>
-            <form>
+            <form onSubmit={updateHandler}>
                 <CustomInput name='name' value={name} focus placeholder='Nombre'  />
                 <label htmlFor="" className='label'>Dias</label>
                 <div className="days">
-                    {daysValues.map(({ value, text }) => <label key={value} htmlFor={value} className='label' >{text} <input type="checkbox" name={value} id={value} /> </label>)}
+                    {daysValues.map(function({ value, text}, i) { return <label key={value} htmlFor={value} className='label' >{text} <input type="checkbox" name={value} defaultChecked={days[i]} id={value} /> </label> })}
                 </div>
                 <div className="hours">
                     <label htmlFor="" className='label'>Hora de inicio</label>
@@ -42,10 +74,10 @@ function EditProgramPage({ currentProgram }) {
                     <input type="file" name="file" id="file" accept='image/*'/>
                 </label>  
 
-                <button type='submit' className={`primaryBtn${loadingPrimaryBtn ? ' loadingBtn' : ''}`} disabled={loadingPrimaryBtn} >Actualizar programa</button>
+                <CustomButton type='primary' buttonType='submit' disabled={loadingDangerBtn || loadingPrimaryBtn} loading={loadingPrimaryBtn} text='Actualizar programa' />
 
             </form>
-            <button  className={'dangerBtn ' + (loadingDangerBtn ? 'loadingBtn' : '')} disabled={loadingPrimaryBtn || loadingDangerBtn}>Eliminar programa</button>
+            <CustomButton onClickEvent={deleteHandler} text='Eliminar programa' type='danger' loading={loadingDangerBtn} disabled={loadingPrimaryBtn || loadingDangerBtn} />
             {messageError && <p className='messageError'>{messageError}</p>}
 
         </div>
