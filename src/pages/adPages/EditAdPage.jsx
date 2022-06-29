@@ -5,10 +5,8 @@ import CustomInput from '../../componets/CustomInput';
 
 import { deleteAd, updateAd } from '../../services/ad';
 
-const EditAdPage = ( { currentAd, refreshPanel } ) => {
+const EditAdPage = ( { currentAd } ) => {
     
-
-
     const navigate = useNavigate();
     const [messageError, setMessageError] = useState('');
     const [loadingPrimaryBtn, setLoadingPrimaryBtn] = useState(false);
@@ -28,7 +26,7 @@ const EditAdPage = ( { currentAd, refreshPanel } ) => {
         updateAd(newAd, currentAd)
         .then(() => {
             setLoadingPrimaryBtn(false);
-            refreshPanel().then(() => { navigate('../')});
+            navigate('../')
         })
         .catch(e => {
             setLoadingPrimaryBtn(false);

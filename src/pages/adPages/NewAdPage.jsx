@@ -6,7 +6,7 @@ import { ImageIcon } from '../../componets/Icons'
 import { createNewAd } from '../../services/ad';
 
 
-const NewAdPage = ({refreshPanel}) => {
+const NewAdPage = () => {
  
     const [loadingBtn, setLoadingBtn] = useState(false);
     const [messageError, setMessageError] = useState('')
@@ -20,9 +20,7 @@ const NewAdPage = ({refreshPanel}) => {
         createNewAd(newAd)
         .then(() => {
             setLoadingBtn(false);
-            refreshPanel().then(() => {
-                navigate('../')
-            }) 
+            navigate('../')
         })
         .catch((e) => {
             setLoadingBtn(false);
