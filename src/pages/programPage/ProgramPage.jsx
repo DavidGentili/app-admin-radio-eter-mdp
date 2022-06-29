@@ -10,6 +10,7 @@ import TransmissionPanel from './TransmissionPanel'
 import { sortElements } from '../../helpers/sortElements'
 
 import './programPage.css';
+import NewTransmissionPage from './NewTransmissionPage'
 
 
 const ProgramPage = () => {
@@ -39,6 +40,7 @@ const ProgramPage = () => {
                 <Route path='/editar' element={ <EditProgramPage currentProgram={currentProgram} /> } />
                 <Route path='*' element={ <ErrorPage/> } />
                 <Route path='/transmisiones' element={ <TransmissionPanel  {...{transmissions, setTransmission, sortTransmission : sortElements(transmissions, setTransmission)}}/> } />
+                <Route path='/transmisiones/nueva' element= { <NewTransmissionPage /> } />
             </Routes>
 
         </main>   

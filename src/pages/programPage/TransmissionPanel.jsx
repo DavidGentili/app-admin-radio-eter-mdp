@@ -38,7 +38,7 @@ const TransmissionPanel = ({transmissions, setTransmission, sortTransmission}) =
             }
         </div>
 
-        <Link to='./nuevo' className='primaryBtn'> + </Link>
+        <Link to='./nueva' className='primaryBtn'> + </Link>
         </>
     )
 }
