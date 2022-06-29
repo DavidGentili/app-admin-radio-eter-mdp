@@ -26,7 +26,6 @@ export async function createTransmission(form){
     try{
         const data = getDataNewTransmission(form);
         return  await instance.post('/specialTransmission', data, { headers: getHeaders()});
-        // return await instance.get('/specialtransmission',{ headers : getHeaders() });
     }catch(e){
         throw e.response ? e.response.data.message : e;
     }

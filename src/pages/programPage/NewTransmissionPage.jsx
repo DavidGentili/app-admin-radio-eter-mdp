@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import CustomInput from '../../componets/CustomInput'
 import CustomButton from '../../componets/CustomButton'
@@ -10,6 +11,7 @@ const NewTransmissionPage = () => {
 
     const [ loadingButton, setLoadingButton] = useState(false);
     const [messageError, setMessageError] = useState('');
+    const navigate = useNavigate();
 
     
     const handlerSubmit = (e) => {
@@ -19,8 +21,8 @@ const NewTransmissionPage = () => {
         const form = Object.fromEntries(new FormData(e.target));
         createTransmission(form)
         .then((response) => {
-            console.log(response);
             setLoadingButton(false);
+            navigate('/programas/transmisiones');
         })
         .catch(e => {
             setMessageError(e);
