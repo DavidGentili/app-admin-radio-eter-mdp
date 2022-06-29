@@ -6,6 +6,13 @@
     width: 100%;
 }
 
+.programPage .programPanel .headerPanel{
+    width: 100%;
+    display: grid;
+    grid-template-columns: .6fr .8fr .5fr .3fr .3fr .2fr;
+    gap: 12px;
+}
+
 .programPage > .primaryBtn{
     width: 56px;
     height: 56px;
