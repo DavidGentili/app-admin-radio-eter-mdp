@@ -1,19 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { getPrograms } from '../../services/programs'
 import { ChevronIcon } from '../../componets/Icons';
 import SingleProgram from '../../componets/SingleProgram';
+import LoadingPage from '../../componets/LoadingPage';
 
 const ProgramPanel = ({ programs, setPrograms, selectCurrentProgram, sortProgram}) => {
 
+    const [loadingPanel, setLoadingPanel] = useState(true);
     
     useEffect(() => {
         getPrograms()
         .then(({ data }) => {
             setPrograms(data);
+            setLoadingPanel(false)
         })
     }, [])
+
+    if(loadingPanel)
+        return <LoadingPage />
 
     return (
         <>
