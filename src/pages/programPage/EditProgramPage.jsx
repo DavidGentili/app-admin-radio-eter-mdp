@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import CustomInput from '../../componets/CustomInput';
 import { ImageIcon } from '../../componets/Icons'
-import { daysValues } from './daysValue';
+import { daysValues } from '../../helpers/daysValue';
 import CustomButton from '../../componets/CustomButton';
 import { deleteProgram, updateProgram } from '../../services/programs';
 
@@ -27,7 +27,6 @@ function EditProgramPage({ currentProgram }) {
         updateProgram(form, currentProgram)
         .then(response => {
             navigate('../');
-            // setLoadingPrimaryBtn(false);
         })
         .catch(e => {
             setLoadingPrimaryBtn(false);

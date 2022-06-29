@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import CustomInput from '../../componets/CustomInput';
 import { ImageIcon } from '../../componets/Icons';
 import { createNewProgram } from '../../services/programs';
-import { daysValues } from './daysValue';
+import { daysValues } from '../../helpers/daysValue';
 
 const NewProgramPage = () => {
 
