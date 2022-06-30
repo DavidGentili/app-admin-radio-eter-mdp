@@ -42,7 +42,7 @@ const NewTransmissionPage = () => {
                 </label>
             </div>
 
-            <CustomButton text='Agregar transmision' type='primary' typeButton='submit' loading={loadingButton} disabled={loadingButton} />            
+            <CustomButton text='Agregar transmision' type='primary' buttonType='submit' loading={loadingButton} disabled={loadingButton} />            
 
             {messageError && <p className='messageError'>{messageError}</p>}
 

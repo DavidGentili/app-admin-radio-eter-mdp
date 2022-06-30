@@ -30,3 +30,11 @@ export async function createTransmission(form){
         throw e.response ? e.response.data.message : e;
     }
 } 
+
+export async function updateTransmission(form, currentTransmission){
+    try{
+
+    }catch(e){
+        throw e.response ? e.response.data.message : e;
+    }
+}

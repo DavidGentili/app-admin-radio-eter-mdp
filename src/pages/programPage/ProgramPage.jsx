@@ -6,6 +6,7 @@ import NewProgramPage from './NewProgramPage'
 import ErrorPage from '../errorPage/ErrorPage'
 import EditProgramPage from './EditProgramPage'
 import TransmissionPanel from './TransmissionPanel'
+import EditTransmissionPage from './EditTransmissionPage'
 
 import { sortElements } from '../../helpers/sortElements'
 
@@ -18,19 +19,27 @@ const ProgramPage = () => {
     const [programs, setPrograms] = useState([]);
     const [transmissions, setTransmission] = useState([]);
     const [currentProgram, setCurrentProgram] = useState(null);
+    const [currentTransmission, setCurrentTransmission] = useState(null);
     const navigate = useNavigate();
 
     const selectCurrentProgram = (program) => {
-        return ()=> {
+        return (e) => {
             setCurrentProgram(program)
             navigate('./editar');
         };
     }
 
+    const selectCurrentTransmission = (transmission) => {
+        return (e) => {
+            setCurrentTransmission(transmission);
+            navigate('./transmisiones/editar')
+        };
+    }
+    
     return (
         <main className='programPage'>
             <div className="navMenu">
-                <NavLink to='./'> Programas </NavLink>
+                <NavLink to=''> Programas </NavLink>
                 <NavLink to='./transmisiones'> Transmisiones </NavLink>
                 
             </div>
@@ -39,8 +48,9 @@ const ProgramPage = () => {
                 <Route path='/nuevo' element={ <NewProgramPage /> } />
                 <Route path='/editar' element={ <EditProgramPage currentProgram={currentProgram} /> } />
                 <Route path='*' element={ <ErrorPage/> } />
-                <Route path='/transmisiones' element={ <TransmissionPanel  {...{transmissions, setTransmission, sortTransmission : sortElements(transmissions, setTransmission)}}/> } />
+                <Route path='/transmisiones' element={ <TransmissionPanel  {...{transmissions, setTransmission, sortTransmission : sortElements(transmissions, setTransmission), selectCurrentTransmission}}/> } />
                 <Route path='/transmisiones/nueva' element= { <NewTransmissionPage /> } />
+                <Route path='/transmisiones/editar' element={ <EditTransmissionPage currentTransmission={currentTransmission} /> } />
             </Routes>
 
         </main>   

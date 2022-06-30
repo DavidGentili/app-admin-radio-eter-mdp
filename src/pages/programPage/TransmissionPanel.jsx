@@ -7,7 +7,7 @@ import { ChevronIcon } from '../../componets/Icons';
 import { getTransmissions } from '../../services/transmissions';
 
 
-const TransmissionPanel = ({transmissions, setTransmission, sortTransmission}) => {
+const TransmissionPanel = ({transmissions, setTransmission, sortTransmission, selectCurrentTransmission}) => {
 
     const [loadingPanel, setLoadingPanel] = useState(true);
 
@@ -34,7 +34,7 @@ const TransmissionPanel = ({transmissions, setTransmission, sortTransmission}) =
                     <p>Acciones</p>
                 </div>
             { transmissions.length > 0 &&
-                transmissions.map(transmission => <SingleTransmission key={transmission.id} {...transmission} />)
+                transmissions.map(transmission => <SingleTransmission key={transmission.id} {...transmission} selectTransmission={selectCurrentTransmission(transmission)} />)
             }
         </div>
 
