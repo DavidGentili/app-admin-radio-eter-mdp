@@ -7,6 +7,7 @@ const SingleTransmission = (props) => {
     const { name, active } = props;
     const startTransmission = new Date(props.startTransmission)
     const finishTransmission = new Date(props.finishTransmission)
+    const { selectTransmission } = props;
 
     return (
         <div className="single">
@@ -14,7 +15,7 @@ const SingleTransmission = (props) => {
             <p>{active ? 'activo' : 'inactivo'}</p>
             <p>{`${startTransmission.toLocaleDateString()} - ${startTransmission.toLocaleTimeString()}`}</p>
             <p>{`${finishTransmission.toLocaleDateString()} - ${finishTransmission.toLocaleTimeString()}`}</p>
-            <button > <EditIcon/></button>
+            <button onClick={selectTransmission} > <EditIcon/></button>
         </div>
     )
 }
