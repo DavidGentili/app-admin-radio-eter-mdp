@@ -3,10 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import useUser from '../../hooks/useUser'
 
-import userAPI from '../../services/users';
+import { changePassword }  from '../../services/users';
 import CustomInput from '../../componets/CustomInput'
-
-const { changePassword } = userAPI;
 
 import './myUser.css'
 

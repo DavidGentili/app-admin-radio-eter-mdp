@@ -6,8 +6,7 @@ import CustomInput from '../CustomInput'
 
 import { CloseIcon } from '../Icons';
 
-import usersAPI from '../../services/users';
-const { updateUser, removeUser } = usersAPI;
+import { updateUser, removeUser } from '../../services/users';
 
 const getCorrectData = (state, securityLevel, user) => {
     const updateData = {};

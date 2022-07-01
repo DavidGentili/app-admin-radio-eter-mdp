@@ -7,8 +7,7 @@ import SingleUser from '../../componets/SingleUser';
 
 import { ChevronIcon } from '../../componets/Icons'
 
-import usersAPI from '../../services/users'
-const { getUsers } = usersAPI;
+import { getUsers } from '../../services/users'
 
 import './usersPage.css';
 

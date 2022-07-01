@@ -1,7 +1,7 @@
 import { instance, getHeaders } from './config';
 
 
-const authUser = async () => {
+export async function authUser(){
     if(!localStorage.getItem('userToken'))
         throw {message: 'unauthorized user'}
     try{
@@ -12,7 +12,7 @@ const authUser = async () => {
     }
 }
 
-const loginUser = async ({email, password}) => {
+export async function loginUser({email, password}){
     try{
         if(!email || email.length < 4 || !password || password.length < 4)
             throw 'Usuario o contraseñas incorrecta';
@@ -26,12 +26,12 @@ const loginUser = async ({email, password}) => {
     
 }
 
-const getUsers = async (id) => {
+export async function getUsers(id){
     const { data } = await instance(`users${id ? ('/id=' + id) : ''}`,{headers: getHeaders()});
     return data
 }
 
-const signupUser = async ({name, email, securityLevel}) => {
+export async function signupUser({name, email, securityLevel}){
     try{
         const { data } = await instance.post('users/signup',{name,email,securityLevel},{headers: getHeaders()})
         return data;
@@ -42,7 +42,7 @@ const signupUser = async ({name, email, securityLevel}) => {
 
 }
 
-const updateUser = async (updateData) => {
+export async function updateUser(updateData){
     try{
         const { data } = await instance.put('/users',updateData,{headers: getHeaders()});
         return data;
@@ -51,7 +51,7 @@ const updateUser = async (updateData) => {
     }
 }
 
-const removeUser = async (userId) => {
+export async function removeUser(userId){
     try{
         const { data } = await instance.delete('/users',{headers: getHeaders(), data: {id: userId}});
         return data;
@@ -60,21 +60,11 @@ const removeUser = async (userId) => {
     }
 }
 
-const changePassword = async (currentPassword, newPassword) => {
+export async function changePassword(currentPassword, newPassword){
     try{
         const { data } = await instance.put('users/password', { currentPassword, newPassword }, {headers: getHeaders()});
         return data;
     } catch (e) {
         throw e.response.data.message;
     }
-}
-
-export default {
-    authUser,
-    loginUser,
-    getUsers,
-    signupUser,
-    updateUser,
-    removeUser,
-    changePassword,
 }

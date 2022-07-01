@@ -1,11 +1,10 @@
 import { React, useState } from 'react'
 
-import usersAPI from '../../services/users';
+import { signupUser } from '../../services/users';
 import CustomInput from '../CustomInput'
 
 import { CloseIcon } from '../Icons';
 
-const { signupUser } = usersAPI;
 
 
 const ModalNewUser = ({ closeModal, refreshUsers }) => {
