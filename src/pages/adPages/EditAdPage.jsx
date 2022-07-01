@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import CustomInput from '../../componets/CustomInput';
+import CustomButton from '../../componets/CustomButton'
 
 import { deleteAd, updateAd } from '../../services/ad';
 
@@ -66,9 +67,9 @@ const EditAdPage = ( { currentAd } ) => {
                     <option value="standard">Estandar (privada)</option>
                     <option value="oficial"> Oficial (pauta)</option>
                 </select>
-                <button type='submit' className={'primaryBtn ' + (loadingPrimaryBtn ? 'loadingBtn' : '')} disabled={loadingPrimaryBtn || loadingDangerBtn} >Actulizar publicidad</button>
+                <CustomButton text='Actualizar publicidad' buttonType='submit' type='primary' loading={loadingPrimaryBtn} disabled={loadingDangerBtn || loadingPrimaryBtn}/>
             </form>
-            <button onClick={removeHandler} className={'dangerBtn ' + (loadingDangerBtn ? 'loadingBtn' : '')} disabled={loadingPrimaryBtn || loadingDangerBtn}>Eliminar publicidad</button>
+            <CustomButton text='Eliminar publicidad' type='danger' loading={loadingDangerBtn} disabled={loadingDangerBtn || loadingPrimaryBtn} onClickEvent={removeHandler} />
             {messageError && <p className='messageError'>{messageError}</p>}
         </div>
     )

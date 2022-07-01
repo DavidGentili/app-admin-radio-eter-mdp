@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import CustomInput from '../../componets/CustomInput'
+import CustomButton from '../../componets/CustomButton'
 import { ImageIcon } from '../../componets/Icons'
 import { createNewAd } from '../../services/ad';
 
@@ -45,7 +46,7 @@ const NewAdPage = () => {
                 <input type="file" name="file" id="file" accept='image/*'/>
 
             </label>
-            <button type='submit' className={'primaryBtn ' + (loadingBtn ? 'loadingBtn' : '')} disabled={loadingBtn} >Agregar publicidad</button>
+            <CustomButton text='Agregar publicidad' buttonType='submit' type='primary' disabled={loadingBtn} loading={loadingBtn} />
             {messageError && <p className='messageError'>{messageError}</p>}
         </form>
     )
