@@ -2,7 +2,7 @@ import {React, useCallback, useState} from 'react'
 import { Routes, Route, useNavigate} from 'react-router-dom';
 
 
-import NewAdPage from './newAdPage';
+import NewAdPage from './NewAdPage';
 import AdPanel from './AdPanel';
 import EditAdPage from './EditAdPage';
 import ErrorPage from '../errorPage/ErrorPage';
