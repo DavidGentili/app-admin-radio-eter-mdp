@@ -3,6 +3,9 @@ import { Routes, Route, useNavigate} from 'react-router-dom';
 
 
 import NewAdPage from './newAdPage';
+
+import LoadingPage from '../../componets/LoadingPage';
+import { getAds } from '../../services/ad'
 import AdPanel from './AdPanel';
 import EditAdPage from './EditAdPage';
 import ErrorPage from '../errorPage/ErrorPage';

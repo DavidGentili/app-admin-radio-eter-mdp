@@ -93,6 +93,7 @@ const PanelPage = () => {
                     <Route path='' element={<HomePage menuOptions={ user ? filterOptions(menuOptions,user) : []}/>} />
                     <Route path='emisiones/*' element={ <EmissionPage/> } />
                     <Route path='*' element={ <main> <ErrorPage /> </main>}/>
+
                 </Routes>
             
             </div>
