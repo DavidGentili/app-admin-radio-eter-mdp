@@ -3,6 +3,7 @@ import React from 'react'
 const getClassName = {
     danger: () => 'dangerBtn',
     primary: () => 'primaryBtn',
+    secondary: () => 'secondaryBtn',
     normal: () => 'normal'
 }
 const CustomButton = (props) => {
