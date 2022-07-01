@@ -16,9 +16,8 @@ import EmissionPage from './emissionPage/EmissionPage';
 import  { UserIcon, PodcastIcon, ReportsIcon, ProgramsIcon, AdIcon }  from '../componets/Icons';
 
 
-import userAPI from '../services/users';
+import { authUser } from '../services/users';
 
-const { authUser } = userAPI;
 
 const filterOptions = (options, user) => {
     return options.filter(function(option){
