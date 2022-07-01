@@ -4,6 +4,7 @@ import ModalNewUser from '../../componets/modals/ModalNewUser'
 import ModalUpdateUser from '../../componets/modals/ModalUpdateUser';
 import LoadingPage from '../../componets/LoadingPage';
 import SingleUser from '../../componets/SingleUser';
+import CustomButton from '../../componets/CustomButton'
 
 import { ChevronIcon } from '../../componets/Icons'
 
@@ -67,7 +68,7 @@ const UsersPage = () => {
                         users.map((user) => <SingleUser key={user.id} user={user} selectUser={selectUser(user)} />)
                     }
                 </section>
-                <button className='primaryBtn' onClick={() => {setOpenModal(true)}}> + </button>  
+                <CustomButton type='primary' text='+' onClickEvent={() => {setOpenModal(true)}} />
             </main>
             {openModal && <ModalNewUser refreshUsers={refreshUsers} setLoadingPage={setLoadingPage} closeModal={() => {setOpenModal(false)}} />}
             {selectedUser && <ModalUpdateUser user={selectedUser} refreshUsers={refreshUsers}  closeModal={() => {setSelectedUser(null)}} />}

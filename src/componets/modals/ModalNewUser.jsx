@@ -2,6 +2,7 @@ import { React, useState } from 'react'
 
 import { signupUser } from '../../services/users';
 import CustomInput from '../CustomInput'
+import CustomButton from '../CustomButton'
 
 import { CloseIcon } from '../Icons';
 
@@ -47,10 +48,12 @@ const ModalNewUser = ({ closeModal, refreshUsers }) => {
                         <option value="admin">Admin</option>
                         <option value="editor">Editor</option>
                     </select>
-                    <button type='submit' className={'primaryBtn ' + (loadingButton ? 'loadingBtn' : '')} disabled={loadingButton}>Agregar Usuario</button>
+                    
+                    <CustomButton text='Agregar Usuario' type='primary' buttonType='submit' loading={loadingButton} disabled={loadingButton} />
                 </form>
+                {messageError && <p className='messageError'>{messageError}</p>}
+
             </div>
-            {messageError && <p className='messageError'>{messageError}</p>}
         </section>
     )
 }
