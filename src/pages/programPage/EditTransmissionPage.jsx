@@ -5,7 +5,7 @@ import CustomInput from '../../componets/CustomInput'
 import CustomButton from '../../componets/CustomButton'
 
 import { getFormatTime } from '../../helpers/format'
-import { updateTransmission } from '../../services/transmissions'
+import { updateTransmission, deleteTransmission } from '../../services/transmissions'
 
 
 const EditTransmissionPage = ({ currentTransmission }) => {
@@ -29,6 +29,7 @@ const EditTransmissionPage = ({ currentTransmission }) => {
         const form = Object.fromEntries(new FormData(e.target))
         updateTransmission(form, currentTransmission)
         .then(response => {
+            setLoadingPrimaryBtn(false)
             navigate('/programas/transmisiones')
         })
         .catch(e => {
@@ -40,7 +41,15 @@ const EditTransmissionPage = ({ currentTransmission }) => {
     const handlerDelete = (e) => {
         e.preventDefault();
         setLoadingDangerBtn(true);
-        
+        deleteTransmission(currentTransmission.id)
+        .then(response => {
+            setLoadingDangerBtn(false);
+            navigate('/programas/transmisiones');
+        })
+        .catch(e => {
+            setMessageError(e)
+            setLoadingDangerBtn(false)
+        })
     }
 
     return (
