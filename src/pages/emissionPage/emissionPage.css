@@ -1,43 +1,43 @@
-.programPage{
+.emissionPage{
     align-content: flex-start;
     flex-wrap: wrap;
 }
 
-.programPage .navMenu{
+.emissionPage .navMenu{
     margin: 16px 0;
     width: 100%;
     display: flex;
     gap: 16px;
 }
 
-.programPage .navMenu a{
+.emissionPage .navMenu a{
     color: var(--mediumGrey);
     padding: 4px;
     opacity: .7;
     transition: .6s;
 }
 
-.programPage .navMenu a:hover{
+.emissionPage .navMenu a:hover{
     opacity: 1;
 }
 
-.programPage .navMenu a.active{
+.emissionPage .navMenu a.active{
     opacity: 1;
     color: var(--lightBlue);
 }
 
-.programPage .programPanel{
+.emissionPage .programPanel{
     width: 100%;
 }
 
-.programPage .programPanel .headerPanel{
+.emissionPage .programPanel .headerPanel{
     width: 100%;
     display: grid;
     grid-template-columns: .6fr .8fr .5fr .3fr .3fr .2fr;
     gap: 12px;
 }
 
-.programPage > .primaryBtn{
+.emissionPage > .primaryBtn{
     width: 56px;
     height: 56px;
     border-radius: 100%;
@@ -49,11 +49,11 @@
     margin-left: auto;
 }
 
-.programPage .programPanel .single{
+.emissionPage .programPanel .single{
     grid-template-columns: .6fr .8fr .5fr .3fr .3fr .2fr;
 }
 
-.programPage .programPanel .single .days span{
+.emissionPage .programPanel .single .days span{
     font-size: 12px;
     font-weight: 300;
     margin: 2px;
@@ -65,21 +65,21 @@
     cursor: default;
 }
 
-.programPage .programPanel .single .days span.activeDay{
+.emissionPage .programPanel .single .days span.activeDay{
     opacity: 1;
     background-color: var(--lightBlue);
 }
 
-.programPage .programPanel .single p.normal{
+.emissionPage .programPanel .single p.normal{
     color: var(--mediumGrey);
     opacity: .7;
 }
 
-.programPage .programPanel .single p.highlighted{
+.emissionPage .programPanel .single p.highlighted{
     color: var(--lightBlue);
 }
 
-.programPage > form{
+.emissionPage > form{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -92,33 +92,33 @@
     padding: 36px 48px;
 }
 
-.programPage form .customInput{
+.emissionPage form .customInput{
    margin: 8px 0;
 }
 
-.programPage form .days{
+.emissionPage form .days{
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     margin: 8px 0;
 }
 
-.programPage form .hours{
+.emissionPage form .hours{
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
     margin: 8px 0;
 }
 
-.programPage form .hours input{
+.emissionPage form .hours input{
     margin: 0 12px;
 }
 
-.programPage form .primaryBtn{
+.emissionPage form .primaryBtn{
     margin-left: auto;
 }
 
-.programPage .currentProgram{
+.emissionPage .currentProgram{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -131,16 +131,16 @@
     padding: 36px 48px;
 }
 
-.programPage .currentProgram .imageContainer{
+.emissionPage .currentProgram .imageContainer{
     width: 30%;
 }
 
-.programPage .currentProgram .imageContainer img{
+.emissionPage .currentProgram .imageContainer img{
     width: 100%;
     height: auto;
 }
 
-.programPage .currentProgram .imageContainer p{
+.emissionPage .currentProgram .imageContainer p{
     font-weight: 300;
     font-size: 16px;
     text-align: center;
@@ -148,24 +148,24 @@
     color: var(--mediumGrey);    
 }
 
-.programPage .currentProgram form{
+.emissionPage .currentProgram form{
     width: 65%;
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
 
-.programPage .transmissionPanel{
+.emissionPage .transmissionPanel{
     width: 100%;
 }
 
-.programPage .transmissionPanel .headerPanel{
+.emissionPage .transmissionPanel .headerPanel{
     width: 100%;
     display: grid;
     grid-template-columns: 1fr .6fr .8fr .8fr .2fr;
     gap: 12px;
 }
 
-.programPage .transmissionPanel .single{
+.emissionPage .transmissionPanel .single{
     grid-template-columns: 1fr .6fr .8fr .8fr .2fr;
 }

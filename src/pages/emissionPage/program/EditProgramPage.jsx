@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-import CustomInput from '../../componets/CustomInput';
-import { ImageIcon } from '../../componets/Icons'
-import { daysValues } from '../../helpers/daysValue';
-import CustomButton from '../../componets/CustomButton';
-import { deleteProgram, updateProgram } from '../../services/programs';
+import CustomInput from '../../../componets/CustomInput';
+import { ImageIcon } from '../../../componets/Icons'
+import { daysValues } from '../../../helpers/daysValue';
+import CustomButton from '../../../componets/CustomButton';
+import { deleteProgram, updateProgram } from '../../../services/programs';
 
 
 function EditProgramPage({ currentProgram }) {

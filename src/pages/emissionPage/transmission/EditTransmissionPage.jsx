@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import CustomInput from '../../componets/CustomInput'
-import CustomButton from '../../componets/CustomButton'
+import CustomInput from '../../../componets/CustomInput'
+import CustomButton from '../../../componets/CustomButton'
 
-import { getFormatTime } from '../../helpers/format'
-import { updateTransmission, deleteTransmission } from '../../services/transmissions'
+import { getFormatTime } from '../../../helpers/format'
+import { updateTransmission, deleteTransmission } from '../../../services/transmissions'
 
 
 const EditTransmissionPage = ({ currentTransmission }) => {

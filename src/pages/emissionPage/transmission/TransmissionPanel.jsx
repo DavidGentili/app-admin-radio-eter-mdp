@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import LoadingPage from '../../componets/LoadingPage';
-import SingleTransmission from '../../componets/SingleTransmission';
-import { ChevronIcon } from '../../componets/Icons';
-import { getTransmissions } from '../../services/transmissions';
+import LoadingPage from '../../../componets/LoadingPage';
+import SingleTransmission from '../../../componets/SingleTransmission';
+import { ChevronIcon } from '../../../componets/Icons';
+import { getTransmissions } from '../../../services/transmissions';
 
 
 const TransmissionPanel = ({transmissions, setTransmission, sortTransmission, selectCurrentTransmission}) => {

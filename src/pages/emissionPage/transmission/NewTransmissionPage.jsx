@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import CustomInput from '../../componets/CustomInput'
-import CustomButton from '../../componets/CustomButton'
+import CustomInput from '../../../componets/CustomInput'
+import CustomButton from '../../../componets/CustomButton'
 
-import { createTransmission } from '../../services/transmissions'
+import { createTransmission } from '../../../services/transmissions'
 
 
 const NewTransmissionPage = () => {

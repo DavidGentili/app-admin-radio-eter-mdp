@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types';
 
 const getClassName = {
     danger: () => 'dangerBtn',
@@ -12,15 +11,6 @@ const CustomButton = (props) => {
     return (
         <button type={buttonType ? buttonType : 'button'} onClick={onClickEvent}  className={loading ? `${className} loadingBtn` : className} disabled={disabled}>{text}</button>
     )
-}
-
-CustomButton.PropTypes = {
-    onClickEvent : PropTypes.func,
-    text : PropTypes.string,
-    type : PropTypes.string,
-    buttonType : PropTypes.string,
-    disabled : PropTypes.bool,
-    loading : PropTypes.bool,
 }
 
 
