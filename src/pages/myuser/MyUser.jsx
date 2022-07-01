@@ -3,10 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 import useUser from '../../hooks/useUser'
 
-import userAPI from '../../services/users';
+import { changePassword }  from '../../services/users';
 import CustomInput from '../../componets/CustomInput'
-
-const { changePassword } = userAPI;
+import CustomButton from '../../componets/CustomButton';
 
 import './myUser.css'
 
@@ -62,11 +61,11 @@ const MyUser = () => {
                     <CustomInput type="password" name='currentPassword' placeholder='Contraseña actual'/>
                     <CustomInput type="password" name='newPassword' placeholder='Nueva contraseña'/>
                     <CustomInput type="password" name='confirmPassword' placeholder='Confirmar contraseña'/>
-                    <button type='submit' className={'secondaryBtn' + (loadingButton ? ' loading' : '')}>Cambiar contraseña</button>
+                    <CustomButton text='Cambiar contraseña' loading={loadingButton} buttonType='submit' type='secondary' disabled={loadingButton} />
                 </form>
                 {messageError && <p className='messageError'>{messageError}</p>}
             </section>
-            <button className='dangerBtn' onClick={handlerLogout} >Cerrar sesion</button>
+            <CustomButton text='Cerrar sesion' onClickEvent={handlerLogout} type='danger' />
         </main>
     )
 }

@@ -3,11 +3,11 @@ import { React, useState, useRef } from 'react'
 import useUser from '../../hooks/useUser';
 
 import CustomInput from '../CustomInput'
+import CustomButton from '../CustomButton';
 
 import { CloseIcon } from '../Icons';
 
-import usersAPI from '../../services/users';
-const { updateUser, removeUser } = usersAPI;
+import { updateUser, removeUser } from '../../services/users';
 
 const getCorrectData = (state, securityLevel, user) => {
     const updateData = {};
@@ -94,9 +94,9 @@ const ModalUpdateUser = ({ closeModal, user, refreshUsers }) => {
                         </select>
                         <div className="btnPanel">
                             {localUser.id !== user.id && 
-                                <button type='button' className={'dangerBtn ' + (loadingDangerBtn ? 'loadingBtn' : '') } disabled={loadingDangerBtn} onClick={handlerRemoveUser}> Eliminar Usuario </button>
+                                <CustomButton type='danger' text='Eliminar Usuario' onClickEvent={handlerRemoveUser} loading={loadingDangerBtn} disabled={loadingDangerBtn || loadingPrimaryBtn} />
                             }
-                            <button type='submit' className={'primaryBtn ' + (loadingPrimaryBtn ? 'loadingBtn' : '')} ref={refButton} disabled >{loadingPrimaryBtn ? 'Loading' : 'Actualizar Usuario'}</button>
+                            <button type='submit' className={'primaryBtn ' + (loadingPrimaryBtn ? 'loadingBtn' : '')} ref={refButton} disabled >Actualizar Usuario</button>
                         </div>
                     </form>
                 </div>

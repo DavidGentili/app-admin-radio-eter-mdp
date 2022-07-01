@@ -6,11 +6,10 @@ import logo from '../../../assets/logo.png'
 import LoadingPage from '../../componets/LoadingPage';
 import CustomInput from '../../componets/CustomInput';
 
-import userAPI from '../../services/users';
+import { loginUser, authUser } from '../../services/users';
 
 import './login.css'
 
-const { loginUser, authUser } = userAPI;
 
 const Login = () => {
 

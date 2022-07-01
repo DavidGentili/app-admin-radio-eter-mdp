@@ -370,6 +370,26 @@ button:disabled{
     width: 100%;
 }
 
+
+input[type="time"],
+input[type="datetime-local"]{
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid var(--mediumGrey);
+    background: none;
+    margin: 0 8px;
+    outline: none;
+    border-radius: 8px 8px 0 0;
+    transition: .3s;
+}
+
+input[type="time"]:active,
+input[type="time"]:focus,
+input[type="datetime-local"]:active,
+input[type="datetime-local"]:focus{
+    border-bottom: 2px solid var(--lightBlue);
+    background-color: var(--white);
+}
 /*-------------------SELECT----------------------*/
 
 select{
@@ -443,6 +463,7 @@ form .labelInputFile{
     font-weight: 300;
     color: var(--lightBlack);
     width: 100%;
+    height: 160px;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -454,11 +475,24 @@ form .labelInputFile{
     padding: 16px;
     margin-bottom: 16px;
     background-color: var(--lightGrey); 
+    opacity: 1;
+    overflow: hidden;
+    transition: .6s;
 }
 
 form .labelInputFile .icon{
     width: 36px;
     height: auto;
+    opacity: .7;
+}
+
+.labelInputFile.hidden{
+    position: relative;
+    z-index: 1;
+    height: 0;
+    padding: 0;
+    border: 0px;
+    transition: .6s;
 }
 
 /*-------------------SCROLLBAR----------------------*/
@@ -508,6 +542,40 @@ form .labelInputFile .icon{
 
 .single button:hover{
     opacity: 1;
+}
+
+/*-------------------HEADER PANEL----------------------*/
+
+.headerPanel{
+    padding: 16px 24px;
+    border-bottom: 2px solid var(--lightBlack);
+    color: var(--lightBlack);
+}
+
+.headerPanel p{
+    padding: 6px 12px;
+}
+
+.headerPanel button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: var(--black);
+    font-weight: 400;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: .6s;
+}
+
+.headerPanel button:hover{
+    background-color: #4BC1EA30;
+}
+
+.headerPanel button .icon{
+    width: 8px;
 }
 
 /*-------------------ANIMATIONS----------------------*/

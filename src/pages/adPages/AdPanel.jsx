@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 import SingleAd from '../../componets/SingleAd';
 import { ChevronIcon } from '../../componets/Icons';
+import { getAds } from '../../services/ad';
+import LoadingPage from '../../componets/LoadingPage';
 
+const AdPanel = ({selectAd, ads, sortAd, setAds}) => {
 
-const AdPanel = ({selectAd, ads, sortAd}) => {
+    const [loadingPanel, setLoadingPanel ] = useState(true); 
 
+    useEffect(() => {
+        getAds()
+        .then(({ data }) => {
+            setAds(data);
+            setLoadingPanel(false);
+        })
+        .catch(e =>{
+        }) 
+    }, [])
+
+    if(loadingPanel)
+        return <LoadingPage />
 
     return (
         <>

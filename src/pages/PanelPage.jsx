@@ -11,14 +11,13 @@ import AdPage from './adPages/AdPage';
 import HomePage from '../pages/HomePage/HomePage'
 import ErrorPage from '..//pages/errorPage/ErrorPage'
 import LoadingPage from '../componets/LoadingPage';
-import ProgramPage from './programPage/ProgramPage';
+import EmissionPage from './emissionPage/EmissionPage';
 
 import  { UserIcon, PodcastIcon, ReportsIcon, ProgramsIcon, AdIcon }  from '../componets/Icons';
 
 
-import userAPI from '../services/users';
+import { authUser } from '../services/users';
 
-const { authUser } = userAPI;
 
 const filterOptions = (options, user) => {
     return options.filter(function(option){
@@ -28,22 +27,22 @@ const filterOptions = (options, user) => {
 }
 
 const menuOptions = [
-    {
-        Icon: PodcastIcon,
-        text: 'Podcast',
-        goTo: '/podcast',
-        aceptedSecurityLevels: ['editor', 'admin', 'master'],
-    },
-    {
-        Icon: ReportsIcon,
-        text: 'Informes',
-        goTo: '/informes',
-        aceptedSecurityLevels: ['editor', 'admin', 'master'],
-    },
+    // {
+    //     Icon: PodcastIcon,
+    //     text: 'Podcast',
+    //     goTo: '/podcast',
+    //     aceptedSecurityLevels: ['editor', 'admin', 'master'],
+    // },
+    // {
+    //     Icon: ReportsIcon,
+    //     text: 'Informes',
+    //     goTo: '/informes',
+    //     aceptedSecurityLevels: ['editor', 'admin', 'master'],
+    // },
     {
         Icon: ProgramsIcon,
-        text: 'Programas',
-        goTo: '/programas',
+        text: 'Emisiones',
+        goTo: '/emisiones',
         aceptedSecurityLevels: ['admin', 'master'],
     },
     {
@@ -92,8 +91,9 @@ const PanelPage = () => {
                     <Route path='my-user' element={ <MyUser/> } />
                     <Route path='publicidad/*' element={ <AdPage /> } />
                     <Route path='' element={<HomePage menuOptions={ user ? filterOptions(menuOptions,user) : []}/>} />
-                    {/* <Route path='programas/*' element={ <ProgramPage/> } /> */}
-                    <Route path='*' element={ <ErrorPage /> }/>
+                    <Route path='emisiones/*' element={ <EmissionPage/> } />
+                    <Route path='*' element={ <main> <ErrorPage /> </main>}/>
+
                 </Routes>
             
             </div>

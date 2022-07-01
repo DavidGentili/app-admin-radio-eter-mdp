@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import CustomInput from '../../componets/CustomInput'
+import CustomButton from '../../componets/CustomButton'
 import { ImageIcon } from '../../componets/Icons'
 import { createNewAd } from '../../services/ad';
 
 
-const NewAdPage = ({refreshPanel}) => {
+const NewAdPage = () => {
  
     const [loadingBtn, setLoadingBtn] = useState(false);
     const [messageError, setMessageError] = useState('')
@@ -20,9 +21,7 @@ const NewAdPage = ({refreshPanel}) => {
         createNewAd(newAd)
         .then(() => {
             setLoadingBtn(false);
-            refreshPanel().then(() => {
-                navigate('../')
-            }) 
+            navigate('../')
         })
         .catch((e) => {
             setLoadingBtn(false);
@@ -47,7 +46,7 @@ const NewAdPage = ({refreshPanel}) => {
                 <input type="file" name="file" id="file" accept='image/*'/>
 
             </label>
-            <button type='submit' className={'primaryBtn ' + (loadingBtn ? 'loadingBtn' : '')} disabled={loadingBtn} >Agregar publicidad</button>
+            <CustomButton text='Agregar publicidad' buttonType='submit' type='primary' disabled={loadingBtn} loading={loadingBtn} />
             {messageError && <p className='messageError'>{messageError}</p>}
         </form>
     )
