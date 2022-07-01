@@ -1,10 +1,20 @@
 import React from 'react'
-import { NavLink, Routes, Route } from 'react-router-dom'
+import { NavLink, Routes, Route, Link } from 'react-router-dom'
 
 import './emissionPage.css'
 
 import ProgramPage from './program/ProgramPage'
 import TransmissionPage from './transmission/TransmissionPage'
+
+const EmissionPanel = () => {
+    return (
+        <>
+            <Link to='./programas' className='single'>Programas</Link>
+            <Link to='./transmisiones' className='single'>Transmisiones</Link>
+
+        </>
+    )
+}
 
 const EmissionPage = () => {
     return (
@@ -15,7 +25,7 @@ const EmissionPage = () => {
             </div>
 
             <Routes >
-                <Route path='' />
+                <Route path='' element={ <EmissionPanel /> }/>
                 <Route path='/programas/*' element= { <ProgramPage /> } />
                 <Route path='/transmisiones/*' element= { <TransmissionPage /> } />
             </Routes>

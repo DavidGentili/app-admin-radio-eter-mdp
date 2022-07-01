@@ -3,6 +3,10 @@
     flex-wrap: wrap;
 }
 
+.emissionPage > a.single{
+    color: var(--lightBlue);
+}
+
 .emissionPage .navMenu{
     margin: 16px 0;
     width: 100%;
