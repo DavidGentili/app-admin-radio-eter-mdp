@@ -18,7 +18,7 @@ const TransmissionPage = () => {
     const selectCurrentTransmission = (transmission) => {
         return (e) => {
             setCurrentTransmission(transmission);
-            navigate('./transmisiones/editar')
+            navigate('./editar')
         };
     }
 
