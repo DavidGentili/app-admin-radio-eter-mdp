@@ -39,7 +39,6 @@ const getNewProgramData = (form) => {
         startHour,
         finishHour,
     }
-    
     checkNewProgramData(data);
     if(data.highlighted && form.file.size > 0)
         data.imageFile = form.file;
