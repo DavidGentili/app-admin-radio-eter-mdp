@@ -1,0 +1,74 @@
+.mediaPage{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 95%;
+    background-color: var(--white);
+    border-radius: 36px;
+    box-shadow: 5px 5px 20px #24242440;
+    padding: 36px 48px;
+    margin: 24px auto;
+    overflow: auto;
+}
+
+.mediaPage form{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-height: 78px;
+    padding: 16px;
+    padding-bottom: 24px;
+    gap: 24px;
+    border-bottom: 1px solid var(--mediumGrey);
+}
+
+.mediaPage form .customInput{
+    width: auto;
+    margin: 0;
+}
+
+.mediaPage form select{
+    width: auto;
+}
+
+.mediaPage form button{
+    font-size: 18px;
+}
+
+.mediaPage .mediaPanel{
+    display: grid;
+    grid-template-columns: repeat(4, 20fr);
+    grid-template-rows: repeat(2,1fr);
+    column-gap: 24px;
+}
+
+.mediaPage .mediaPanel .singleMedia{
+    display: flex;
+    flex-direction: column;    
+    justify-content: space-evenly;
+    text-align: center;
+    padding: 12px;
+    border-radius: 12px;
+    aspect-ratio: 1/1;
+
+}
+
+.mediaPage .mediaPanel .singleMedia img{
+    width: 100%;
+    height: auto;
+}
+
+.mediaPage .mediaPanel .singleMedia h6{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.mediaPage .mediaPanel .single:hover{
+    transform: scale(1);
+}
+
+.mediaPage .mediaPanel .singleMedia.select{
+    background-color: #4BC1EA30;
+}

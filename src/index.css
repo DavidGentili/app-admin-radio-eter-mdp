@@ -26,6 +26,7 @@ Breakpoints:
     --lightGrey: #F9F9FA;
     --errorColor: #DC3545;
     --mediumGrey: #707070;
+    --successColor : #28A745; 
 }
 
 .container{
@@ -459,31 +460,50 @@ form input[type=file] button{
 }
 
 form .labelInputFile{
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--lightBlack);
-    width: 100%;
-    height: 160px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     text-align: center;
     align-items: center;
-    flex-direction: column;
-    gap: 12px;
-    border: 1px solid var(--mediumGrey);
+    height: 100%;
+    min-width: 256px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--lightBlack);
+    fill: var(--lightBlack);
+    cursor: pointer;
     border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 16px;
-    background-color: var(--lightGrey); 
+    border: 1px solid var(--lightBlack);
     opacity: 1;
     overflow: hidden;
+    padding: 8px;
+    opacity: .6;
     transition: .6s;
 }
 
+form .labelInputFile.loaded{
+    background-color: var(--successColor);
+    color: var(--white);
+    fill: var(--white);
+    border: 1px solid var(--successColor);
+    opacity: 1;
+}
+
+form .labelInputFile:hover{
+    opacity: .8;
+}
+
+form .labelInputFile.loaded:hover{
+    opacity: 1;
+}
+
+form .labelInputFile input{
+    display: none;
+}
+
 form .labelInputFile .icon{
-    width: 36px;
+    width: 32px;
+    cursor: pointer;
     height: auto;
-    opacity: .7;
 }
 
 .labelInputFile.hidden{
