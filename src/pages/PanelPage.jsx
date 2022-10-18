@@ -13,7 +13,7 @@ import ErrorPage from '..//pages/errorPage/ErrorPage'
 import LoadingPage from '../componets/LoadingPage';
 import EmissionPage from './emissionPage/EmissionPage';
 
-import  { UserIcon, PodcastIcon, ReportsIcon, ProgramsIcon, AdIcon }  from '../componets/Icons';
+import  { UserIcon, PodcastIcon, ReportsIcon, ProgramsIcon, AdIcon, MediaIcon }  from '../componets/Icons';
 
 
 import { authUser } from '../services/users';
@@ -46,6 +46,12 @@ const menuOptions = [
         aceptedSecurityLevels: ['admin', 'master'],
     },
     {
+        Icon : MediaIcon,
+        text : 'Multimedia',
+        goTo : '/media',
+        aceptedSecurityLevels : ['editor', 'admin', 'master']
+    },
+    {
         Icon: AdIcon,
         text: 'Publicidad',
         goTo: '/publicidad',
@@ -56,7 +62,7 @@ const menuOptions = [
         text: 'Usuarios',
         goTo: '/usuarios',
         aceptedSecurityLevels: ['master'],
-    }
+    },
 ]
 
 const PanelPage = () => {
