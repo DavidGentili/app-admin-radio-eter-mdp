@@ -173,31 +173,56 @@ button:disabled{
 }
 /*-------------------MESSAGES----------------------*/
 
-.messageSuccess{
-    background-color: #28A745A0;
+.msg{
     padding: 16px 36px;
     margin: 16px auto;
+    max-width: 780px;
     width: 100%;
+    height: auto;
     border-radius: 12px;
     text-align: center;
+    position: absolute;
+    bottom: 0;
+    transition: .6s;
+    animation: showElement .6s;
+}
+
+.msg.hidden{
+    opacity: 0;
+}
+
+.msg button{
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    background: none;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px;
+    opacity: .7;
+    transition: .6s;
+}
+
+.msg button:hover{
+    opacity: 1;
+}
+
+.messageSuccess{
+    background-color: #28A745A0;
+
 }
 
 .messageError{
     background-color: #DC3545A0;
-    padding: 16px 36px;
-    margin: 16px auto;
-    width: 100%;
-    border-radius: 12px;
-    text-align: center;
 }
 
 .messageWarning{
     background-color: #FFC107A0 ;
-    padding: 16px 36px;
-    margin: 16px auto;
-    width: 100%;
-    border-radius: 12px;
-    text-align: center;
+}
+
+.messageNormal{
+    background-color: #707070A0;
 }
 
 /*-------------------LOADING----------------------*/

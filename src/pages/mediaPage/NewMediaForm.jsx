@@ -3,24 +3,37 @@ import { React, useState } from 'react'
 import CustomButton from '../../componets/CustomButton';
 import CustomInput from '../../componets/CustomInput';
 import { ImageIcon } from '../../componets/Icons';
+import { postMediaFile } from '../../services/media';
 
-const NewMediaForm = () => {
+const NewMediaForm = ( { refreshScreen, setMessage } ) => {
     
     const [loadingBtn, setLoadingBtn] = useState(false);
     const [inputValue, setInputValue] = useState(false);
-
-
-    const submitEvent = (e) => {
-        e.preventDefault();
-    } 
-
 
     const changeInputStateEvent = (e) => {
         setInputValue(e.target.value !== "" ? true : false);
     }
 
+    const submitEvent = (e) => {
+        e.preventDefault();
+        setLoadingBtn(true);
+        postMediaFile(Object.fromEntries(new FormData(e.target)))
+        .then(res => {
+            console.log('todo ben');
+            setMessage({ message: res.message, type: 'success'});
+            refreshScreen();
+        })
+        .catch(e => {
+            console.log(e);
+            setMessage({ message: e.message, type: 'warning'});
+        })
+        .finally(() => {
+            setLoadingBtn(false);
+        })
+    }
+
     return (
-        <form onSubmit={submitEvent}>
+        <form onSubmit={submitEvent || empthyFunction}>
             <CustomInput placeholder="Nombre" name="name" type="text" />
             <label htmlFor="type">
                 Tipo
