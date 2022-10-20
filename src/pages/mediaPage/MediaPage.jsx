@@ -3,6 +3,7 @@ import LoadingPage from '../../componets/LoadingPage';
 
 import { getMediaFiles, deleteMediaFile, postMediaFile } from '../../services/media';
 import NewMediaForm from './NewMediaForm';
+import { ChevronIcon } from '../../componets/Icons';
 
 import './mediaPage.css';
 import SingleMedia from './SingleMedia';
@@ -10,7 +11,11 @@ import UIMessage from '../../componets/UIMessage';
 
 const MediaPage = () => {
 
+    const FILES_PER_PAGE = 8;
+
     const [mediaFiles, setMediaFiles] = useState([]);
+    const [currentFiles, setCurrentFiles] = useState([]);
+    const [currentPage, setCurrentPage] = useState(0);
     const [loadingPage, setLoadingPage] = useState(false);
     const [selectedFile, setSelectedFile] = useState(undefined);
     const [message, setMessage] = useState({message : '', type : 'success'})
@@ -24,6 +29,7 @@ const MediaPage = () => {
         getMediaFiles()
         .then(data => {
             setMediaFiles(data);
+            setCurrentPage(0);
         })
         .catch(e => {
 
@@ -48,11 +54,27 @@ const MediaPage = () => {
         getFiles();
     }, [])
 
+    useEffect(() => {
+        const init = currentPage * FILES_PER_PAGE;
+        const final = init + FILES_PER_PAGE;
+        setCurrentFiles(mediaFiles.slice(init,final))
+    }, [mediaFiles, currentPage])
+
     const deleteFileEvent = (id) => {
         return (e) => {
             e.preventDefault();
             deleteFile(id);
         }
+    }
+
+    const nextPage = (e) => {
+        if((currentPage + 1) * FILES_PER_PAGE < mediaFiles.length )
+            setCurrentPage(currentPage + 1);
+    }
+
+    const prevPage = (e) => {
+        if(currentPage != 0)
+            setCurrentPage(currentPage - 1);
     }
 
     return (
@@ -64,9 +86,14 @@ const MediaPage = () => {
                     <LoadingPage /> 
                 : 
                     <div className="mediaPanel">
-                        {mediaFiles.length > 0 && mediaFiles.map(file => <SingleMedia key={file.id} file={file} selectFile={setSelectedFile} deleteEvent={deleteFileEvent} isSelect={selectedFile === file}/>)}
+                        {currentFiles.length > 0 && currentFiles.map(file => <SingleMedia key={file.id} file={file} selectFile={setSelectedFile} deleteEvent={deleteFileEvent} isSelect={selectedFile === file}/>)}
                     </div>
             }
+            <div className="paginationControls">
+                <button className='prevControl' onClick={prevPage}> <ChevronIcon/> </button>
+                <p>{currentPage + 1}</p>
+                <button className='nextControl' onClick={nextPage}> <ChevronIcon/> </button>
+            </div>
         </main>
     )
 }

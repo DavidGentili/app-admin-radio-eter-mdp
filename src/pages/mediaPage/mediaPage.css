@@ -100,6 +100,48 @@
     width: 100%;
 }
 
-.mediaPage .mediaPanel .singleMedia button:hover{
+.mediaPage .paginationControls{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 12px;
+    gap: 16px;
+    font-weight: 500;
+}
 
+
+.mediaPage .paginationControls button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    border-radius: 100%;
+    background-color: var(--lightBlue);
+    border: 2px solid var(--lightBlue);
+    transition: .6s;
+}
+
+.mediaPage .paginationControls button:hover{
+    background: none;
+}
+
+.mediaPage .paginationControls button .icon{
+    width: 100%;
+    fill: var(--white);
+    height: auto;
+    transition: .6s;
+}
+
+.mediaPage .paginationControls button:hover .icon{
+    fill: var(--lightBlue);
+}
+
+.mediaPage .paginationControls .prevControl .icon{
+    transform: rotate(90deg);
+}
+
+.mediaPage .paginationControls .nextControl .icon{
+    transform: rotate(-90deg);
 }

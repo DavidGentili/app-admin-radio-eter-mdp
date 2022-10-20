@@ -49,7 +49,6 @@ const getNewProgramData = (form) => {
 export async function createNewProgram(form){
     try{
         const data = getNewProgramData(form);
-        console.log(data);
         return await instance.post('/programs', createFormData(data), { headers : { ...getHeaders(), "Content-Type" : "multipart/form-data"}})
     } catch(e){
         throw e.response ? e.response.data.message : e;

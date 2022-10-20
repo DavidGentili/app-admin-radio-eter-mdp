@@ -9,6 +9,8 @@ const SingleMedia = ({ file, selectFile, isSelect, deleteEvent}) => {
         selectFile(file);
     }
 
+    console.log(file)
+
     return (
         <article className={`singleMedia single ${isSelect && 'select'}`} onClick={selectEvent} >
             <img src={url} alt={name} />
