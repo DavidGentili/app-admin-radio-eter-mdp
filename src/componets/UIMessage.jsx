@@ -18,7 +18,6 @@ const UIMessage = ({ text, type, cleanMessage }) => {
         e.preventDefault();
         if(msg.current){
             msg.current.classList.add('hidden')
-            console.log(msg.current);
         }
         if(cleanMessage)
             setTimeout(cleanMessage, 600)

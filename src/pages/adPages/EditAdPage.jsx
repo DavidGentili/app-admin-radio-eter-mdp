@@ -5,14 +5,15 @@ import CustomInput from '../../componets/CustomInput';
 import CustomButton from '../../componets/CustomButton'
 
 import { deleteAd, updateAd } from '../../services/ad';
+import useMessage from '../../hooks/useMessage';
 
 const EditAdPage = ( { currentAd } ) => {
     
     const navigate = useNavigate();
-    const [messageError, setMessageError] = useState('');
     const [loadingPrimaryBtn, setLoadingPrimaryBtn] = useState(false);
     const [loadingDangerBtn, setLoadingDangerBtn] = useState(false);
     const { urlImage, altText, name, link, type} = currentAd ? currentAd : {};
+    const { setMessage } = useMessage();
     
     useEffect(() => {
         if(!currentAd)
@@ -22,7 +23,6 @@ const EditAdPage = ( { currentAd } ) => {
     const handlerSubmit = (e) => {
         e.preventDefault();
         setLoadingPrimaryBtn(true);
-        setMessageError('')
         const newAd = Object.fromEntries(new FormData(e.target));
         updateAd(newAd, currentAd)
         .then(() => {
@@ -31,13 +31,12 @@ const EditAdPage = ( { currentAd } ) => {
         })
         .catch(e => {
             setLoadingPrimaryBtn(false);
-            setMessageError(e);
+            setMessage({ message : e , type : 'error' });
         })
     }
 
     const removeHandler = (e) => {
         e.preventDefault();
-        setMessageError('');
         setLoadingDangerBtn(true);
         deleteAd(currentAd.id)
         .then(() => {
@@ -46,7 +45,7 @@ const EditAdPage = ( { currentAd } ) => {
         })
         .catch(e => {
             setLoadingDangerBtn(false);
-            setMessageError(e);
+            setMessage({ message : e , type : 'error' });
         })
     }
 
@@ -70,7 +69,6 @@ const EditAdPage = ( { currentAd } ) => {
                 <CustomButton text='Actualizar publicidad' buttonType='submit' type='primary' loading={loadingPrimaryBtn} disabled={loadingDangerBtn || loadingPrimaryBtn}/>
             </form>
             <CustomButton text='Eliminar publicidad' type='danger' loading={loadingDangerBtn} disabled={loadingDangerBtn || loadingPrimaryBtn} onClickEvent={removeHandler} />
-            {messageError && <p className='messageError'>{messageError}</p>}
         </div>
     )
 }

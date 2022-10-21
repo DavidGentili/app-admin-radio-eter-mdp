@@ -19,12 +19,10 @@ const NewMediaForm = ( { refreshScreen, setMessage } ) => {
         setLoadingBtn(true);
         postMediaFile(Object.fromEntries(new FormData(e.target)))
         .then(res => {
-            console.log('todo ben');
             setMessage({ message: res.message, type: 'success'});
             refreshScreen();
         })
         .catch(e => {
-            console.log(e);
             setMessage({ message: e.message, type: 'warning'});
         })
         .finally(() => {

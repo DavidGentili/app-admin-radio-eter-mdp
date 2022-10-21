@@ -184,11 +184,11 @@ button:disabled{
     text-align: center;
     position: absolute;
     z-index: 10;
-    bottom: 16px;
+    top: 16px;
     left: 0;
     right: 0;
     transition: .6s;
-    animation: showElement .6s;
+    animation: showElementTop .6s;
 }
 
 .msg.hidden{
@@ -632,6 +632,17 @@ form .labelInputFile .icon{
 @keyframes showElement {
     from{
         transform: translateY(30%);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes showElementTop {
+    from{
+        transform: translateY(-30%);
         opacity: 0;
     }
     to{

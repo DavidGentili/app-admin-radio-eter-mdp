@@ -5,17 +5,18 @@ import CustomInput from '../../componets/CustomInput'
 import CustomButton from '../../componets/CustomButton'
 import { ImageIcon } from '../../componets/Icons'
 import { createNewAd } from '../../services/ad';
+import useMessage from '../../hooks/useMessage';
 
 
 const NewAdPage = () => {
  
     const [loadingBtn, setLoadingBtn] = useState(false);
-    const [messageError, setMessageError] = useState('')
     const navigate = useNavigate();
+    const { setMessage } = useMessage();
+    console.log(setMessage)
 
     const handlerNewAd = (e) => {
         e.preventDefault();
-        setMessageError('');
         setLoadingBtn(true);
         const newAd = Object.fromEntries(new FormData(e.target));
         createNewAd(newAd)
@@ -25,7 +26,7 @@ const NewAdPage = () => {
         })
         .catch((e) => {
             setLoadingBtn(false);
-            setMessageError(e);
+            setMessage({ message : e , type : 'error' });
         })
     }
 
@@ -47,7 +48,6 @@ const NewAdPage = () => {
 
             </label>
             <CustomButton text='Agregar publicidad' buttonType='submit' type='primary' disabled={loadingBtn} loading={loadingBtn} />
-            {messageError && <p className='messageError'>{messageError}</p>}
         </form>
     )
 }

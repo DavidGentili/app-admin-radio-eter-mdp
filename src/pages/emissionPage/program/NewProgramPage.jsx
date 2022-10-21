@@ -5,13 +5,14 @@ import CustomInput from '../../../componets/CustomInput';
 import { ImageIcon } from '../../../componets/Icons';
 import { createNewProgram } from '../../../services/programs';
 import { daysValues } from '../../../helpers/daysValue';
+import useMessage from '../../../hooks/useMessage';
 
 const NewProgramPage = () => {
 
     const [isHighlighted, setIsHighlighted] = useState(false);
     const [loadingButton, setloadingButton] = useState(false);
-    const [messageError, setMessageError] = useState('');
     const navigate = useNavigate();
+    const { setMessage } = useMessage();
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -24,7 +25,7 @@ const NewProgramPage = () => {
         })
         .catch(e => {
             setloadingButton(false);
-            setMessageError(e);
+            setMessage({ message: e, type : 'error' });
         })
     }
 
@@ -49,8 +50,6 @@ const NewProgramPage = () => {
                 <ImageIcon />
                 <input type="file" name="file" id="file" accept='image/*'/>
             </label>        
-
-            {messageError && <p className='messageError'>{messageError}</p>}
 
             <button type='submit' className={`primaryBtn${loadingButton ? ' loadingBtn' : ''}`} disabled={loadingButton} >Crear programa</button>
             

@@ -6,6 +6,7 @@ import { ImageIcon } from '../../../componets/Icons'
 import { daysValues } from '../../../helpers/daysValue';
 import CustomButton from '../../../componets/CustomButton';
 import { deleteProgram, updateProgram } from '../../../services/programs';
+import useMessage from '../../../hooks/useMessage';
 
 
 function EditProgramPage({ currentProgram }) {
@@ -16,13 +17,12 @@ function EditProgramPage({ currentProgram }) {
     const [isHighlighted, setIsHighlighted] = useState(highlighted);
     const [ loadingPrimaryBtn, setLoadingPrimaryBtn ] = useState(false);
     const [ loadingDangerBtn, setLoadingDangerBtn ] = useState(false)
-    const [ messageError, setMessageError ] = useState('');
     const navigate = useNavigate();
+    const { setMessage } = useMessage();
 
     const updateHandler = (e) => {
         e.preventDefault();
         setLoadingPrimaryBtn(true);
-        setMessageError('');
         const form = Object.fromEntries(new FormData(e.target));
         updateProgram(form, currentProgram)
         .then(response => {
@@ -30,20 +30,19 @@ function EditProgramPage({ currentProgram }) {
         })
         .catch(e => {
             setLoadingPrimaryBtn(false);
-            setMessageError(e);
+            setMessage({ message: e, type : 'error' });
         })
     }
 
     const deleteHandler = (e) => {
         setLoadingDangerBtn(true);
-        setMessageError('');
         deleteProgram(currentProgram.id)
-        .then(response => {
+        .then(() => {
             navigate('../');
         })
         .catch(e => {
             setLoadingDangerBtn(false);
-            setMessageError(e);
+            setMessage({ message: e, type : 'error' });
         })
     }
 
@@ -77,8 +76,6 @@ function EditProgramPage({ currentProgram }) {
 
             </form>
             <CustomButton onClickEvent={deleteHandler} text='Eliminar programa' type='danger' loading={loadingDangerBtn} disabled={loadingPrimaryBtn || loadingDangerBtn} />
-            {messageError && <p className='messageError'>{messageError}</p>}
-
         </div>
      )
 }
