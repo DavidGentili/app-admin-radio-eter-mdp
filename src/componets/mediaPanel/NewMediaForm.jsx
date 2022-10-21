@@ -1,8 +1,8 @@
 import { React, useState } from 'react'
 
-import CustomButton from '../../componets/CustomButton';
-import CustomInput from '../../componets/CustomInput';
-import { ImageIcon } from '../../componets/Icons';
+import CustomButton from '../CustomButton';
+import CustomInput from '../CustomInput';
+import { ImageIcon } from '../Icons';
 import { postMediaFile } from '../../services/media';
 
 const NewMediaForm = ( { refreshScreen, setMessage } ) => {

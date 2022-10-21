@@ -1,6 +1,8 @@
 nav{
     display: flex;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 3;
     flex-direction: column;
     justify-content: space-between;
@@ -13,6 +15,16 @@ nav{
     box-shadow: 10px 0 10px #24242430;
 }
 
+.falseNav{
+    position: relative;
+    width: 90px;
+    padding: 36px 12px;
+    transition: .6s;
+}
+
+.falseNav.collapsed{
+    width: 220px;
+}
 
 nav.collapsed{
     width: 220px;

@@ -63,7 +63,7 @@ const menuOptions = [
         text: 'Usuarios',
         goTo: '/usuarios',
         aceptedSecurityLevels: ['master'],
-    },
+    }
 ]
 
 const PanelPage = () => {
@@ -90,6 +90,7 @@ const PanelPage = () => {
             :
             <div className='panelPage'>
                 <Nav menuOptions={ user ? filterOptions(menuOptions,user) : []}/>
+
 
                 <Header userName={user ? user.name : 'Mi usuario'} location={'Usuarios'} />
                 

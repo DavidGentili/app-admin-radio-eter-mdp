@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TrashIcon } from '../../componets/Icons';
+import { TrashIcon } from '../Icons';
 
 const SingleMedia = ({ file, selectFile, isSelect, deleteEvent}) => {
     const { url, name } = file;
@@ -8,8 +8,6 @@ const SingleMedia = ({ file, selectFile, isSelect, deleteEvent}) => {
     const selectEvent = (e) => {
         selectFile(file);
     }
-
-    console.log(file)
 
     return (
         <article className={`singleMedia single ${isSelect && 'select'}`} onClick={selectEvent} >

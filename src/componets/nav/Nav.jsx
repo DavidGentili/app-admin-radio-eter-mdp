@@ -17,14 +17,18 @@ const Nav = ({ menuOptions }) => {
     }
 
     return(
-        <nav className={collapsed ? 'collapsed' : ''} >
-            <button onClick={collapsedHandler} > <MenuIcon/> </button>
-            <div className="menuOptions">
-            {
-                menuOptions.map(option => <NavIcon key={option.goTo} {...option} />)
-            }
-            </div>
-        </nav>
+        <>
+            <nav className={collapsed ? 'collapsed' : undefined} >
+                <button onClick={collapsedHandler} > <MenuIcon/> </button>
+                <div className="menuOptions">
+                {
+                    menuOptions.map(option => <NavIcon key={option.goTo} {...option} />)
+                }
+                </div>
+            </nav>
+
+            <div className={`falseNav ${collapsed ? 'collapsed' : undefined}`}></div>
+        </>
     )
 }
 

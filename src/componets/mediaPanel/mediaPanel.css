@@ -1,0 +1,148 @@
+.mediaPage{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 95%;
+    background-color: var(--white);
+    border-radius: 36px;
+    box-shadow: 5px 5px 20px #24242440;
+    padding: 36px 48px;
+    margin: 24px auto;
+    overflow: auto;
+}
+
+.mediaPage form{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-height: 78px;
+    padding: 16px;
+    padding-bottom: 24px;
+    gap: 24px;
+    border-bottom: 1px solid var(--mediumGrey);
+}
+
+.mediaPage form .customInput{
+    width: auto;
+    margin: 0;
+}
+
+.mediaPage form select{
+    width: auto;
+}
+
+.mediaPage form button{
+    font-size: 18px;
+}
+
+.mediaPage .mediaContent{
+    display: grid;
+    grid-template-columns: repeat(4, 25fr);
+    grid-template-rows: repeat(2,1fr);
+    column-gap: 24px;
+    margin: 36px auto;
+}
+
+.mediaPage .mediaContent .singleMedia{
+    display: flex;
+    flex-direction: column;    
+    text-align: center;
+    position: relative;
+    padding: 0;
+    gap: 24px;
+    padding-bottom: 24px;
+    border-radius: 12px;
+}
+
+.mediaPage .mediaContent .singleMedia img{
+    width: 100%;
+    height: auto;
+}
+
+.mediaPage .mediaContent .singleMedia h6{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.mediaPage .mediaContent .single:hover{
+    transform: scale(1);
+    background-color: var(--white);
+    box-shadow: 5px 5px 15px #24242430;
+}
+
+.mediaPage .mediaContent .singleMedia button{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 38px;
+    height: 38px;
+    padding: 8px;
+    background-color: #70707070;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: .6s;
+}
+
+.mediaPage .mediaContent .singleMedia button:hover{
+    transform: scale(1.1);
+}
+
+.mediaPage .mediaContent .singleMedia:hover button{
+    opacity: 1;
+}
+
+.mediaPage .mediaContent .singleMedia button .icon{
+    fill: var(--errorColor);
+    width: 100%;
+}
+
+.mediaPage .paginationControls{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 12px;
+    gap: 16px;
+    font-weight: 500;
+}
+
+
+.mediaPage .paginationControls button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    border-radius: 100%;
+    background-color: var(--lightBlue);
+    border: 2px solid var(--lightBlue);
+    transition: .6s;
+}
+
+.mediaPage .paginationControls button:hover{
+    background: none;
+}
+
+.mediaPage .paginationControls button .icon{
+    width: 100%;
+    fill: var(--white);
+    height: auto;
+    transition: .6s;
+}
+
+.mediaPage .paginationControls button:hover .icon{
+    fill: var(--lightBlue);
+}
+
+.mediaPage .paginationControls .prevControl .icon{
+    transform: rotate(90deg);
+}
+
+.mediaPage .paginationControls .nextControl .icon{
+    transform: rotate(-90deg);
+}
