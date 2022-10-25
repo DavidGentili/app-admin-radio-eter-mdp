@@ -10,7 +10,7 @@ const SingleMedia = ({ file, selectFile, isSelect, deleteEvent}) => {
     }
 
     return (
-        <article className={`singleMedia single ${isSelect && 'select'}`} onClick={selectEvent} >
+        <article className={`singleMedia single`} onClick={selectEvent} >
             <img src={url} alt={name} />
             <h6> { name } </h6>
             <button onClick={deleteEvent(file.id)}> <TrashIcon/> </button>

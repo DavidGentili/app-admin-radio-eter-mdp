@@ -50,6 +50,7 @@
     flex-direction: column;    
     text-align: center;
     position: relative;
+    justify-content: space-between;
     padding: 0;
     gap: 24px;
     padding-bottom: 24px;
@@ -67,9 +68,9 @@
 }
 
 .mediaPage .mediaContent .single:hover{
-    transform: scale(1);
+    transform: translateY(-12px);
     background-color: var(--white);
-    box-shadow: 5px 5px 15px #24242430;
+    box-shadow: 5px 15px 25px #24242430;
 }
 
 .mediaPage .mediaContent .singleMedia button{
