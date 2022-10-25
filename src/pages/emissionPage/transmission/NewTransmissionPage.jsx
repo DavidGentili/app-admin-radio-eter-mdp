@@ -5,6 +5,7 @@ import CustomInput from '../../../componets/CustomInput'
 import CustomButton from '../../../componets/CustomButton'
 
 import { createTransmission } from '../../../services/transmissions'
+import useMessage from '../../../hooks/useMessage'
 
 
 const NewTransmissionPage = () => {
@@ -12,12 +13,12 @@ const NewTransmissionPage = () => {
     const [ loadingButton, setLoadingButton] = useState(false);
     const [messageError, setMessageError] = useState('');
     const navigate = useNavigate();
+    const { setMessage } = useMessage();
 
     
     const handlerSubmit = (e) => {
         e.preventDefault();
         setLoadingButton(true);
-        setMessageError('')
         const form = Object.fromEntries(new FormData(e.target));
         createTransmission(form)
         .then((response) => {
@@ -25,7 +26,7 @@ const NewTransmissionPage = () => {
             navigate('/programas/transmisiones');
         })
         .catch(e => {
-            setMessageError(e);
+            setMessage({ message: e, type : 'error' });
             setLoadingButton(false);
         })
     }
@@ -43,8 +44,6 @@ const NewTransmissionPage = () => {
             </div>
 
             <CustomButton text='Agregar transmision' type='primary' buttonType='submit' loading={loadingButton} disabled={loadingButton} />            
-
-            {messageError && <p className='messageError'>{messageError}</p>}
 
         </form>
   )

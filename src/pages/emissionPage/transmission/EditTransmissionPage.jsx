@@ -6,14 +6,15 @@ import CustomButton from '../../../componets/CustomButton'
 
 import { getFormatTime } from '../../../helpers/format'
 import { updateTransmission, deleteTransmission } from '../../../services/transmissions'
+import useMessage from '../../../hooks/useMessage'
 
 
 const EditTransmissionPage = ({ currentTransmission }) => {
 
     const [loadingPrimaryBtn, setLoadingPrimaryBtn] = useState(false);
     const [loadingDangerBtn, setLoadingDangerBtn] = useState(false);
-    const [messageError, setMessageError] = useState('');
     const navigate = useNavigate();
+    const { setMessage } = useMessage();
 
     if(!currentTransmission)
         return <></>
@@ -33,7 +34,7 @@ const EditTransmissionPage = ({ currentTransmission }) => {
             navigate('/programas/transmisiones')
         })
         .catch(e => {
-            setMessageError(e)
+            setMessage({ message: e, type : 'error' });
             setLoadingPrimaryBtn(false)
         })
     }
@@ -47,7 +48,7 @@ const EditTransmissionPage = ({ currentTransmission }) => {
             navigate('/programas/transmisiones');
         })
         .catch(e => {
-            setMessageError(e)
+            setMessage({ message: e, type : 'error' });
             setLoadingDangerBtn(false)
         })
     }
@@ -69,8 +70,6 @@ const EditTransmissionPage = ({ currentTransmission }) => {
             <CustomButton text='Actualizar transmision' type='primary'  buttonType='submit' loading={loadingPrimaryBtn} disabled={loadingPrimaryBtn || loadingDangerBtn} />   
             
             <CustomButton onClickEvent={handlerDelete} text='Eliminar transmision' type='danger' loading={loadingDangerBtn} disabled={loadingPrimaryBtn || loadingDangerBtn} />   
-
-            {messageError && <p className='messageError'>{messageError}</p>}
         </form>
     )
 }
