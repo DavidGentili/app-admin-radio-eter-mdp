@@ -556,6 +556,7 @@ form .labelInputFile .icon{
     border-radius: 12px;
     transition: .6s;
     cursor: pointer;
+    text-overflow: ellipsis;
 }
 
 .selectFile.loaded{

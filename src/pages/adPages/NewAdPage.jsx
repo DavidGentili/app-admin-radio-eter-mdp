@@ -60,8 +60,13 @@ const NewAdPage = () => {
                     <option value="oficial"> Oficial (pauta)</option>
                 </select>
                 <div className={`selectFile ${currentFile ? 'loaded' : ''}`} onClick={openModalEvent}> 
-                    <p>Seleccionar archivo</p> 
-                    <ImageIcon/> 
+                    <ImageIcon/>
+                    {currentFile ? 
+                        <p>{currentFile.name}</p>
+                    :
+                        <p>Seleccionar archivo</p>
+                    } 
+                     
                 </div>
                 <CustomButton text='Agregar publicidad' buttonType='submit' type='primary' disabled={loadingBtn} loading={loadingBtn} />
             </form>

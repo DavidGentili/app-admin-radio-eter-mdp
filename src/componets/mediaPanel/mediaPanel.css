@@ -169,5 +169,6 @@
 }
 
 .modalWindow .mediaPanel .mediaContent .singleMedia.select{
-    background-color: red;
+    background-color: #4BC1EA60;
+    transform: translateY(-16px);
 }
