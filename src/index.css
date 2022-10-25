@@ -275,7 +275,7 @@ button:disabled{
 }
 
 .modalWindow{
-    width: 640px;
+    width: 998px;
     height: auto;
     max-height: 95vh;
     padding: 48px 64px;
@@ -542,6 +542,36 @@ form .labelInputFile .icon{
     padding: 0;
     border: 0px;
     transition: .6s;
+}
+
+/*-------------------SELECT FILE----------------------*/
+.selectFile{
+    width: 256px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid var(--mediumGrey);
+    color: var(--mediumGrey);
+    padding: 12px;
+    border-radius: 12px;
+    transition: .6s;
+    cursor: pointer;
+}
+
+.selectFile.loaded{
+    background-color: var(--successColor);
+    border: 1px solid var(--successColor);
+    color: var(--white);
+}
+
+.selectFile .icon{
+    width: 36px;
+    fill: var(--mediumGrey);
+    transition: .6s;
+}
+
+.selectFile.loaded .icon{
+    fill: var(--white);
 }
 
 /*-------------------SCROLLBAR----------------------*/

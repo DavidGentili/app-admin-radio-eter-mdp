@@ -1,8 +1,4 @@
 .mediaPage{
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-wrap: wrap;
     width: 95%;
     background-color: var(--white);
     border-radius: 36px;
@@ -12,7 +8,14 @@
     overflow: auto;
 }
 
-.mediaPage form{
+.mediaPanel{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.mediaPanel form{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,20 +27,20 @@
     border-bottom: 1px solid var(--mediumGrey);
 }
 
-.mediaPage form .customInput{
+.mediaPanel form .customInput{
     width: auto;
     margin: 0;
 }
 
-.mediaPage form select{
+.mediaPanel form select{
     width: auto;
 }
 
-.mediaPage form button{
+.mediaPanel form button{
     font-size: 18px;
 }
 
-.mediaPage .mediaContent{
+.mediaPanel .mediaContent{
     display: grid;
     grid-template-columns: repeat(4, 25fr);
     grid-template-rows: repeat(2,1fr);
@@ -45,7 +48,7 @@
     margin: 36px auto;
 }
 
-.mediaPage .mediaContent .singleMedia{
+.mediaPanel .mediaContent .singleMedia{
     display: flex;
     flex-direction: column;    
     text-align: center;
@@ -57,23 +60,23 @@
     border-radius: 12px;
 }
 
-.mediaPage .mediaContent .singleMedia img{
+.mediaPanel .mediaContent .singleMedia img{
     width: 100%;
     height: auto;
 }
 
-.mediaPage .mediaContent .singleMedia h6{
+.mediaPanel .mediaContent .singleMedia h6{
     font-size: 18px;
     font-weight: 500;
 }
 
-.mediaPage .mediaContent .single:hover{
+.mediaPanel .mediaPanel .mediaPanel .mediaContent .single:hover{
     transform: translateY(-12px);
     background-color: var(--white);
     box-shadow: 5px 15px 25px #24242430;
 }
 
-.mediaPage .mediaContent .singleMedia button{
+.mediaPanel .mediaContent .singleMedia button{
     position: absolute;
     top: 8px;
     right: 8px;
@@ -89,20 +92,20 @@
     transition: .6s;
 }
 
-.mediaPage .mediaContent .singleMedia button:hover{
+.mediaPanel .mediaContent .singleMedia button:hover{
     transform: scale(1.1);
 }
 
-.mediaPage .mediaContent .singleMedia:hover button{
+.mediaPanel .mediaContent .singleMedia:hover button{
     opacity: 1;
 }
 
-.mediaPage .mediaContent .singleMedia button .icon{
+.mediaPanel .mediaContent .singleMedia button .icon{
     fill: var(--errorColor);
     width: 100%;
 }
 
-.mediaPage .paginationControls{
+.mediaPanel .paginationControls{
     display: flex;
     align-items: center;
     margin-left: auto;
@@ -112,7 +115,7 @@
 }
 
 
-.mediaPage .paginationControls button{
+.mediaPanel .paginationControls button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,25 +128,46 @@
     transition: .6s;
 }
 
-.mediaPage .paginationControls button:hover{
+.mediaPanel .paginationControls button:hover{
     background: none;
 }
 
-.mediaPage .paginationControls button .icon{
+.mediaPanel .paginationControls button .icon{
     width: 100%;
     fill: var(--white);
     height: auto;
     transition: .6s;
 }
 
-.mediaPage .paginationControls button:hover .icon{
+.mediaPanel .paginationControls button:hover .icon{
     fill: var(--lightBlue);
 }
 
-.mediaPage .paginationControls .prevControl .icon{
+.mediaPanel .paginationControls .prevControl .icon{
     transform: rotate(90deg);
 }
 
-.mediaPage .paginationControls .nextControl .icon{
+.mediaPanel .paginationControls .nextControl .icon{
     transform: rotate(-90deg);
+}
+
+
+.modalWindow .mediaPanel form{
+    max-height: none;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.modalWindow .mediaPanel form .customInput{
+    width: 40%;
+}
+
+.modalWindow .mediaPanel form button{
+    margin: auto;
+}
+
+.modalWindow .mediaPanel .mediaContent .singleMedia.select{
+    background-color: red;
 }

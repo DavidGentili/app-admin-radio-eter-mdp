@@ -1,8 +1,13 @@
 import React from 'react'
 
-const ModalGetMediaFile = () => {
+import ModalContainer from './ModalContainer'
+import MediaPanel from '../mediaPanel/MediaPanel';
+
+const ModalGetMediaFile = ({ closeModal, returnFile }) => {
   return (
-    <div></div>
+    <ModalContainer title='Agregar Multimedia' closeModal={closeModal}>
+        <MediaPanel returnFile={returnFile}/>
+    </ModalContainer>
   )
 }
 

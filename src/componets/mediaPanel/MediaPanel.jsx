@@ -1,18 +1,22 @@
 import {React, useState, useEffect } from 'react';
 
+//Componets
 import LoadingPage from '../LoadingPage';
-
-import { getMediaFiles, deleteMediaFile } from '../../services/media';
 import NewMediaForm from '../mediaPanel/NewMediaForm';
 import { ChevronIcon } from '../Icons';
+import SingleMedia from '../../componets/mediaPanel/SingleMedia';
+
+//Services
+import { getMediaFiles, deleteMediaFile } from '../../services/media';
+
+//Hooks
 import useMessage from '../../hooks/useMessage';
 
-import SingleMedia from '../../componets/mediaPanel/SingleMedia';
-import UIMessage from '../../componets/UIMessage';
-
+//Styles
 import './mediaPanel.css';
+import CustomButton from '../CustomButton';
 
-const MediaPanel = () => {
+const MediaPanel = ({ returnFile }) => {
 
     const FILES_PER_PAGE = 8;
 
@@ -77,26 +81,29 @@ const MediaPanel = () => {
             setCurrentPage(currentPage - 1);
     }
 
+    const returnCurrentFile = (e) => {
+        if(selectedFile)
+            returnFile(selectedFile);
+    }
+
     return(
-        <>
-            <NewMediaForm refreshScreen={getFiles} setMessage={setMessage} />
+        <div className='mediaPanel'>
+            <NewMediaForm refreshScreen={getFiles} />
             {
                 loadingPage ? 
                     <LoadingPage /> 
-                : <>
-                    
+                :
                     <div className="mediaContent">
                         {currentFiles.length > 0 && currentFiles.map(file => <SingleMedia key={file.id} file={file} selectFile={setSelectedFile} deleteEvent={deleteFileEvent} isSelect={selectedFile === file}/>)}
-                    </div>
-                    
-                </>
+                    </div>   
             }
             <div className="paginationControls">
                 <button className='prevControl' onClick={prevPage}> <ChevronIcon/> </button>
                 <p>{currentPage + 1}</p>
                 <button className='nextControl' onClick={nextPage}> <ChevronIcon/> </button>
             </div>
-        </>
+            {returnFile && <CustomButton onClickEvent={returnCurrentFile} text='Agregar archivo' buttonType='submit' type='secondary' />}
+        </div>
     )
 }
 

@@ -1,14 +1,22 @@
 import { React, useState } from 'react'
 
+//Components
 import CustomButton from '../CustomButton';
 import CustomInput from '../CustomInput';
 import { ImageIcon } from '../Icons';
+
+//Services
 import { postMediaFile } from '../../services/media';
 
-const NewMediaForm = ( { refreshScreen, setMessage } ) => {
+//Hooks
+import useMessage from '../../hooks/useMessage';
+
+const NewMediaForm = ( { refreshScreen } ) => {
     
     const [loadingBtn, setLoadingBtn] = useState(false);
     const [inputValue, setInputValue] = useState(false);
+
+    const { setMessage } = useMessage()
 
     const changeInputStateEvent = (e) => {
         setInputValue(e.target.value !== "" ? true : false);
@@ -31,7 +39,7 @@ const NewMediaForm = ( { refreshScreen, setMessage } ) => {
     }
 
     return (
-        <form onSubmit={submitEvent || empthyFunction}>
+        <form onSubmit={submitEvent}>
             <CustomInput placeholder="Nombre" name="name" type="text" />
             <label htmlFor="type">
                 Tipo
