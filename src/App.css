@@ -10,7 +10,7 @@
 .panelPage{
     width: 100%;
     height: 100%;
-    position: relative;
+    min-height: 100vh;
     background-color: var(--lightGrey);
     display: grid;
     grid-template-columns: fit-content(220px) 1fr;
@@ -33,6 +33,5 @@ header{
 
 main{
     grid-area: main;
-    position: relative;
     animation: appearElement 1.2s ease-out;
 }
