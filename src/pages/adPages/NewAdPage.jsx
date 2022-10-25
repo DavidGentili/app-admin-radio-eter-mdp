@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
+//Services
+import { createNewAd } from '../../services/ad';
+
+//Components
 import CustomInput from '../../componets/CustomInput'
 import CustomButton from '../../componets/CustomButton'
 import { ImageIcon } from '../../componets/Icons'
-import { createNewAd } from '../../services/ad';
-import useMessage from '../../hooks/useMessage';
 import ModalGetMediaFile from '../../componets/modals/ModalGetMediaFile';
+
+//Hooks
+import useMessage from '../../hooks/useMessage';
+import useModal from '../../hooks/useModal';
 
 
 const NewAdPage = () => {
  
     const [loadingBtn, setLoadingBtn] = useState(false);
-    const [openModal, setOpenModal] = useState(false);
+    const {openModal, openModalEvent, closeModaleEvent} = useModal(false);
     const navigate = useNavigate();
     const [currentFile, setCurrentFile] = useState(null);
     const { setMessage } = useMessage();
@@ -30,16 +36,6 @@ const NewAdPage = () => {
             setLoadingBtn(false);
             setMessage({ message : e , type : 'error' });
         })
-    }
-
-    const openModalEvent = (e) => {
-        e.preventDefault();
-        setOpenModal(true);
-    }
-
-    const closeModaleEvent = (e) => {
-        e.preventDefault();
-        setOpenModal(false);
     }
 
     const returnFile = (file) => {
@@ -61,14 +57,8 @@ const NewAdPage = () => {
                 </select>
                 <div className={`selectFile ${currentFile ? 'loaded' : ''}`} onClick={openModalEvent}> 
                     <ImageIcon/>
-                    {currentFile ? 
-                        <p>{currentFile.name}</p>
-                    :
-                        <p>Seleccionar archivo</p>
-                    } 
-                     
+                    {currentFile ? <p>{currentFile.name}</p> : <p>Seleccionar archivo</p>}
                 </div>
-                <CustomButton text='Agregar publicidad' buttonType='submit' type='primary' disabled={loadingBtn} loading={loadingBtn} />
             </form>
             <button onClick={openModalEvent}></button>
             {openModal && <ModalGetMediaFile returnFile={returnFile} closeModal={closeModaleEvent}/>}
