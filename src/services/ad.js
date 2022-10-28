@@ -1,29 +1,19 @@
 import { instance, getHeaders } from './config';
 
-const checkDataNewAd = (form) => {
-    const { name, file } = form
+const checkDataNewAd = (data) => {
+    const { name, file } = data;
     if(!name || typeof(name) !== 'string' || name.length === 0)
         throw 'Debe ingresar un nombre correcto';
-    if(!file ||  !file.type || typeof(file.type) !== 'string' || !file.type.startsWith('image/'))
-        throw 'Error al cargar el archivo';
+    if(!file ||  !file.url)
+        throw 'Debe seleccionar un archivo archivo';
 }
 
-const createFormDataNewAd = (form) => {
-    const { name, file, type, altText, link } = form;
-    const formData = new FormData();
-    formData.append('imageFile', file);
-    formData.append('name', name);
-    formData.append('type', type);
-    formData.append('link', link);
-    formData.append('altText', altText);
-    return formData;
-}
-
-export async function createNewAd(form){
+export async function createNewAd(data){
     try{
-        checkDataNewAd(form)
-        return await instance.post('/ad', createFormDataNewAd(form), {
-            headers: { "Content-Type" : "multipart/form-data", ... getHeaders()},
+        checkDataNewAd(data)
+        const { name, file, type, link, altText} = data;
+        return await instance.post('/ad', { name, type, link, altText, urlImage : file.url }, {
+            headers: getHeaders(),
         })
     } catch(e){
         throw e.response ? e.response.data.message : e;
@@ -49,7 +39,7 @@ export async function deleteAd(id){
 //retorna el payload requerido para hacer un put, en caso de no haber cambios retorna null
 const getUpdateData = (newAd, currentAd) => {
     const updateData = {};
-    const keys = ['name', 'altText', 'link', 'type'];
+    const keys = ['name', 'altText', 'link', 'type', 'urlImage'];
     keys.forEach(key => {
         if(newAd[key] !== currentAd[key])
             updateData[key] = newAd[key];
@@ -59,11 +49,13 @@ const getUpdateData = (newAd, currentAd) => {
 }
 
 export async function updateAd(newAd, currentAd){
+    const { file } = newAd;
+    if(file && file.url)
+        newAd.urlImage = file.url;
     const updateData = getUpdateData(newAd, currentAd);
     if(!updateData)
         throw 'No ha ingresado ningun cambio'
     try{
-        console.log(updateData);
         return await instance.put('/ad', updateData, {headers: getHeaders()});   
     } catch(e){
         throw e.response ? e.response.data.message : e

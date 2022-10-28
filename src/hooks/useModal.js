@@ -1,20 +1,22 @@
 import { React, useState } from 'react';
 
-const useModal = (initialState) => {
+const useModal = (initialState = false) => {
 
     const [openModal, setOpenModal] = useState(initialState);
 
     const openModalEvent = (e) => {
-        e.preventDefault();
+        if(e && e.preventDefault)
+            e.preventDefault();
         setOpenModal(true);
     }
     
-    const closeModaleEvent = (e) => {
-        e.preventDefault();
+    const closeModalEvent = (e) => {
+        if(e && e.preventDefault)
+            e.preventDefault();
         setOpenModal(false);
     }
 
-    return {openModal, openModalEvent, closeModaleEvent};
+    return {openModal, openModalEvent, closeModalEvent};
 }
 
 

@@ -10,8 +10,9 @@
 
 .mediaPanel{
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: space-around;
     flex-wrap: wrap;
 }
 
@@ -171,4 +172,9 @@
 .modalWindow .mediaPanel .mediaContent .singleMedia.select{
     background-color: #4BC1EA60;
     transform: translateY(-16px);
+}
+
+.modalWindow .mediaPanel > button{
+    margin-left: auto;
+    margin-top: 24px;
 }

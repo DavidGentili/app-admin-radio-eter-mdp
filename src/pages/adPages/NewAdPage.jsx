@@ -1,24 +1,24 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-//Services
-import { createNewAd } from '../../services/ad';
-
 //Components
 import CustomInput from '../../componets/CustomInput'
 import CustomButton from '../../componets/CustomButton'
-import { ImageIcon } from '../../componets/Icons'
 import ModalGetMediaFile from '../../componets/modals/ModalGetMediaFile';
+
+//Services
+import { createNewAd } from '../../services/ad';
 
 //Hooks
 import useMessage from '../../hooks/useMessage';
 import useModal from '../../hooks/useModal';
+import SelectFile from '../../componets/SelectFile';
 
 
 const NewAdPage = () => {
  
     const [loadingBtn, setLoadingBtn] = useState(false);
-    const {openModal, openModalEvent, closeModaleEvent} = useModal(false);
+    const { openModal, openModalEvent, closeModalEvent } = useModal();
     const navigate = useNavigate();
     const [currentFile, setCurrentFile] = useState(null);
     const { setMessage } = useMessage();
@@ -26,10 +26,11 @@ const NewAdPage = () => {
     const handlerNewAd = (e) => {
         e.preventDefault();
         setLoadingBtn(true);
-        const newAd = Object.fromEntries(new FormData(e.target));
+        const newAd = {...Object.fromEntries(new FormData(e.target)), file: currentFile};
         createNewAd(newAd)
-        .then(() => {
+        .then(({data}) => {
             setLoadingBtn(false);
+            setMessage({ message: data.message, type : 'success' })
             navigate('../')
         })
         .catch((e) => {
@@ -40,7 +41,7 @@ const NewAdPage = () => {
 
     const returnFile = (file) => {
         setCurrentFile(file);
-        setOpenModal(false);
+        closeModalEvent()
     }
 
     return (
@@ -55,13 +56,10 @@ const NewAdPage = () => {
                     <option value="standard">Estandar (privada)</option>
                     <option value="oficial"> Oficial (pauta)</option>
                 </select>
-                <div className={`selectFile ${currentFile ? 'loaded' : ''}`} onClick={openModalEvent}> 
-                    <ImageIcon/>
-                    {currentFile ? <p>{currentFile.name}</p> : <p>Seleccionar archivo</p>}
-                </div>
+                <SelectFile currentFile={currentFile} openModal={openModalEvent} />
+                <CustomButton text='Agregar publicidad' buttonType='submit' type='primary' disabled={loadingBtn} loading={loadingBtn} />
             </form>
-            <button onClick={openModalEvent}></button>
-            {openModal && <ModalGetMediaFile returnFile={returnFile} closeModal={closeModaleEvent}/>}
+            {openModal && <ModalGetMediaFile returnFile={returnFile} closeModal={closeModalEvent}/>}
         </>
 )
 }
