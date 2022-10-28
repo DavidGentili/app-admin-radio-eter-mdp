@@ -1,20 +1,25 @@
 import { React, useState, useEffect, useCallback } from 'react'
 
+//Components
 import ModalNewUser from '../../componets/modals/ModalNewUser'
 import ModalUpdateUser from '../../componets/modals/ModalUpdateUser';
 import LoadingPage from '../../componets/LoadingPage';
 import SingleUser from '../../componets/SingleUser';
 import CustomButton from '../../componets/CustomButton'
-
 import { ChevronIcon } from '../../componets/Icons'
 
+//Services
 import { getUsers } from '../../services/users'
 
+//Styles
 import './usersPage.css';
+
+//Hooks
+import useModal from '../../hooks/useModal';
 
 const UsersPage = () => {
 
-    const [openModal, setOpenModal] = useState(false);
+    const { openModal, openModalEvent, closeModalEvent } = useModal(false);
     const [loadingPage, setLoadingPage] = useState(true);
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
@@ -68,9 +73,9 @@ const UsersPage = () => {
                         users.map((user) => <SingleUser key={user.id} user={user} selectUser={selectUser(user)} />)
                     }
                 </section>
-                <CustomButton type='primary' text='+' onClickEvent={() => {setOpenModal(true)}} />
+                <CustomButton type='primary' text='+' onClickEvent={openModalEvent} />
             </main>
-            {openModal && <ModalNewUser refreshUsers={refreshUsers} setLoadingPage={setLoadingPage} closeModal={() => {setOpenModal(false)}} />}
+            {openModal && <ModalNewUser refreshUsers={refreshUsers} setLoadingPage={setLoadingPage} closeModal={closeModalEvent} />}
             {selectedUser && <ModalUpdateUser user={selectedUser} refreshUsers={refreshUsers}  closeModal={() => {setSelectedUser(null)}} />}
         </>
     )
