@@ -7,7 +7,7 @@ const getClassName = {
     normal: () => 'normal'
 }
 const CustomButton = (props) => {
-    const { onClickEvent, text, type, buttonType, disabled, loading } = props;
+    const { onClickEvent, text, type, buttonType, disabled, loading, children } = props;
     const className = getClassName[getClassName[type] ? type : 'normal']();
     return (
         <button 
@@ -15,7 +15,7 @@ const CustomButton = (props) => {
         onClick={onClickEvent}  
         className={`${className} ${loading && 'loadingBtn'} `} 
         disabled={disabled}>
-            {text}
+            {text || children || 'Boton'}
         </button>
     )
 }

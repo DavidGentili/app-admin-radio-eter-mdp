@@ -569,10 +569,12 @@ form .labelInputFile .icon{
     left: 0;
     z-index: 1;
     border-radius: 12px;
-    transition: .6s;
+    transition: .5s;
 }
 
-.selectFile:hover span{
+.selectFile:hover span,
+.selectFile:active span
+.selectFile:focus span{
     width: 100%;
 }
 
@@ -583,7 +585,9 @@ form .labelInputFile .icon{
     color: var(--white);
 }
 
-.selectFile.loaded:hover span{
+.selectFile.loaded:hover span,
+.selectFile.loaded:active span
+.selectFile.loaded:focus span{
     width: 0%;
 }
 

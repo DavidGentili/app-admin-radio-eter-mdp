@@ -10,14 +10,6 @@ export async function getPrograms(){
 
 const daysValues = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 
-const createFormData = (data) => {
-    const keys = Object.keys(data);
-    const formData = new FormData();
-    keys.forEach(key => {
-        formData.append(key, data[key]);
-    })
-    return formData
-}
 
 const checkNewProgramData = (data) => {
     if(data.name.length < 3)
@@ -29,7 +21,7 @@ const checkNewProgramData = (data) => {
 }
 
 const getNewProgramData = (form) => {
-    const { name, startHour, finishHour } = form
+    const { name, startHour, finishHour, file } = form
     const data = {
         highlighted: (form.highlighted && form.highlighted) === 'on' ? true : false,
         days : daysValues.map(function(day) {
@@ -40,8 +32,8 @@ const getNewProgramData = (form) => {
         finishHour,
     }
     checkNewProgramData(data);
-    if(data.highlighted && form.file.size > 0)
-        data.imageFile = form.file;
+    if(file && file.url)
+        data.urlImage = form.file.url;
     return data;
     
 }
@@ -49,7 +41,7 @@ const getNewProgramData = (form) => {
 export async function createNewProgram(form){
     try{
         const data = getNewProgramData(form);
-        return await instance.post('/programs', createFormData(data), { headers : { ...getHeaders(), "Content-Type" : "multipart/form-data"}})
+        return await instance.post('/programs', data, { headers : getHeaders()})
     } catch(e){
         throw e.response ? e.response.data.message : e;
     }
@@ -71,6 +63,7 @@ const compareValue = (a , b) => {
 }
 
 const getUpdateData = (form, currentProgram) => {
+    const { file } = form;
     form.highlighted = (form.highlighted && form.highlighted === 'on') ? true : false;
     form.days = daysValues.map(function(day) {
         return form[day] ? true : false; 
@@ -83,8 +76,8 @@ const getUpdateData = (form, currentProgram) => {
         }        
     })
 
-    if(form.highlighted && form.file.size > 0)
-            data.imageFile = form.file;
+    if(file && file.url)
+            data.urlImage = form.file.url;
     return data;
 }
 
@@ -93,7 +86,7 @@ export async function updateProgram(form, currentProgram){
         const data = getUpdateData(form, currentProgram);
         if(Object.keys(data).length === 1)
             throw 'No se han cargado modificaciones';
-        return await instance.put('/programs', createFormData(data), { headers: { ...getHeaders(), "Content-Type" : "multipart/form-data"}});
+        return await instance.put('/programs', data, { headers: getHeaders()});
     } catch(e){
         throw e.response ? e.response.data.message : e;
     }

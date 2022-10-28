@@ -1,25 +1,38 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
+//Components
 import CustomInput from '../../../componets/CustomInput';
-import { ImageIcon } from '../../../componets/Icons';
-import { createNewProgram } from '../../../services/programs';
+import SelectFile from '../../../componets/SelectFile';
+import CustomButton from '../../../componets/CustomButton';
+import ModalGetMediaFile from '../../../componets/modals/ModalGetMediaFile';
+
+//Helpers
 import { daysValues } from '../../../helpers/daysValue';
+
+//Services
+import { createNewProgram } from '../../../services/programs';
+
+//Hooks
 import useMessage from '../../../hooks/useMessage';
+import useModal from '../../../hooks/useModal';
 
 const NewProgramPage = () => {
 
-    const [isHighlighted, setIsHighlighted] = useState(false);
     const [loadingButton, setloadingButton] = useState(false);
+    const [currentFile, setCurrentFile] = useState(null);
+    const { openModal, openModalEvent, closeModalEvent } = useModal();
     const navigate = useNavigate();
     const { setMessage } = useMessage();
+
 
     const submitHandler = (e) => {
         e.preventDefault();
         setloadingButton(true);
         const form = Object.fromEntries(new FormData(e.target));
-        createNewProgram(form)
-        .then(response => {
+        createNewProgram({...form, file : currentFile})
+        .then(({data}) => {
+            setMessage({ message : data.message, type: 'success'});
             setloadingButton(false);
             navigate('../')
         })
@@ -27,6 +40,11 @@ const NewProgramPage = () => {
             setloadingButton(false);
             setMessage({ message: e, type : 'error' });
         })
+    }
+
+    const returnFile = (file) => {
+        setCurrentFile(file);
+        closeModalEvent()
     }
 
     return (
@@ -44,15 +62,13 @@ const NewProgramPage = () => {
                 <input type="time" name="finishHour" />
             </div>
             
-            <label htmlFor='highlighted' className='label' >Destacado <input onChange={(e) => {setIsHighlighted(e.target.checked)}} type="checkbox" name="highlighted" id="highlighted" /> </label>
-            <label htmlFor="file" className={'labelInputFile' + (!isHighlighted ? ' hidden' : '')} >
-                Cargue una imagen
-                <ImageIcon />
-                <input type="file" name="file" id="file" accept='image/*'/>
-            </label>        
-
-            <button type='submit' className={`primaryBtn${loadingButton ? ' loadingBtn' : ''}`} disabled={loadingButton} >Crear programa</button>
+            <label htmlFor='highlighted' className='label' >Destacado <input type="checkbox" name="highlighted" id="highlighted" /> </label>
             
+            <SelectFile openModal={openModalEvent} currentFile={currentFile} />       
+
+            <CustomButton buttonType='submit' type='primary' loadingButton={loadingButton} disabled={loadingButton} >Crear programa</CustomButton>
+
+            {openModal && <ModalGetMediaFile closeModal={closeModalEvent} returnFile={returnFile}/>}            
         </form>
     )
 }
