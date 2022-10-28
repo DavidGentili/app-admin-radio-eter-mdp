@@ -6,7 +6,8 @@ const SelectFile = ( { currentFile, openModal} ) => {
     return (
         <div className={`selectFile ${currentFile ? 'loaded' : ''}`} onClick={openModal}> 
             <ImageIcon/>
-            {currentFile ? <p>{currentFile.name}</p> : <p>Seleccionar archivo</p>}                     
+            {currentFile ? <p>{currentFile.name}</p> : <p>Seleccionar archivo</p>}
+            <span></span>                  
         </div>
     )
 }

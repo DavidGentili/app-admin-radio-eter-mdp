@@ -557,7 +557,25 @@ form .labelInputFile .icon{
     transition: .6s;
     cursor: pointer;
     text-overflow: ellipsis;
+    position: relative;
 }
+
+.selectFile span{
+    height: 100%;
+    width: 0%;
+    background-color: var(--lightBlue);
+    position: absolute;
+    opacity: .5;
+    left: 0;
+    z-index: 1;
+    border-radius: 12px;
+    transition: .6s;
+}
+
+.selectFile:hover span{
+    width: 100%;
+}
+
 
 .selectFile.loaded{
     background-color: var(--successColor);
@@ -565,10 +583,21 @@ form .labelInputFile .icon{
     color: var(--white);
 }
 
+.selectFile.loaded:hover span{
+    width: 0%;
+}
+
 .selectFile .icon{
     width: 36px;
     fill: var(--mediumGrey);
+    z-index: 2;
+    position: relative;
     transition: .6s;
+}
+
+.selectFile p{
+    position: relative;
+    z-index: 2;
 }
 
 .selectFile.loaded .icon{
