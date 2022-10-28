@@ -89,11 +89,13 @@ const MediaPanel = ({ returnFile }) => {
     return(
         <div className='mediaPanel'>
             <NewMediaForm refreshScreen={getFiles} />
-            { !loadingPage &&
-                <div className="mediaContent">
-                    {currentFiles.length > 0 && currentFiles.map(file => <SingleMedia key={file.id} file={file} selectFile={setSelectedFile} deleteEvent={deleteFileEvent} isSelect={selectedFile === file}/>)}
-                </div>   
-            }
+            <div className="mediaContent">
+                {loadingPage ?
+                    <LoadingPage/> :
+                currentFiles.length > 0 && currentFiles.map(file => <SingleMedia key={file.id} file={file} selectFile={setSelectedFile} deleteEvent={deleteFileEvent} isSelect={selectedFile === file}/>)
+                }
+            
+            </div>  
             <div className="paginationControls">
                 <button className='prevControl' onClick={prevPage}> <ChevronIcon/> </button>
                 <p>{currentPage + 1}</p>
