@@ -1,9 +1,6 @@
 import { React, useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
-//Contexts
-import UserContext from '../context/UserContext';
-
 //Components & Pages
 import Nav from '../componets/nav/Nav';
 import Header from '../componets/header/Header'; 
@@ -12,9 +9,12 @@ import MyUser from './myuser/MyUser';
 import AdPage from './adPages/AdPage';
 import HomePage from '../pages/HomePage/HomePage'
 import ErrorPage from '..//pages/errorPage/ErrorPage'
-import LoadingPage from '../componets/LoadingPage';
+import LoadingPage from '../componets/generalComponents/LoadingPage';
 import EmissionPage from './emissionPage/EmissionPage';
 import MediaPage from './mediaPage/MediaPage';
+
+//Contexts
+import UserContext from '../context/UserContext';
 
 //Services
 import { authUser } from '../services/users';

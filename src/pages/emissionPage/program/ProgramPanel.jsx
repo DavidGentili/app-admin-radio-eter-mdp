@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { getPrograms } from '../../../services/programs'
+//Components
 import { ChevronIcon } from '../../../componets/Icons';
-import SingleProgram from '../../../componets/SingleProgram';
-import LoadingPage from '../../../componets/LoadingPage';
+import SingleProgram from '../../../componets/singleComponents/SingleProgram';
+import LoadingPage from '../../../componets/generalComponents/LoadingPage';
+
+//Services
+import { getPrograms } from '../../../services/programs'
+
 
 const ProgramPanel = ({ programs, setPrograms, selectCurrentProgram, sortProgram}) => {
 

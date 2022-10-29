@@ -1,16 +1,17 @@
 import { React, useState, useRef } from 'react'
 
+//Components
+import CustomInput from '../generalComponents/CustomInput'
+import CustomButton from '../generalComponents/CustomButton';
+import ModalContainer from './ModalContainer';
+
 //Hooks
 import useUser from '../../hooks/useUser';
 import useMessage from '../../hooks/useMessage';
 
-//Components
-import CustomInput from '../CustomInput'
-import CustomButton from '../CustomButton';
-import ModalContainer from './ModalContainer';
-
 //Services
 import { updateUser, removeUser } from '../../services/users';
+import useConfirmMessage from '../../hooks/useConfirmMessage';
 
 const getCorrectData = (state, securityLevel, user) => {
     const updateData = {};
@@ -27,6 +28,7 @@ const ModalUpdateUser = ({ closeModal, user, refreshUsers }) => {
     const [loadingPrimaryBtn, setLoadingPrimaryBtn] = useState(false);
     const localUser = useUser();
     const { setMessage } = useMessage();
+    const { setConfirmMessage } = useConfirmMessage();
 
     const refButton = useRef(null)
     const levelSelect = useRef(null)
@@ -52,7 +54,6 @@ const ModalUpdateUser = ({ closeModal, user, refreshUsers }) => {
     }
 
     const handlerRemoveUser = (e) => {
-        e.preventDefault();
         setLoadingDangerBtn(true);
         removeUser(user.id)
         .then((res) => {3
@@ -68,6 +69,13 @@ const ModalUpdateUser = ({ closeModal, user, refreshUsers }) => {
     const handlerChange = (e) => {
         e.preventDefault()
         refButton.current.disabled = (levelSelect.current.value !== user.securityLevel || stateSelect.current.value !== user.state) ? false : true
+    }
+
+    const deleteEvent = () => {
+        setConfirmMessage({
+            text : '¿Esta seguro que desea eliminar el usuario?',
+            callback : handlerRemoveUser,
+        })
     }
 
     return (
@@ -88,7 +96,7 @@ const ModalUpdateUser = ({ closeModal, user, refreshUsers }) => {
                 </select>
                 <div className="btnPanel">
                     {localUser.id !== user.id && 
-                        <CustomButton type='danger' text='Eliminar Usuario' onClickEvent={handlerRemoveUser} loading={loadingDangerBtn} disabled={loadingDangerBtn || loadingPrimaryBtn} />
+                        <CustomButton type='danger' text='Eliminar Usuario' onClickEvent={deleteEvent} loading={loadingDangerBtn} disabled={loadingDangerBtn || loadingPrimaryBtn} />
                     }
                     <button type='submit' className={'primaryBtn ' + (loadingPrimaryBtn ? 'loadingBtn' : '')} ref={refButton} disabled >Actualizar Usuario</button>
                 </div>

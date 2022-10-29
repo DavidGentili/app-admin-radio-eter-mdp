@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 //Components
-import CustomInput from '../../../componets/CustomInput';
+import CustomInput from '../../../componets/generalComponents/CustomInput';
 import { daysValues } from '../../../helpers/daysValue';
-import CustomButton from '../../../componets/CustomButton';
+import CustomButton from '../../../componets/generalComponents/CustomButton';
+import SelectFile from '../../../componets/generalComponents/SelectFile';
+import ModalGetMediaFile from '../../../componets/modals/ModalGetMediaFile';
+
 
 //Services
 import { deleteProgram, updateProgram } from '../../../services/programs';
@@ -12,9 +15,8 @@ import { deleteProgram, updateProgram } from '../../../services/programs';
 //Hooks
 import useMessage from '../../../hooks/useMessage';
 import useModal from '../../../hooks/useModal';
-import SelectFile from '../../../componets/SelectFile';
-import ModalGetMediaFile from '../../../componets/modals/ModalGetMediaFile';
 import useConfirmMessage from '../../../hooks/useConfirmMessage';
+
 
 
 function EditProgramPage({ currentProgram }) {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ImageIcon } from './Icons'
+import { ImageIcon } from '../Icons'
 
 const SelectFile = ( { currentFile, openModal} ) => {
     return (

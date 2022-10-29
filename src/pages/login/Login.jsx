@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom'
 //Components
 import Isotipo from '../../componets/Isotipo'
 import logo from '../../../assets/logo.png'
-import LoadingPage from '../../componets/LoadingPage';
-import CustomInput from '../../componets/CustomInput';
+import LoadingPage from '../../componets/generalComponents/LoadingPage';
+import CustomInput from '../../componets/generalComponents/CustomInput';
 
 //Hooks
 import useMessage from '../../hooks/useMessage';

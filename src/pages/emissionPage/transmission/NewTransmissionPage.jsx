@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import CustomInput from '../../../componets/CustomInput'
-import CustomButton from '../../../componets/CustomButton'
+//Components
+import CustomInput from '../../../componets/generalComponents/CustomInput'
+import CustomButton from '../../../componets/generalComponents/CustomButton'
 
+//Services
 import { createTransmission } from '../../../services/transmissions'
+
+//Hooks
 import useMessage from '../../../hooks/useMessage'
 
 

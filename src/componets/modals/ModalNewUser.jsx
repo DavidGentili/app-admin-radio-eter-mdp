@@ -1,12 +1,12 @@
 import { React, useState } from 'react'
 
+//Components
+import CustomInput from '../generalComponents/CustomInput'
+import CustomButton from '../generalComponents/CustomButton'
+import ModalContainer from './ModalContainer';
+
 //Services
 import { signupUser } from '../../services/users';
-
-//Components
-import CustomInput from '../CustomInput'
-import CustomButton from '../CustomButton'
-import ModalContainer from './ModalContainer';
 
 //Hooks
 import useMessage from '../../hooks/useMessage';

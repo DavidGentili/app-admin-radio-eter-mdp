@@ -1,7 +1,7 @@
 import {React, useState, useEffect } from 'react';
 
 //Componets
-import LoadingPage from '../LoadingPage';
+import LoadingPage from '../generalComponents/LoadingPage';
 import NewMediaForm from '../mediaPanel/NewMediaForm';
 import { ChevronIcon } from '../Icons';
 import SingleMedia from '../../componets/mediaPanel/SingleMedia';
@@ -14,7 +14,7 @@ import useMessage from '../../hooks/useMessage';
 
 //Styles
 import './mediaPanel.css';
-import CustomButton from '../CustomButton';
+import CustomButton from '../generalComponents/CustomButton';
 
 const MediaPanel = ({ returnFile }) => {
 

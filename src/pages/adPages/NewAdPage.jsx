@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 //Components
-import CustomInput from '../../componets/CustomInput'
-import CustomButton from '../../componets/CustomButton'
+import CustomInput from '../../componets/generalComponents/CustomInput'
+import CustomButton from '../../componets/generalComponents/CustomButton'
 import ModalGetMediaFile from '../../componets/modals/ModalGetMediaFile';
+import SelectFile from '../../componets/generalComponents/SelectFile';
 
 //Services
 import { createNewAd } from '../../services/ad';
@@ -12,7 +13,6 @@ import { createNewAd } from '../../services/ad';
 //Hooks
 import useMessage from '../../hooks/useMessage';
 import useModal from '../../hooks/useModal';
-import SelectFile from '../../componets/SelectFile';
 
 
 const NewAdPage = () => {

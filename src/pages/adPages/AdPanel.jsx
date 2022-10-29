@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
-import SingleAd from '../../componets/SingleAd';
+//Components
+import SingleAd from '../../componets/singleComponents/SingleAd';
 import { ChevronIcon } from '../../componets/Icons';
+import LoadingPage from '../../componets/generalComponents/LoadingPage';
+
+//Services
 import { getAds } from '../../services/ad';
-import LoadingPage from '../../componets/LoadingPage';
+
 
 const AdPanel = ({selectAd, ads, sortAd, setAds}) => {
 

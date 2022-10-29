@@ -1,8 +1,8 @@
 import { React, useState } from 'react'
 
 //Components
-import CustomButton from '../CustomButton';
-import CustomInput from '../CustomInput';
+import CustomButton from '../generalComponents/CustomButton';
+import CustomInput from '../generalComponents/CustomInput';
 import { ImageIcon } from '../Icons';
 
 //Services

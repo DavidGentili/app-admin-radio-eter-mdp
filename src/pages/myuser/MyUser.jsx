@@ -1,17 +1,16 @@
 import { React, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-//Hooks
-import useUser from '../../hooks/useUser'
-import useMessage from '../../hooks/useMessage';
-
 //Compontens
-import CustomInput from '../../componets/CustomInput'
-import CustomButton from '../../componets/CustomButton';
-
+import CustomInput from '../../componets/generalComponents/CustomInput'
+import CustomButton from '../../componets/generalComponents/CustomButton';
 
 //Services
 import { changePassword }  from '../../services/users';
+
+//Hooks
+import useUser from '../../hooks/useUser'
+import useMessage from '../../hooks/useMessage';
 
 //Styles
 import './myUser.css'

@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 
 //Components
-import CustomInput from '../../componets/CustomInput';
-import CustomButton from '../../componets/CustomButton';
-import SelectFile from '../../componets/SelectFile';
+import CustomInput from '../../componets/generalComponents/CustomInput';
+import CustomButton from '../../componets/generalComponents/CustomButton';
+import SelectFile from '../../componets/generalComponents/SelectFile';
 import ModalGetMediaFile from '../../componets/modals/ModalGetMediaFile';
 
 //Services

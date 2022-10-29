@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 //Componets
 import Login from './pages/login/Login'
 import PanelPage from './pages/PanelPage';
-import UIMessage from './componets/UIMessage';
+import UIMessage from './componets/generalComponents/UIMessage';
 import ModalConfirm from './componets/modals/ModalConfirm';
 
 //Context

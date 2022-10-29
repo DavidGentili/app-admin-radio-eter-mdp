@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import LoadingPage from '../../../componets/LoadingPage';
-import SingleTransmission from '../../../componets/SingleTransmission';
+//Components
+import LoadingPage from '../../../componets/generalComponents/LoadingPage';
+import SingleTransmission from '../../../componets/singleComponents/SingleTransmission';
 import { ChevronIcon } from '../../../componets/Icons';
+
+//Services
 import { getTransmissions } from '../../../services/transmissions';
 
 

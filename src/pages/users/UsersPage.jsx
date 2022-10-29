@@ -3,9 +3,9 @@ import { React, useState, useEffect, useCallback } from 'react'
 //Components
 import ModalNewUser from '../../componets/modals/ModalNewUser'
 import ModalUpdateUser from '../../componets/modals/ModalUpdateUser';
-import LoadingPage from '../../componets/LoadingPage';
-import SingleUser from '../../componets/SingleUser';
-import CustomButton from '../../componets/CustomButton'
+import LoadingPage from '../../componets/generalComponents/LoadingPage';
+import SingleUser from '../../componets/singleComponents/SingleUser';
+import CustomButton from '../../componets/generalComponents/CustomButton'
 import { ChevronIcon } from '../../componets/Icons'
 
 //Services
