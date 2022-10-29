@@ -64,8 +64,8 @@ const MediaPanel = ({ returnFile }) => {
         setCurrentFiles(mediaFiles.slice(init,final))
     }, [mediaFiles, currentPage])
 
-    const deleteFileEvent = (id) => {
-        return (e) => {
+    const deleteFileEvent = (e, id) => {
+        return () => {
             e.preventDefault();
             deleteFile(id);
         }

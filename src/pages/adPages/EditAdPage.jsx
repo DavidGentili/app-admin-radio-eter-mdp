@@ -13,6 +13,7 @@ import { deleteAd, updateAd } from '../../services/ad';
 //Hooks
 import useMessage from '../../hooks/useMessage';
 import useModal from '../../hooks/useModal';
+import useConfirmMessage from '../../hooks/useConfirmMessage';
 
 
 const EditAdPage = ( { currentAd } ) => {
@@ -24,6 +25,7 @@ const EditAdPage = ( { currentAd } ) => {
     const { urlImage, altText, name, link, type} = currentAd ? currentAd : {};
     const { setMessage } = useMessage();
     const { openModal, openModalEvent, closeModalEvent } = useModal(false);
+    const { setConfirmMessage } = useConfirmMessage();
     
     useEffect(() => {
         if(!currentAd)
@@ -47,7 +49,6 @@ const EditAdPage = ( { currentAd } ) => {
     }
 
     const removeHandler = (e) => {
-        e.preventDefault();
         setLoadingDangerBtn(true);
         deleteAd(currentAd.id)
         .then(({data}) => {
@@ -58,6 +59,13 @@ const EditAdPage = ( { currentAd } ) => {
         .catch(e => {
             setLoadingDangerBtn(false);
             setMessage({ message : e , type : 'error' });
+        })
+    }
+
+    const deleteEvent = () => {
+        setConfirmMessage({
+            text: '¿Esta seguro que desea eliminar la publicidad?',
+            callback : removeHandler,
         })
     }
 
@@ -88,7 +96,7 @@ const EditAdPage = ( { currentAd } ) => {
                     <SelectFile openModal={openModalEvent} currentFile={currentFile} />
                     <CustomButton text='Actualizar publicidad' buttonType='submit' type='primary' loading={loadingPrimaryBtn} disabled={loadingDangerBtn || loadingPrimaryBtn}/>
                 </form>
-                <CustomButton text='Eliminar publicidad' type='danger' loading={loadingDangerBtn} disabled={loadingDangerBtn || loadingPrimaryBtn} onClickEvent={removeHandler} />
+                <CustomButton text='Eliminar publicidad' type='danger' loading={loadingDangerBtn} disabled={loadingDangerBtn || loadingPrimaryBtn} onClickEvent={deleteEvent} />
             </div>
             {openModal && <ModalGetMediaFile closeModal={closeModalEvent} returnFile={selectCurrentFile}/>}
         </>

@@ -1,18 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
-
-import './mediaPage.css';
-
+//Componets
 import MediaPanel from '../../componets/mediaPanel/MediaPanel';
 
+//Styles
+import './mediaPage.css';
 
 const MediaPage = () => {
+
 
     return (
 
         <main className="mediaPage">
             <MediaPanel/>
         </main>
+
 
     )
 }

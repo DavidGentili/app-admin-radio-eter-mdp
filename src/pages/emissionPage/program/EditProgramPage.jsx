@@ -14,6 +14,7 @@ import useMessage from '../../../hooks/useMessage';
 import useModal from '../../../hooks/useModal';
 import SelectFile from '../../../componets/SelectFile';
 import ModalGetMediaFile from '../../../componets/modals/ModalGetMediaFile';
+import useConfirmMessage from '../../../hooks/useConfirmMessage';
 
 
 function EditProgramPage({ currentProgram }) {
@@ -28,6 +29,7 @@ function EditProgramPage({ currentProgram }) {
     const navigate = useNavigate();
     const { setMessage } = useMessage();
     const { openModal, openModalEvent, closeModalEvent } = useModal(false);
+    const { setConfirmMessage } = useConfirmMessage();
 
     const updateHandler = (e) => {
         e.preventDefault();
@@ -61,6 +63,13 @@ function EditProgramPage({ currentProgram }) {
         setCurrentFile(file);
         closeModalEvent()
     }
+
+    const deleteEvent = (e) => {
+        setConfirmMessage({
+            text : '¿Esta seguro que desea eliminar el programa?',
+            callback : deleteHandler,
+        })
+    }
     
     return (
         <>
@@ -88,7 +97,7 @@ function EditProgramPage({ currentProgram }) {
                     <CustomButton type='primary' buttonType='submit' disabled={loadingDangerBtn || loadingPrimaryBtn} loading={loadingPrimaryBtn} >Actualizar programa</CustomButton>
 
                 </form>
-                <CustomButton onClickEvent={deleteHandler} type='danger' loading={loadingDangerBtn} disabled={loadingPrimaryBtn || loadingDangerBtn} >Eliminar programa</CustomButton>
+                <CustomButton onClickEvent={deleteEvent} type='danger' loading={loadingDangerBtn} disabled={loadingPrimaryBtn || loadingDangerBtn} >Eliminar programa</CustomButton>
             </div>
             { openModal && <ModalGetMediaFile closeModal={closeModalEvent} returnFile={returnFile} />}
         </>
