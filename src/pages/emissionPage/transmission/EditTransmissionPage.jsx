@@ -40,7 +40,7 @@ const EditTransmissionPage = ({ currentTransmission }) => {
         updateTransmission(form, currentTransmission)
         .then(response => {
             setLoadingPrimaryBtn(false)
-            navigate('/programas/transmisiones')
+            navigate('/emisiones/transmisiones')
         })
         .catch(e => {
             setMessage({ message: e, type : 'error' });
@@ -53,7 +53,7 @@ const EditTransmissionPage = ({ currentTransmission }) => {
         deleteTransmission(currentTransmission.id)
         .then(response => {
             setLoadingDangerBtn(false);
-            navigate('/programas/transmisiones');
+            navigate('/emisiones/transmisiones');
         })
         .catch(e => {
             setMessage({ message: e, type : 'error' });

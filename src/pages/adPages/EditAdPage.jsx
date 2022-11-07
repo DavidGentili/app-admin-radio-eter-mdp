@@ -87,7 +87,7 @@ const EditAdPage = ( { currentAd } ) => {
                     <CustomInput focus name='name' value={name} placeholder='Nombre' />
                     <CustomInput name='link' value={link} placeholder='Link' />
                     <label htmlFor="altText" className='label'>Texto Alternativo <span>opcional</span></label>
-                    <textarea name='altText' id='altText' placeholder='Texto Alternativo'/>
+                    <textarea name='altText' id='altText' placeholder='Texto Alternativo' defaultValue={altText}/>
                     <label htmlFor="type" className='label'>Tipo</label>
                     <select name="type" id="type" defaultValue={type}>
                         <option value="standard">Estandar (privada)</option>

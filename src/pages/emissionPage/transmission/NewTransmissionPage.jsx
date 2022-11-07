@@ -27,7 +27,7 @@ const NewTransmissionPage = () => {
         createTransmission(form)
         .then((response) => {
             setLoadingButton(false);
-            navigate('/programas/transmisiones');
+            navigate('/emisiones/transmisiones');
         })
         .catch(e => {
             setMessage({ message: e, type : 'error' });

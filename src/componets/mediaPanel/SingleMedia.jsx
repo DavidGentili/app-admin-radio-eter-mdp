@@ -14,7 +14,6 @@ const SingleMedia = ({ file, selectFile, isSelect, deleteEvent}) => {
     }
 
     const deleteFileEvent = (e) => {
-        console.log('Hi')
         setConfirmMessage({
             text : 'esta seguro que desea eliminar el archivo',
             callback: deleteEvent(e, file.id),
@@ -25,6 +24,7 @@ const SingleMedia = ({ file, selectFile, isSelect, deleteEvent}) => {
         <article className={`singleMedia single ${isSelect ? 'select' : ''}`} onClick={selectEvent} >
             <img src={url} alt={name} loading='lazy'/>
             <h6> { name } </h6>
+            <p>{file.id}</p>
             <button onClick={deleteFileEvent}> <TrashIcon/> </button>
         </article>
     )

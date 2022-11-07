@@ -41,7 +41,7 @@ const UsersPage = () => {
             setLoadingPage(true);
         getUsers()
         .then((data) => {
-            setUsers(data.users);
+            setUsers(data);
             setLoadingPage(false)
         })
     }

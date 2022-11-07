@@ -52,7 +52,7 @@ function App() {
                     <Route path='/*' element={<PanelPage />} />
                 </Routes>
                 { confirmMessage && confirmMessage.callback && <ModalConfirm text={confirmMessage.text} callback={confirmMessage.callback} clearCallback={clearCallBack} />}
-                { message.message.length > 0 && <UIMessage text={message.message} type={message.type} cleanMessage={cleanMessage}/>}
+                { message.message && message.message.length > 0 && <UIMessage text={message.message} type={message.type} cleanMessage={cleanMessage}/>}
             </ConfirmMessageContext.Provider>
             </MessageContext.Provider>
         </div>
