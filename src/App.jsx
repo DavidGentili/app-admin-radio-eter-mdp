@@ -25,10 +25,6 @@ const initialMessage = {
     type : 'normal',
 }
 
-const fun = () => {
-    console.log('hola');
-}
-
 function App() {
 
     const [message, setMessage] = useState(initialMessage)
