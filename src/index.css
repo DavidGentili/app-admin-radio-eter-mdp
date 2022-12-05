@@ -26,10 +26,11 @@ Breakpoints:
     --lightGrey: #F9F9FA;
     --errorColor: #DC3545;
     --mediumGrey: #707070;
+    --successColor : #28A745; 
 }
 
 .container{
-    max-width: 1280px;
+    max-width: 1536px;
     margin: auto;
     position: relative;
     z-index: 2;
@@ -38,7 +39,8 @@ Breakpoints:
 main{
     padding: 36px 7%;
     width: 100%;
-    overflow-y: scroll;
+    margin: 0 auto;
+    max-width: 1280px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -172,31 +174,59 @@ button:disabled{
 }
 /*-------------------MESSAGES----------------------*/
 
-.messageSuccess{
-    background-color: #28A745A0;
+.msg{
     padding: 16px 36px;
     margin: 16px auto;
+    max-width: 780px;
     width: 100%;
+    height: auto;
     border-radius: 12px;
     text-align: center;
+    position: absolute;
+    z-index: 10;
+    top: 16px;
+    left: 0;
+    right: 0;
+    transition: .6s;
+    animation: showElementTop .6s;
+}
+
+.msg.hidden{
+    opacity: 0;
+}
+
+.msg button{
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    background: none;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px;
+    opacity: .7;
+    transition: .6s;
+}
+
+.msg button:hover{
+    opacity: 1;
+}
+
+.messageSuccess{
+    background-color: #28A745A0;
+
 }
 
 .messageError{
     background-color: #DC3545A0;
-    padding: 16px 36px;
-    margin: 16px auto;
-    width: 100%;
-    border-radius: 12px;
-    text-align: center;
 }
 
 .messageWarning{
     background-color: #FFC107A0 ;
-    padding: 16px 36px;
-    margin: 16px auto;
-    width: 100%;
-    border-radius: 12px;
-    text-align: center;
+}
+
+.messageNormal{
+    background-color: #707070A0;
 }
 
 /*-------------------LOADING----------------------*/
@@ -245,7 +275,7 @@ button:disabled{
 }
 
 .modalWindow{
-    width: 640px;
+    width: 998px;
     height: auto;
     max-height: 95vh;
     padding: 48px 64px;
@@ -315,6 +345,56 @@ button:disabled{
     justify-content: space-between;
     width: 100%;
 }
+
+.modalConfirm{
+    max-width: 512px;
+    overflow: hidden;
+}
+
+.modalConfirm .confirmContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.modalConfirm .confirmContainer p{
+    width: 100%;
+    margin-bottom: 36px;
+}
+
+.modalConfirm .confirmContainer button{
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    transition: .6s;
+}
+
+.modalConfirm .confirmContainer button.cancel{
+    background-color: var(--errorColor);
+    border: 2px solid var(--errorColor);
+}
+
+.modalConfirm .confirmContainer button.cancel:hover{
+    color: var(--errorColor);
+}
+
+
+.modalConfirm .confirmContainer button.confirm{
+    background-color: var(--successColor);
+    border: 2px solid var(--successColor);
+}
+
+.modalConfirm .confirmContainer button.confirm:hover{
+    color: var(--successColor);
+}
+
+.modalConfirm .confirmContainer button:hover{
+    background: none;
+}
+
+
 
 /*-------------------INPUT----------------------*/
 .customInput {
@@ -459,31 +539,51 @@ form input[type=file] button{
 }
 
 form .labelInputFile{
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--lightBlack);
-    width: 100%;
-    height: 160px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     text-align: center;
     align-items: center;
-    flex-direction: column;
-    gap: 12px;
-    border: 1px solid var(--mediumGrey);
+    height: 100%;
+    min-height: 48px;
+    min-width: 256px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--lightBlack);
+    fill: var(--lightBlack);
+    cursor: pointer;
     border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 16px;
-    background-color: var(--lightGrey); 
+    border: 1px solid var(--lightBlack);
     opacity: 1;
     overflow: hidden;
+    padding: 16px 8px;
+    opacity: .6;
     transition: .6s;
 }
 
+form .labelInputFile.loaded{
+    background-color: var(--successColor);
+    color: var(--white);
+    fill: var(--white);
+    border: 1px solid var(--successColor);
+    opacity: 1;
+}
+
+form .labelInputFile:hover{
+    opacity: .8;
+}
+
+form .labelInputFile.loaded:hover{
+    opacity: 1;
+}
+
+form .labelInputFile input{
+    display: none;
+}
+
 form .labelInputFile .icon{
-    width: 36px;
+    width: 32px;
+    cursor: pointer;
     height: auto;
-    opacity: .7;
 }
 
 .labelInputFile.hidden{
@@ -493,6 +593,70 @@ form .labelInputFile .icon{
     padding: 0;
     border: 0px;
     transition: .6s;
+}
+
+/*-------------------SELECT FILE----------------------*/
+.selectFile{
+    width: 256px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid var(--mediumGrey);
+    color: var(--mediumGrey);
+    padding: 12px;
+    border-radius: 12px;
+    transition: .6s;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    position: relative;
+}
+
+.selectFile span{
+    height: 100%;
+    width: 0%;
+    background-color: var(--lightBlue);
+    position: absolute;
+    opacity: .5;
+    left: 0;
+    z-index: 1;
+    border-radius: 12px;
+    transition: .5s;
+}
+
+.selectFile:hover span,
+.selectFile:active span
+.selectFile:focus span{
+    width: 100%;
+}
+
+
+.selectFile.loaded{
+    background-color: var(--successColor);
+    border: 1px solid var(--successColor);
+    color: var(--white);
+}
+
+.selectFile.loaded:hover span,
+.selectFile.loaded:active span
+.selectFile.loaded:focus span{
+    width: 0%;
+}
+
+.selectFile .icon{
+    width: 36px;
+    fill: var(--mediumGrey);
+    z-index: 2;
+    position: relative;
+    transition: .6s;
+}
+
+.selectFile p{
+    position: relative;
+    z-index: 2;
+}
+
+.selectFile.loaded .icon{
+    fill: var(--white);
 }
 
 /*-------------------SCROLLBAR----------------------*/
@@ -583,6 +747,17 @@ form .labelInputFile .icon{
 @keyframes showElement {
     from{
         transform: translateY(30%);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes showElementTop {
+    from{
+        transform: translateY(-30%);
         opacity: 0;
     }
     to{

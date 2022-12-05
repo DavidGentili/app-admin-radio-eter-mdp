@@ -1,13 +1,20 @@
 import { React, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-import useUser from '../../hooks/useUser'
+//Compontens
+import CustomInput from '../../componets/generalComponents/CustomInput'
+import CustomButton from '../../componets/generalComponents/CustomButton';
 
+//Services
 import { changePassword }  from '../../services/users';
-import CustomInput from '../../componets/CustomInput'
-import CustomButton from '../../componets/CustomButton';
 
+//Hooks
+import useUser from '../../hooks/useUser'
+import useMessage from '../../hooks/useMessage';
+
+//Styles
 import './myUser.css'
+
 
 const MyUser = () => {
 
@@ -16,20 +23,21 @@ const MyUser = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const localUser = useUser();
     const navigate = useNavigate();
+    const { setMessage } = useMessage();
 
     const handlerChangePassword = async (e) => {
         e.preventDefault();
         setLoadingButton(true);
-        setMessageError('');
         try{
             const {currentPassword, newPassword, confirmPassword} = Object.fromEntries(new FormData(e.target));
             if(newPassword !== confirmPassword)
                 throw 'Las contraseñas no coinciden'
             const data = await changePassword(currentPassword, newPassword);
-            setSuccessMessage('La contraseña se ha cambiado con exito')
+            setMessage({ message: 'La contraseña se ha cambiado con exito', type : 'success' });
+
             
         }catch(e){
-            setMessageError(e);
+            setMessage({ message: e, type : 'error' });
         }finally{
             setLoadingButton(false);
         }
@@ -46,7 +54,6 @@ const MyUser = () => {
 
     return (
         <main className='myUserMain'>
-            {successMessage && <p className='messageSuccess'>{successMessage}</p>}
             <section className='myUserInformation'>
                 <h3>Datos</h3>
                 <h4>Usuario: <span>{localUser.name}</span></h4>
@@ -63,7 +70,6 @@ const MyUser = () => {
                     <CustomInput type="password" name='confirmPassword' placeholder='Confirmar contraseña'/>
                     <CustomButton text='Cambiar contraseña' loading={loadingButton} buttonType='submit' type='secondary' disabled={loadingButton} />
                 </form>
-                {messageError && <p className='messageError'>{messageError}</p>}
             </section>
             <CustomButton text='Cerrar sesion' onClickEvent={handlerLogout} type='danger' />
         </main>

@@ -1,19 +1,29 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import CustomInput from '../../../componets/CustomInput'
-import CustomButton from '../../../componets/CustomButton'
 
+//Components
+import CustomInput from '../../../componets/generalComponents/CustomInput'
+import CustomButton from '../../../componets/generalComponents/CustomButton'
+
+//Helpers
 import { getFormatTime } from '../../../helpers/format'
+
+//Services
 import { updateTransmission, deleteTransmission } from '../../../services/transmissions'
+
+//Hooks
+import useMessage from '../../../hooks/useMessage'
+import useConfirmMessage from '../../../hooks/useConfirmMessage'
 
 
 const EditTransmissionPage = ({ currentTransmission }) => {
 
     const [loadingPrimaryBtn, setLoadingPrimaryBtn] = useState(false);
     const [loadingDangerBtn, setLoadingDangerBtn] = useState(false);
-    const [messageError, setMessageError] = useState('');
     const navigate = useNavigate();
+    const { setMessage } = useMessage();
+    const { setConfirmMessage } = useConfirmMessage();
 
     if(!currentTransmission)
         return <></>
@@ -30,25 +40,31 @@ const EditTransmissionPage = ({ currentTransmission }) => {
         updateTransmission(form, currentTransmission)
         .then(response => {
             setLoadingPrimaryBtn(false)
-            navigate('/programas/transmisiones')
+            navigate('/emisiones/transmisiones')
         })
         .catch(e => {
-            setMessageError(e)
+            setMessage({ message: e, type : 'error' });
             setLoadingPrimaryBtn(false)
         })
     }
 
-    const handlerDelete = (e) => {
-        e.preventDefault();
+    const handlerDelete = () => {
         setLoadingDangerBtn(true);
         deleteTransmission(currentTransmission.id)
         .then(response => {
             setLoadingDangerBtn(false);
-            navigate('/programas/transmisiones');
+            navigate('/emisiones/transmisiones');
         })
         .catch(e => {
-            setMessageError(e)
+            setMessage({ message: e, type : 'error' });
             setLoadingDangerBtn(false)
+        })
+    }
+
+    const deleteEvent = () => {
+        setConfirmMessage({
+            text : '¿Esta seguro que desea eliminar la transmision?',
+            callback : handlerDelete
         })
     }
 
@@ -68,9 +84,7 @@ const EditTransmissionPage = ({ currentTransmission }) => {
 
             <CustomButton text='Actualizar transmision' type='primary'  buttonType='submit' loading={loadingPrimaryBtn} disabled={loadingPrimaryBtn || loadingDangerBtn} />   
             
-            <CustomButton onClickEvent={handlerDelete} text='Eliminar transmision' type='danger' loading={loadingDangerBtn} disabled={loadingPrimaryBtn || loadingDangerBtn} />   
-
-            {messageError && <p className='messageError'>{messageError}</p>}
+            <CustomButton onClickEvent={deleteEvent} text='Eliminar transmision' type='danger' loading={loadingDangerBtn} disabled={loadingPrimaryBtn || loadingDangerBtn} />   
         </form>
     )
 }

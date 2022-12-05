@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {Routes, Route, useNavigate } from 'react-router-dom'
 
+//Components and pages
 import ProgramPanel from './ProgramPanel'
 import NewProgramPage from './NewProgramPage'
 import EditProgramPage from './EditProgramPage'

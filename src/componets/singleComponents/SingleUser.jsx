@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { EditIcon } from './Icons';
+import { EditIcon } from '../Icons';
 
 
 const SingleUser = ({ user , selectUser}) => {

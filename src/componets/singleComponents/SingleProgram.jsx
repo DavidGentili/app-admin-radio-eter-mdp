@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { EditIcon } from './Icons';
+import { EditIcon } from '../Icons';
 
 const arrayOfDays = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
 

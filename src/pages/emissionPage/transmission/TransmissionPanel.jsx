@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import LoadingPage from '../../../componets/LoadingPage';
-import SingleTransmission from '../../../componets/SingleTransmission';
+//Components
+import LoadingPage from '../../../componets/generalComponents/LoadingPage';
+import SingleTransmission from '../../../componets/singleComponents/SingleTransmission';
 import { ChevronIcon } from '../../../componets/Icons';
+
+//Services
 import { getTransmissions } from '../../../services/transmissions';
 
 
@@ -20,6 +23,12 @@ const TransmissionPanel = ({transmissions, setTransmission, sortTransmission, se
         })
     }, [])
 
+    const sortEvent = (value) => {
+        return (e) => {
+            sortTransmission(value);
+        }
+    } 
+
     if(loadingPanel)
         return <LoadingPage />
 
@@ -27,10 +36,10 @@ const TransmissionPanel = ({transmissions, setTransmission, sortTransmission, se
         <>
         <div className="transmissionPanel">
             <div className="headerPanel">
-                    <button onClick={(e) => {sortTransmission('name')}}>Nombre <ChevronIcon/> </button>
-                    <button onClick={(e) => {sortTransmission('active')}}>Estado <ChevronIcon/> </button>
-                    <button onClick={(e) => {sortTransmission('startTransmission')}}>Inicio <ChevronIcon/> </button>
-                    <button onClick={(e) => {sortTransmission('finishTransmission')}}>Fin <ChevronIcon/> </button>
+                    <button onClick={sortEvent('name')}>Nombre <ChevronIcon/> </button>
+                    <button onClick={sortEvent('active')}>Estado <ChevronIcon/> </button>
+                    <button onClick={sortEvent('startTransmission')}>Inicio <ChevronIcon/> </button>
+                    <button onClick={sortEvent('finishTransmission')}>Fin <ChevronIcon/> </button>
                     <p>Acciones</p>
                 </div>
             { transmissions.length > 0 &&

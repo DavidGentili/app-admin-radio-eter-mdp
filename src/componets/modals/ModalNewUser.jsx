@@ -1,17 +1,20 @@
 import { React, useState } from 'react'
 
+//Components
+import CustomInput from '../generalComponents/CustomInput'
+import CustomButton from '../generalComponents/CustomButton'
+import ModalContainer from './ModalContainer';
+
+//Services
 import { signupUser } from '../../services/users';
-import CustomInput from '../CustomInput'
-import CustomButton from '../CustomButton'
 
-import { CloseIcon } from '../Icons';
-
-
+//Hooks
+import useMessage from '../../hooks/useMessage';
 
 const ModalNewUser = ({ closeModal, refreshUsers }) => {
 
-    const [messageError, setMessageError] = useState('');
     const [loadingButton, setLoadingButton] = useState(false);
+    const { setMessage } = useMessage();
 
     const handlerNewUser = (e) => {
         e.preventDefault();
@@ -24,37 +27,27 @@ const ModalNewUser = ({ closeModal, refreshUsers }) => {
             closeModal();
         })
         .catch((e) => {
-            setMessageError(e);
+            setMessage({ message: e, type: 'error'});
             setLoadingButton(false)
         }) 
     }
 
     return (
-        <section className='modalContainer'>
-            <div className='modalWindow'>
-                
-                <div className="headerModal">
-                    <h4>Nuevo Usuario</h4>
-                    <button onClick={closeModal}> <CloseIcon /> </button>
-                </div>
+        <ModalContainer title={'Nuevo usuario'} closeModal={closeModal}>
+            <form onSubmit={handlerNewUser}>
 
-                <form onSubmit={handlerNewUser}>
+            <CustomInput type="text" name="name" placeholder="Nombre de usuario" focus={true}/>
+            <CustomInput type="mail" name="email" placeholder="Mail" />
+            <label htmlFor="securityLevel" className='label'>Nivel de seguridad</label>
+            <select name="securityLevel" id="securityLevel">
+                <option value="master">Master</option>
+                <option value="admin">Admin</option>
+                <option value="editor">Editor</option>
+            </select>
 
-                    <CustomInput type="text" name="name" placeholder="Nombre de usuario" focus={true}/>
-                    <CustomInput type="mail" name="email" placeholder="Mail" />
-                    <label htmlFor="securityLevel" className='label'>Nivel de seguridad</label>
-                    <select name="securityLevel" id="securityLevel">
-                        <option value="master">Master</option>
-                        <option value="admin">Admin</option>
-                        <option value="editor">Editor</option>
-                    </select>
-                    
-                    <CustomButton text='Agregar Usuario' type='primary' buttonType='submit' loading={loadingButton} disabled={loadingButton} />
-                </form>
-                {messageError && <p className='messageError'>{messageError}</p>}
-
-            </div>
-        </section>
+            <CustomButton text='Agregar Usuario' type='primary' buttonType='submit' loading={loadingButton} disabled={loadingButton} />
+            </form>
+        </ModalContainer>
     )
 }
 

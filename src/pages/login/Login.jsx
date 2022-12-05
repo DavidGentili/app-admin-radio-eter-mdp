@@ -1,21 +1,28 @@
 import { React, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
+//Components
 import Isotipo from '../../componets/Isotipo'
 import logo from '../../../assets/logo.png'
-import LoadingPage from '../../componets/LoadingPage';
-import CustomInput from '../../componets/CustomInput';
+import LoadingPage from '../../componets/generalComponents/LoadingPage';
+import CustomInput from '../../componets/generalComponents/CustomInput';
 
+//Hooks
+import useMessage from '../../hooks/useMessage';
+
+//Services
 import { loginUser, authUser } from '../../services/users';
 
+//Styles
 import './login.css'
+
 
 const Login = () => {
 
-    const [messageError, setMessageError] = useState(null);
     const [loadingButton, setLoadingButton] = useState(false);
     const [loadingPage, setLoadingPage] = useState(true);
     const navigate = useNavigate();
+    const { setMessage } = useMessage();
 
     useEffect(() => {
         authUser()
@@ -30,7 +37,6 @@ const Login = () => {
     const handlerSubmit = (e) => {
         e.preventDefault();
         const {email, password} = Object.fromEntries(new FormData(e.target));
-        setMessageError(null);
         setLoadingButton(true);
         loginUser({email, password})
         .then((token) => {
@@ -38,7 +44,7 @@ const Login = () => {
             navigate('/')
         })
         .catch((e) => {
-            setMessageError(e);
+            setMessage({ message: e, type : 'error' });
             setLoadingButton(false)
         })
     }
@@ -55,7 +61,6 @@ const Login = () => {
                     <CustomInput placeholder="Contraseña" type="password" name="password"/>
                     <button type='submit' className={`primaryBtn${loadingButton ? ' loadingBtn' : ''}`} disabled={loadingButton} >Login</button>
                 </form>
-                {messageError && <p className='messageError'>{messageError}</p>}
             </div>
             }
         </>

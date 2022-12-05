@@ -1,10 +1,13 @@
 import React from 'react'
 import { NavLink, Routes, Route, Link } from 'react-router-dom'
 
-import './emissionPage.css'
-
+//Components and pages
 import ProgramPage from './program/ProgramPage'
 import TransmissionPage from './transmission/TransmissionPage'
+
+//Styles
+import './emissionPage.css'
+
 
 const EmissionPage = () => {
     return (

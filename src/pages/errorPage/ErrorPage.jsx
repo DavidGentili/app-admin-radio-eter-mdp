@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
- 
+
+//Assets
 import errorPageImg from '../../../assets/error-page-img.png'
 
+//Styles
 import './errorPage.css'
 
 const ErrorPage = (props) => {

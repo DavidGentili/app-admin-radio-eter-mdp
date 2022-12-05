@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
+//Components and Pages
 import TransmissionPanel from './TransmissionPanel';
 import NewTransmissionPage from './NewTransmissionPage';
 import EditTransmissionPage from './EditTransmissionPage';
