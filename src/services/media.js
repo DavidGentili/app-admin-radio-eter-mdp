@@ -1,9 +1,31 @@
 import { instance, getHeaders } from './config';
 
+
+const getMediaWithDate = (media) =>{
+    return {
+        ...media,
+        createdAt : media.createdAt ? new Date(media.createdAt) : undefined, 
+    }
+}
+
+const sortByDate = (a, b) => {
+    if(!a.createdAt)
+        return 1;
+    if(!b.createdAt)
+        return -1;
+    return b.createdAt - a.createdAt;
+}
+
+
 export async function getMediaFiles(){
     try{
         const { data } = await instance.get('/media', { headers : getHeaders()});
-        return data;
+        if(!Array.isArray(data))
+            return data;
+
+        const dataArray = data.map(media => getMediaWithDate(media));
+        dataArray.sort(sortByDate);
+        return dataArray; 
     } catch(e){
         throw e.response || e;
     }
