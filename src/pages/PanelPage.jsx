@@ -61,7 +61,7 @@ const PanelPage = () => {
                 <Header userName={user ? user.name : 'Mi usuario'} location={'Usuarios'} />
                 
                 <Routes >
-                    <Route path='usuarios' element={<UsersPage />} />
+                    <Route path='usuarios/*' element={<UsersPage />} />
                     <Route path='my-user' element={ <MyUser/> } />
                     <Route path='publicidad/*' element={ <AdPage /> } />
                     <Route path='' element={<HomePage menuOptions={ user ? filterOptions(menuOptions,user) : []}/>} />
