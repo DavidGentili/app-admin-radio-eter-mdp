@@ -97,7 +97,16 @@
     width: 100%;
 }
 
-
 .usersMain form button{
     margin-left: auto;
+}
+
+.usersMain form .btnPanel{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.usersMain form .btnPanel button{
+    margin: 0;
 }

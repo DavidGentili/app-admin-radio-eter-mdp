@@ -59,7 +59,7 @@ const UsersPage = () => {
                 <Routes>
                     <Route path='' element={ <UserPanel {...{ users, selectUser, setUsers }}/> } />
                     <Route path='nuevo' element={ <NewUserPage {...{ refreshUsers }} /> } />
-                    <Route path='editar' element={ <UpdateUserPage {...{ selectedUser, refreshUsers }} /> } />
+                    <Route path='editar' element={ <UpdateUserPage {...{ user: selectedUser, refreshUsers }} /> } />
                     <Route path='*' element={ <ErrorPage/> } />
                 </Routes>
             </main>
