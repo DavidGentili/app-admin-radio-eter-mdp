@@ -25,7 +25,7 @@ const MediaPanel = ({ returnFile }) => {
     const [currentPage, setCurrentPage] = useState(0);
     const [loadingPage, setLoadingPage] = useState(false);
     const [selectedFile, setSelectedFile] = useState(undefined);
-    const { setMessage } = useMessage();
+    const setMessage = useMessage();
 
 
     const getFiles = () => {

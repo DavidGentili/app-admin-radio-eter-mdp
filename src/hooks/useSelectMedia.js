@@ -2,7 +2,8 @@ import useModal from "./useModal";
 
 
 export default () => {
-    return (callback) => {
-        useModal({ type : 'selectMedia', callback });
+    const setModal = useModal();
+    return ({ callback }) => {
+        setModal({ type : 'selectMedia', callback });
     }
 }

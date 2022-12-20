@@ -4,11 +4,17 @@ import ModalContainer from './ModalContainer'
 import MediaPanel from '../mediaPanel/MediaPanel';
 
 const ModalGetMediaFile = ({ closeModal, callback }) => {
-  return (
-    <ModalContainer title='Agregar Multimedia' closeModal={closeModal}>
-        <MediaPanel returnFile={callback}/>
-    </ModalContainer>
-  )
+
+    const callbackEvent = (file) => {
+        callback(file);
+        closeModal();
+    }
+
+    return (
+        <ModalContainer title='Agregar Multimedia' closeModal={closeModal}>
+            <MediaPanel returnFile={callbackEvent}/>
+        </ModalContainer>
+    )
 }
 
 export default ModalGetMediaFile
