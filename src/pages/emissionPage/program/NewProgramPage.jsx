@@ -23,7 +23,7 @@ const NewProgramPage = () => {
     const [currentFile, setCurrentFile] = useState(null);
     const { openModal, openModalEvent, closeModalEvent } = useModal();
     const navigate = useNavigate();
-    const { setMessage } = useMessage();
+    const setMessage = useMessage();
 
 
     const submitHandler = (e) => {

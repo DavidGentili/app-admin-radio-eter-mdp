@@ -25,8 +25,8 @@ const UpdateUser = ({ refreshUsers, user, }) => {
     const [loadingPrimaryBtn, setLoadingPrimaryBtn] = useState(false);
     const navigate = useNavigate();
     const localUser = useUser();
-    const { setMessage } = useMessage();
-    const { setConfirmMessage } = useConfirmMessage();
+    const setMessage = useMessage();
+    const setConfirmMessage = useConfirmMessage();
 
     const refButton = useRef(null)
     const levelSelect = useRef(null)

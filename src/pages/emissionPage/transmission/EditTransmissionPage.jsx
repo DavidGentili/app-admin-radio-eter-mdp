@@ -22,7 +22,7 @@ const EditTransmissionPage = ({ currentTransmission }) => {
     const [loadingPrimaryBtn, setLoadingPrimaryBtn] = useState(false);
     const [loadingDangerBtn, setLoadingDangerBtn] = useState(false);
     const navigate = useNavigate();
-    const { setMessage } = useMessage();
+    const setMessage = useMessage();
     const { setConfirmMessage } = useConfirmMessage();
 
     if(!currentTransmission)

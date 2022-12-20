@@ -23,7 +23,7 @@ const EditAdPage = ( { currentAd } ) => {
     const [loadingDangerBtn, setLoadingDangerBtn] = useState(false);
     const [currentFile, setCurrentFile] = useState(null);
     const { urlImage, altText, name, link, type} = currentAd ? currentAd : {};
-    const { setMessage } = useMessage();
+    const setMessage = useMessage();
     const { openModal, openModalEvent, closeModalEvent } = useModal(false);
     const { setConfirmMessage } = useConfirmMessage();
     

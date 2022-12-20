@@ -23,7 +23,7 @@ const MyUser = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const localUser = useUser();
     const navigate = useNavigate();
-    const { setMessage } = useMessage();
+    const setMessage = useMessage();
 
     const handlerChangePassword = async (e) => {
         e.preventDefault();

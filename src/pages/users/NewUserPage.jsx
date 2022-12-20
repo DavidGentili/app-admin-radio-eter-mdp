@@ -14,7 +14,7 @@ import useMessage from '../../hooks/useMessage';
 const newUserPage = ({ refreshUsers }) => {
 
     const [loadingButton, setLoadingButton] = useState(false);
-    const { setMessage } = useMessage();
+    const setMessage = useMessage();
     const navigate = useNavigate();
 
     const handlerNewUser = (e) => {

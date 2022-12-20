@@ -22,7 +22,7 @@ const Login = () => {
     const [loadingButton, setLoadingButton] = useState(false);
     const [loadingPage, setLoadingPage] = useState(true);
     const navigate = useNavigate();
-    const { setMessage } = useMessage();
+    const setMessage = useMessage();
 
     useEffect(() => {
         authUser()

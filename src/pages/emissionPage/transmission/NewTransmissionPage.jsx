@@ -17,7 +17,7 @@ const NewTransmissionPage = () => {
     const [ loadingButton, setLoadingButton] = useState(false);
     const [messageError, setMessageError] = useState('');
     const navigate = useNavigate();
-    const { setMessage } = useMessage();
+    const setMessage = useMessage();
 
     
     const handlerSubmit = (e) => {

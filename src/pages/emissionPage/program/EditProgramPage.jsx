@@ -29,7 +29,7 @@ function EditProgramPage({ currentProgram }) {
     const [currentFile, setCurrentFile] = useState(null);
 
     const navigate = useNavigate();
-    const { setMessage } = useMessage();
+    const setMessage = useMessage();
     const { openModal, openModalEvent, closeModalEvent } = useModal(false);
     const { setConfirmMessage } = useConfirmMessage();
 

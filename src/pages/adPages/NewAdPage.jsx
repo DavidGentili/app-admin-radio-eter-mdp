@@ -21,7 +21,7 @@ const NewAdPage = () => {
     const { openModal, openModalEvent, closeModalEvent } = useModal();
     const navigate = useNavigate();
     const [currentFile, setCurrentFile] = useState(null);
-    const { setMessage } = useMessage();
+    const setMessage = useMessage();
 
     const handlerNewAd = (e) => {
         e.preventDefault();

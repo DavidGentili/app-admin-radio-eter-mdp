@@ -31,7 +31,6 @@ const filterOptions = (options, user) => {
 }
 
 
-
 const PanelPage = () => {
 
     const [loadingPage, setLoadingPage] = useState(true);
@@ -48,31 +47,35 @@ const PanelPage = () => {
             navigate('/login');
         })
     },[]);
-    
+
+
     
     return (
-        <UserContext.Provider value={user}>{ 
-            loadingPage ? <LoadingPage />
-            :
-            <div className='panelPage'>
-                <Nav menuOptions={ user ? filterOptions(menuOptions,user) : []}/>
+        <UserContext.Provider value={user}>
+
+            { 
+                loadingPage ? <LoadingPage />
+                :
+                <div className='panelPage'>
+                    <Nav menuOptions={ user ? filterOptions(menuOptions,user) : []}/>
 
 
-                <Header userName={user ? user.name : 'Mi usuario'} location={'Usuarios'} />
-                
-                <Routes >
-                    <Route path='usuarios/*' element={<UsersPage />} />
-                    <Route path='my-user' element={ <MyUser/> } />
-                    <Route path='publicidad/*' element={ <AdPage /> } />
-                    <Route path='' element={<HomePage menuOptions={ user ? filterOptions(menuOptions,user) : []}/>} />
-                    <Route path='emisiones/*' element={ <EmissionPage/> } />
-                    <Route path='media/*' element={ <MediaPage/> } />
-                    <Route path='*' element={ <main> <ErrorPage /> </main>}/>
+                    <Header userName={user ? user.name : 'Mi usuario'} location={'Usuarios'} />
+                    
+                    <Routes >
+                        <Route path='usuarios/*' element={<UsersPage />} />
+                        <Route path='my-user' element={ <MyUser/> } />
+                        <Route path='publicidad/*' element={ <AdPage /> } />
+                        <Route path='' element={<HomePage menuOptions={ user ? filterOptions(menuOptions,user) : []}/>} />
+                        <Route path='emisiones/*' element={ <EmissionPage/> } />
+                        <Route path='media/*' element={ <MediaPage/> } />
+                        <Route path='*' element={ <main> <ErrorPage /> </main>}/>
 
-                </Routes>
-            
-            </div>
-        }</UserContext.Provider>
+                    </Routes>
+
+                </div>
+            }
+        </UserContext.Provider>
     )
 }
 
