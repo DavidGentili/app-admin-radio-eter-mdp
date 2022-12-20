@@ -42,6 +42,7 @@ const UpdateUser = ({ refreshUsers, user, }) => {
             .then((res) => {
                 setLoadingPrimaryBtn(false)
                 refreshUsers();
+                setMessage({ message: 'El usuario ha sido actualizado con exito', type : 'success'})
                 navigate('../');
             })
             .catch(e => {
@@ -54,8 +55,10 @@ const UpdateUser = ({ refreshUsers, user, }) => {
     const handlerRemoveUser = (e) => {
         setLoadingDangerBtn(true);
         removeUser(user.id)
-        .then((res) => {3
+        .then((res) => {
             refreshUsers();
+            setMessage({ message: 'El usuario a sido eliminado con exito', type : 'success'})
+
             navigate('../');
         })
         .catch((e) => {

@@ -25,6 +25,7 @@ const newUserPage = ({ refreshUsers }) => {
         .then((data) => {
             refreshUsers();
             setLoadingButton(false)
+            setMessage({ message: 'El usuario ha sido creado con exito', type : 'success'})
             navigate('../');
         })
         .catch((e) => {
