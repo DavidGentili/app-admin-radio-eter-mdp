@@ -8,6 +8,7 @@ import LoadingPage from '../../componets/generalComponents/LoadingPage';
 import ErrorPage from '../errorPage/ErrorPage';
 import NewUserPage from './NewUserPage';
 import UpdateUserPage from './UpdateUserPage';
+import UserPanel from './UserPanel';
 
 
 //Services
@@ -18,7 +19,6 @@ import './usersPage.css';
 
 //Hooks
 import useModal from '../../hooks/useModal';
-import UserPanel from './UserPanel';
 
 const UsersPage = () => {
 
@@ -57,8 +57,8 @@ const UsersPage = () => {
         <>
             <main className='usersMain'>
                 <Routes>
-                    <Route path='nuevo' element={ <NewUserPage /> } />
-                    <Route path='' element={ <UserPanel {...{users, selectUser, setUsers }}/> } />
+                    <Route path='' element={ <UserPanel {...{ users, selectUser, setUsers }}/> } />
+                    <Route path='nuevo' element={ <NewUserPage {...{ refreshUsers }} /> } />
                     <Route path='editar' element={ <UpdateUserPage {...{ selectedUser, refreshUsers }} /> } />
                     <Route path='*' element={ <ErrorPage/> } />
                 </Routes>

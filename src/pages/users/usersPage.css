@@ -73,3 +73,31 @@
 .usersMain .single{
     grid-template-columns: .5fr 1fr .5fr .5fr .2fr;
 }
+
+
+.usersMain > form{
+    width: 80%;
+    background-color: var(--white);
+    border-radius: 36px;
+    box-shadow: 5px 5px 20px #24242440;
+    padding: 36px 48px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.usersMain form .customInput{
+    width: 100%;
+    margin-left: 0;
+}
+
+.usersMain form textarea{
+    width: 100%;
+}
+
+
+.usersMain form button{
+    margin-left: auto;
+}
