@@ -1,12 +1,13 @@
 import { React, useState, useEffect, useCallback } from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 //Components
-import ModalNewUser from '../../componets/modals/ModalNewUser'
-import ModalUpdateUser from '../../componets/modals/ModalUpdateUser';
 import LoadingPage from '../../componets/generalComponents/LoadingPage';
-import SingleUser from '../../componets/singleComponents/SingleUser';
-import CustomButton from '../../componets/generalComponents/CustomButton'
-import { ChevronIcon } from '../../componets/Icons'
+import ErrorPage from '../errorPage/ErrorPage';
+import NewUserPage from './NewUserPage';
+import UpdateUserPage from './UpdateUserPage';
+import UserPanel from './UserPanel';
+
 
 //Services
 import { getUsers } from '../../services/users'
@@ -14,27 +15,17 @@ import { getUsers } from '../../services/users'
 //Styles
 import './usersPage.css';
 
-//Hooks
-import useModal from '../../hooks/useModal';
 
 const UsersPage = () => {
 
-    const { openModal, openModalEvent, closeModalEvent } = useModal(false);
     const [loadingPage, setLoadingPage] = useState(true);
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         refreshUsers();
     },[])
-
-    const sortUser = useCallback((key) => {
-        const sortArray = [...users]
-        sortArray.sort(function(a ,b ){
-            return (a[key] <= b[key]) ? -1 : 1
-        })
-        setUsers(sortArray);
-    }, [users])
 
     const refreshUsers = () => {
         if(!loadingPage)
@@ -50,6 +41,7 @@ const UsersPage = () => {
         return (e) =>{
             e.preventDefault();
             setSelectedUser(user);
+            navigate('./editar');
         }
     }
 
@@ -59,24 +51,13 @@ const UsersPage = () => {
     return (
         <>
             <main className='usersMain'>
-                <section className='userPanel'>
-                    <div className="headerPanel">
-                        <button onClick={(e) => {sortUser('name')}}>Usuario <ChevronIcon/> </button>
-                        <button onClick={(e) => {sortUser('email')}}>Mail <ChevronIcon/></button>
-                        <button onClick={(e) => {sortUser('securityLevel')}}>Nivel de seguridad <ChevronIcon/></button>
-                        <button onClick={(e) => {sortUser('state')}}>Estado <ChevronIcon/></button>
-                        <p>Acciones</p>
-                    </div>
-                    {
-                        users.length === 0 ? <p>No hay usuarios</p>
-                        :
-                        users.map((user) => <SingleUser key={user.id} user={user} selectUser={selectUser(user)} />)
-                    }
-                </section>
-                <CustomButton type='primary' text='+' onClickEvent={openModalEvent} />
+                <Routes>
+                    <Route path='' element={ <UserPanel {...{ users, selectUser, setUsers }}/> } />
+                    <Route path='nuevo' element={ <NewUserPage {...{ refreshUsers }} /> } />
+                    <Route path='editar' element={ <UpdateUserPage {...{ user: selectedUser, refreshUsers }} /> } />
+                    <Route path='*' element={ <ErrorPage/> } />
+                </Routes>
             </main>
-            {openModal && <ModalNewUser refreshUsers={refreshUsers} setLoadingPage={setLoadingPage} closeModal={closeModalEvent} />}
-            {selectedUser && <ModalUpdateUser user={selectedUser} refreshUsers={refreshUsers}  closeModal={() => {setSelectedUser(null)}} />}
         </>
     )
 }

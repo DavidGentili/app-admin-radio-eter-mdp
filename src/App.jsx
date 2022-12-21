@@ -5,14 +5,14 @@ import { Routes, Route } from 'react-router-dom'
 import Login from './pages/login/Login'
 import PanelPage from './pages/PanelPage';
 import UIMessage from './componets/generalComponents/UIMessage';
-import ModalConfirm from './componets/modals/ModalConfirm';
+import Modal from './componets/modals/Modal';
 
 //Context
-import ConfirmMessageContext from './context/ConfirmMessageContext';
 import MessageContext from './context/MessageContext';
 
 //Styles
 import './App.css'
+import ModalContext from './context/ModalContext';
 
 
 const initialConfirmMessage = {
@@ -28,28 +28,39 @@ const initialMessage = {
 function App() {
 
     const [message, setMessage] = useState(initialMessage)
-    const [confirmMessage, setConfirmMessage] = useState({initialConfirmMessage});
-
-    const clearCallBack = () => {
-        setConfirmMessage(initialConfirmMessage);
-    }
+    const [modal, setModal] = useState()
 
     const cleanMessage = () => {
         setMessage(initialMessage);
     }
 
+    const closeModal = () => {
+        setModal({
+            data : undefined,
+            type : undefined,
+            callback : undefined,
+        })
+    }
+
+    const openModal = (type, callback) => {
+        if(type && callback)
+            setModal({ type, callback })
+    }
+
+    const isOpenModal = () => modal.callback && modal.type;
+
 
     return (
         <div className="App">
-            <MessageContext.Provider value={{ setMessage }}>
-            <ConfirmMessageContext.Provider value={{ setConfirmMessage }} >
+            <MessageContext.Provider value={ setMessage }>
+            <ModalContext.Provider value={ setModal } >
                 <Routes>
                     <Route path='/login' element={ <Login/> } />
                     <Route path='/*' element={<PanelPage />} />
                 </Routes>
-                { confirmMessage && confirmMessage.callback && <ModalConfirm text={confirmMessage.text} callback={confirmMessage.callback} clearCallback={clearCallBack} />}
-                { message.message && message.message.length > 0 && <UIMessage text={message.message} type={message.type} cleanMessage={cleanMessage}/>}
-            </ConfirmMessageContext.Provider>
+                {isOpenModal && <Modal {...{closeModal, ...modal}} /> }            
+                { message.message && message.message.length > 0 && <UIMessage {...{text: message.message, type : message.type, cleanMessage }}/>}
+            </ModalContext.Provider>
             </MessageContext.Provider>
         </div>
     )

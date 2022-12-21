@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import CustomInput from '../../../componets/generalComponents/CustomInput';
 import SelectFile from '../../../componets/generalComponents/SelectFile';
 import CustomButton from '../../../componets/generalComponents/CustomButton';
-import ModalGetMediaFile from '../../../componets/modals/ModalGetMediaFile';
 
 //Helpers
 import { daysValues } from '../../../helpers/daysValue';
@@ -15,15 +14,15 @@ import { createNewProgram } from '../../../services/programs';
 
 //Hooks
 import useMessage from '../../../hooks/useMessage';
-import useModal from '../../../hooks/useModal';
+import useSelectMedia from '../../../hooks/useSelectMedia';
 
 const NewProgramPage = () => {
 
     const [loadingButton, setloadingButton] = useState(false);
     const [currentFile, setCurrentFile] = useState(null);
-    const { openModal, openModalEvent, closeModalEvent } = useModal();
     const navigate = useNavigate();
-    const { setMessage } = useMessage();
+    const selectMedia = useSelectMedia();
+    const setMessage = useMessage();
 
 
     const submitHandler = (e) => {
@@ -44,7 +43,10 @@ const NewProgramPage = () => {
 
     const returnFile = (file) => {
         setCurrentFile(file);
-        closeModalEvent()
+    }
+
+    const openModalEvent = (e) => {
+        selectMedia({ callback : returnFile });
     }
 
     return (
@@ -68,7 +70,6 @@ const NewProgramPage = () => {
 
             <CustomButton buttonType='submit' type='primary' loadingButton={loadingButton} disabled={loadingButton} >Crear programa</CustomButton>
 
-            {openModal && <ModalGetMediaFile closeModal={closeModalEvent} returnFile={returnFile}/>}            
         </form>
     )
 }

@@ -1,5 +1,10 @@
-import { useContext } from "react";
-import ConfirmMessageContext from '../context/ConfirmMessageContext';
+import useModal from './useModal';
 
 
-export default () => useContext(ConfirmMessageContext);
+
+export default () => {
+    const setModal = useModal();
+    return ({ text, callback }) => {
+        setModal({ data : { text }, type : 'confirm', callback });
+    }
+}

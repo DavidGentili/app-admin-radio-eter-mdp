@@ -12,16 +12,16 @@ import { createNewAd } from '../../services/ad';
 
 //Hooks
 import useMessage from '../../hooks/useMessage';
-import useModal from '../../hooks/useModal';
+import useSelectMedia from '../../hooks/useSelectMedia';
 
 
 const NewAdPage = () => {
  
     const [loadingBtn, setLoadingBtn] = useState(false);
-    const { openModal, openModalEvent, closeModalEvent } = useModal();
     const navigate = useNavigate();
     const [currentFile, setCurrentFile] = useState(null);
-    const { setMessage } = useMessage();
+    const setMessage = useMessage();
+    const selectMedia = useSelectMedia();
 
     const handlerNewAd = (e) => {
         e.preventDefault();
@@ -41,7 +41,10 @@ const NewAdPage = () => {
 
     const returnFile = (file) => {
         setCurrentFile(file);
-        closeModalEvent()
+    }
+
+    const openModalEvent = (e) => {
+        selectMedia({ callback : returnFile })
     }
 
     return (
@@ -59,7 +62,6 @@ const NewAdPage = () => {
                 <SelectFile currentFile={currentFile} openModal={openModalEvent} />
                 <CustomButton text='Agregar publicidad' buttonType='submit' type='primary' disabled={loadingBtn} loading={loadingBtn} />
             </form>
-            {openModal && <ModalGetMediaFile returnFile={returnFile} closeModal={closeModalEvent}/>}
         </>
 )
 }

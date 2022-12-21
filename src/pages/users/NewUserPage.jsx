@@ -1,9 +1,9 @@
 import { React, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 //Components
-import CustomInput from '../generalComponents/CustomInput'
-import CustomButton from '../generalComponents/CustomButton'
-import ModalContainer from './ModalContainer';
+import CustomInput from '../../componets/generalComponents/CustomInput';
+import CustomButton from '../../componets/generalComponents/CustomButton';
 
 //Services
 import { signupUser } from '../../services/users';
@@ -11,10 +11,11 @@ import { signupUser } from '../../services/users';
 //Hooks
 import useMessage from '../../hooks/useMessage';
 
-const ModalNewUser = ({ closeModal, refreshUsers }) => {
+const newUserPage = ({ refreshUsers }) => {
 
     const [loadingButton, setLoadingButton] = useState(false);
-    const { setMessage } = useMessage();
+    const setMessage = useMessage();
+    const navigate = useNavigate();
 
     const handlerNewUser = (e) => {
         e.preventDefault();
@@ -24,7 +25,8 @@ const ModalNewUser = ({ closeModal, refreshUsers }) => {
         .then((data) => {
             refreshUsers();
             setLoadingButton(false)
-            closeModal();
+            setMessage({ message: 'El usuario ha sido creado con exito', type : 'success'})
+            navigate('../');
         })
         .catch((e) => {
             setMessage({ message: e, type: 'error'});
@@ -33,9 +35,7 @@ const ModalNewUser = ({ closeModal, refreshUsers }) => {
     }
 
     return (
-        <ModalContainer title={'Nuevo usuario'} closeModal={closeModal}>
-            <form onSubmit={handlerNewUser}>
-
+        <form onSubmit={handlerNewUser}>
             <CustomInput type="text" name="name" placeholder="Nombre de usuario" focus={true}/>
             <CustomInput type="mail" name="email" placeholder="Mail" />
             <label htmlFor="securityLevel" className='label'>Nivel de seguridad</label>
@@ -46,9 +46,8 @@ const ModalNewUser = ({ closeModal, refreshUsers }) => {
             </select>
 
             <CustomButton text='Agregar Usuario' type='primary' buttonType='submit' loading={loadingButton} disabled={loadingButton} />
-            </form>
-        </ModalContainer>
+        </form>
     )
 }
 
-export default ModalNewUser
+export default newUserPage

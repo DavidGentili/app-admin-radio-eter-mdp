@@ -22,8 +22,8 @@ const EditTransmissionPage = ({ currentTransmission }) => {
     const [loadingPrimaryBtn, setLoadingPrimaryBtn] = useState(false);
     const [loadingDangerBtn, setLoadingDangerBtn] = useState(false);
     const navigate = useNavigate();
-    const { setMessage } = useMessage();
-    const { setConfirmMessage } = useConfirmMessage();
+    const setMessage = useMessage();
+    const confirmMessage = useConfirmMessage();
 
     if(!currentTransmission)
         return <></>
@@ -62,7 +62,7 @@ const EditTransmissionPage = ({ currentTransmission }) => {
     }
 
     const deleteEvent = () => {
-        setConfirmMessage({
+        confirmMessage({
             text : '¿Esta seguro que desea eliminar la transmision?',
             callback : handlerDelete
         })

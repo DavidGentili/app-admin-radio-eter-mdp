@@ -12,8 +12,8 @@ import { deleteAd, updateAd } from '../../services/ad';
 
 //Hooks
 import useMessage from '../../hooks/useMessage';
-import useModal from '../../hooks/useModal';
 import useConfirmMessage from '../../hooks/useConfirmMessage';
+import useSelectMedia from '../../hooks/useSelectMedia';
 
 
 const EditAdPage = ( { currentAd } ) => {
@@ -23,9 +23,9 @@ const EditAdPage = ( { currentAd } ) => {
     const [loadingDangerBtn, setLoadingDangerBtn] = useState(false);
     const [currentFile, setCurrentFile] = useState(null);
     const { urlImage, altText, name, link, type} = currentAd ? currentAd : {};
-    const { setMessage } = useMessage();
-    const { openModal, openModalEvent, closeModalEvent } = useModal(false);
-    const { setConfirmMessage } = useConfirmMessage();
+    const setMessage = useMessage();
+    const selectMedia = useSelectMedia();
+    const setConfirmMessage = useConfirmMessage();
     
     useEffect(() => {
         if(!currentAd)
@@ -72,7 +72,10 @@ const EditAdPage = ( { currentAd } ) => {
     const selectCurrentFile = (file) => {
         if(file && file.url)
             setCurrentFile(file)
-        closeModalEvent();
+    }
+
+    const openModalEvent = (e) => {
+        selectMedia({ callback : selectCurrentFile })
     }
 
     if(!currentAd)
@@ -98,7 +101,6 @@ const EditAdPage = ( { currentAd } ) => {
                 </form>
                 <CustomButton text='Eliminar publicidad' type='danger' loading={loadingDangerBtn} disabled={loadingDangerBtn || loadingPrimaryBtn} onClickEvent={deleteEvent} />
             </div>
-            {openModal && <ModalGetMediaFile closeModal={closeModalEvent} returnFile={selectCurrentFile}/>}
         </>
     )
 }
