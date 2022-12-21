@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 //Compontens
@@ -19,11 +19,13 @@ import './myUser.css'
 const MyUser = () => {
 
     const [loadingButton, setLoadingButton] = useState(false);
-    const [messageError, setMessageError] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
     const localUser = useUser();
     const navigate = useNavigate();
     const setMessage = useMessage();
+
+    const current = useRef(null);
+    const updated = useRef(null);
+    const confirm = useRef(null);
 
     const handlerChangePassword = async (e) => {
         e.preventDefault();
@@ -34,8 +36,7 @@ const MyUser = () => {
                 throw 'Las contraseñas no coinciden'
             const data = await changePassword(currentPassword, newPassword);
             setMessage({ message: 'La contraseña se ha cambiado con exito', type : 'success' });
-
-            
+            clearInput();            
         }catch(e){
             setMessage({ message: e, type : 'error' });
         }finally{
@@ -47,6 +48,12 @@ const MyUser = () => {
     const handlerLogout = (e) => {
         localStorage.removeItem('userToken');
         navigate('/login');
+    }
+
+    const clearInput = () => {
+        current.current.value = '';
+        updated.current.value = '';
+        confirm.current.value = '';
     }
 
     if(!localUser)
@@ -65,9 +72,9 @@ const MyUser = () => {
             <section className='myUserForm'>
                 <h3>Cambiar contraseña</h3>
                 <form onSubmit={handlerChangePassword}>
-                    <CustomInput type="password" name='currentPassword' placeholder='Contraseña actual'/>
-                    <CustomInput type="password" name='newPassword' placeholder='Nueva contraseña'/>
-                    <CustomInput type="password" name='confirmPassword' placeholder='Confirmar contraseña'/>
+                    <CustomInput type="password" name='currentPassword' placeholder='Contraseña actual' ref={current}/>
+                    <CustomInput type="password" name='newPassword' placeholder='Nueva contraseña' ref={updated}/>
+                    <CustomInput type="password" name='confirmPassword' placeholder='Confirmar contraseña' ref={confirm}/>
                     <CustomButton text='Cambiar contraseña' loading={loadingButton} buttonType='submit' type='secondary' disabled={loadingButton} />
                 </form>
             </section>

@@ -6,7 +6,6 @@ import CustomInput from '../../../componets/generalComponents/CustomInput';
 import { daysValues } from '../../../helpers/daysValue';
 import CustomButton from '../../../componets/generalComponents/CustomButton';
 import SelectFile from '../../../componets/generalComponents/SelectFile';
-import ModalGetMediaFile from '../../../componets/modals/ModalGetMediaFile';
 
 
 //Services

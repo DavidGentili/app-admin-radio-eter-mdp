@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import CustomInput from '../../../componets/generalComponents/CustomInput';
 import SelectFile from '../../../componets/generalComponents/SelectFile';
 import CustomButton from '../../../componets/generalComponents/CustomButton';
-import ModalGetMediaFile from '../../../componets/modals/ModalGetMediaFile';
 
 //Helpers
 import { daysValues } from '../../../helpers/daysValue';
