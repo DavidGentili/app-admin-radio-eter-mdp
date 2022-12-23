@@ -13,17 +13,21 @@ export async function getReports(){
 
 
 
-const checkNewReportData = (data) => {
-
+const checkNewReportData = ({ title, content, active}) => {
+    if(!title || typeof(title) !== 'string' || title.length < 3)
+        throw 'Debe ingresar un titulo correcto';
+    if(!content || typeof(content) !== 'string')
+        throw 'Debe ingresar contenido para publicar';
+    if(typeof(active) !== 'boolean')
+        throw 'No se ingreso correctamente el estado publicado';
 }
 
 const getNewReportData = (form) => {
-    const {  } = form
+    const { title, description, active, mainMediaUrl, content } = form
     const data = {
-
+        ...form, active : active && active === 'on' ? true : false,
     }
     checkNewReportData(data);
-
     return data;
     
 }
