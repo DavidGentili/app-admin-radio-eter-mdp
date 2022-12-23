@@ -24,14 +24,14 @@ const ProgramPage = () => {
     }
 
     return (
-        <>  
+        <div className='programPage'>  
             <Routes>
                 <Route path='' element={ <ProgramPanel {...{programs, setPrograms, selectCurrentProgram, sortProgram: sortElements(programs, setPrograms) }} /> } />
                 <Route path='/nuevo' element={ <NewProgramPage /> } />
                 <Route path='/editar' element={ <EditProgramPage currentProgram={currentProgram} /> } />
                 <Route path='*' element={ <ErrorPage/> } />
             </Routes>
-        </>   
+        </div>   
   )
 }
 

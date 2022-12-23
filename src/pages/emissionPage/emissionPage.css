@@ -3,6 +3,14 @@
     flex-wrap: wrap;
 }
 
+.emissionPage .programPage{
+    width: 100%;
+}
+
+.emissionPage .transmissionPage{
+    width: 100%;
+}
+
 .emissionPage > a.single{
     color: var(--lightBlue);
 }
@@ -34,14 +42,15 @@
     width: 100%;
 }
 
-.emissionPage .programPanel .headerPanel{
+.emissionPage .programPage .headerPanel{
     width: 100%;
     display: grid;
     grid-template-columns: .6fr .8fr .5fr .3fr .3fr .2fr;
     gap: 12px;
 }
 
-.emissionPage > .primaryBtn{
+.emissionPage .programPage > .primaryBtn,
+.emissionPage .transmissionPage > .primaryBtn{
     width: 56px;
     height: 56px;
     border-radius: 100%;
@@ -53,11 +62,11 @@
     margin-left: auto;
 }
 
-.emissionPage .programPanel .single{
+.emissionPage .programPage .single{
     grid-template-columns: .6fr .8fr .5fr .3fr .3fr .2fr;
 }
 
-.emissionPage .programPanel .single .days span{
+.emissionPage .programPage .single .days span{
     font-size: 12px;
     font-weight: 300;
     margin: 2px;
@@ -69,21 +78,22 @@
     cursor: default;
 }
 
-.emissionPage .programPanel .single .days span.activeDay{
+.emissionPage .programPage .single .days span.activeDay{
     opacity: 1;
     background-color: var(--lightBlue);
 }
 
-.emissionPage .programPanel .single p.normal{
+.emissionPage .programPage .single p.normal{
     color: var(--mediumGrey);
     opacity: .7;
 }
 
-.emissionPage .programPanel .single p.highlighted{
+.emissionPage .programPage .single p.highlighted{
     color: var(--lightBlue);
 }
 
-.emissionPage > form{
+.emissionPage .programPage > form,
+.emissionPage .transmissionPage > form{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -174,13 +184,13 @@
     width: 100%;
 }
 
-.emissionPage .transmissionPanel .headerPanel{
+.emissionPage .transmissionPage .headerPanel{
     width: 100%;
     display: grid;
     grid-template-columns: 1fr .6fr .8fr .8fr .2fr;
     gap: 12px;
 }
 
-.emissionPage .transmissionPanel .single{
+.emissionPage .transmissionPage .single{
     grid-template-columns: 1fr .6fr .8fr .8fr .2fr;
 }

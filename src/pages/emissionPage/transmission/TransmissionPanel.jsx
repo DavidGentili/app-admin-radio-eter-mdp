@@ -8,6 +8,7 @@ import { ChevronIcon } from '../../../componets/Icons';
 
 //Services
 import { getTransmissions } from '../../../services/transmissions';
+import ListPane from '../../../componets/generalComponents/ListPane';
 
 
 const TransmissionPanel = ({transmissions, setTransmission, sortTransmission, selectCurrentTransmission}) => {
@@ -29,8 +30,32 @@ const TransmissionPanel = ({transmissions, setTransmission, sortTransmission, se
         }
     } 
 
+    const headers = [
+        {
+            command : 'name',
+            field : 'Nombre',
+        },
+        {
+            command : 'active',
+            field : 'Estado',
+        },
+        {
+            command : 'startTransmission',
+            field : 'Inicio',
+        },
+        {
+            command : 'finishTransmission',
+            field : 'Fin',
+        },
+    ]
+
+                
+    const elements = transmissions.map(transmission => <SingleTransmission key={transmission.id} {...transmission} selectTransmission={selectCurrentTransmission(transmission)} />);
+
     if(loadingPanel)
         return <LoadingPage />
+
+    return <ListPane {...{headers, elements, sortAction : sortTransmission}} />
 
     return (
         <>

@@ -25,14 +25,14 @@ const TransmissionPage = () => {
 
 
     return (
-        <>  
+        <div className='transmissionPage'>  
             <Routes>
                 <Route path='' element={ <TransmissionPanel  {...{transmissions, setTransmission, sortTransmission : sortElements(transmissions, setTransmission), selectCurrentTransmission}}/> } />
-                <Route path='/nueva' element= { <NewTransmissionPage /> } />
+                <Route path='/nuevo' element= { <NewTransmissionPage /> } />
                 <Route path='/editar' element={ <EditTransmissionPage currentTransmission={currentTransmission} /> } />
                 <Route path='*' element={ <ErrorPage/> } />
             </Routes>
-        </>   
+        </div>   
   )
 }
 

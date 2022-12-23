@@ -708,13 +708,18 @@ form .labelInputFile .icon{
     opacity: 1;
 }
 
-/*-------------------HEADER PANEL----------------------*/
+/*-------------------LIST PANE----------------------*/
+
+.listPane{
+    width: 100%;
+}
 
 .headerPanel{
+    width: 100%;
     padding: 16px 24px;
     border-bottom: 2px solid var(--lightBlack);
     color: var(--lightBlack);
-}
+    display: flex;}
 
 .headerPanel p{
     padding: 6px 12px;
