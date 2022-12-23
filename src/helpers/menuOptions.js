@@ -7,12 +7,12 @@ const menuOptions = [
     //     goTo: '/podcast',
     //     aceptedSecurityLevels: ['editor', 'admin', 'master'],
     // },
-    // {
-    //     Icon: ReportsIcon,
-    //     text: 'Informes',
-    //     goTo: '/informes',
-    //     aceptedSecurityLevels: ['editor', 'admin', 'master'],
-    // },
+    {
+        Icon: ReportsIcon,
+        text: 'Informes',
+        goTo: '/informes',
+        aceptedSecurityLevels: ['editor', 'admin', 'master'],
+    },
     {
         Icon: ProgramsIcon,
         text: 'Emisiones',
