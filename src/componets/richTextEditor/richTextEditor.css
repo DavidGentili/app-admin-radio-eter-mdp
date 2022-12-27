@@ -1,0 +1,131 @@
+.wrapperEditor{
+    display: flex;
+    margin: auto;
+    width: 556px;
+    flex-direction: column;
+}
+
+.editorContain{
+    width: 100%;
+    min-height: 256px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px #24242440;
+    margin: 12px auto;
+    padding: 36px 24px;
+    cursor: text;
+}
+
+.container{
+    margin: 24px auto;
+}
+
+.toolbar{
+    display: flex;
+    gap: 16px;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.toolbar .textBtns{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.toolbar .mediaBtns{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.toolbar button{
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 4px;
+}
+
+.toolbar button .icon{
+    width: 16px;
+    height: 16px;
+    margin: auto;
+}
+
+
+.toolbar button .icon svg{
+    height: 100%;
+    width: auto;
+}
+
+.toolbar button .label{
+    display: none;
+}
+
+.toolbar .mediaInput{
+    display: flex;
+    width: 256px;
+    padding: 4px 8px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #F4F4F4;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.toolbar .mediaInput button{
+    width: auto;
+    height: auto;
+    padding: 4px 8px;
+}
+
+.editorContain .richText-textAlignment-block{
+    display: inline;
+}
+
+.editorContain .richText-left-block{
+    text-align: left;
+}
+
+.editorContain .richText-center-block{
+    text-align: center;
+}
+
+.editorContain .richText-right-block{
+    text-align: right;
+}
+
+.buttonOutput{
+    display: flex;
+    margin: auto;
+    padding: 12px 24px;
+    background-color: #5985C3;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+
+.editorContain .blockquote{
+    border-left: 5px solid #eee;
+    font-family: 'Hoefler Text', Georgia, serif;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin: 16px 0;
+    padding: 10px 20px;
+}
+
+
+
+.editorContain .code{
+    background-color: #eee;
+    width: 100%;
+    
+}
