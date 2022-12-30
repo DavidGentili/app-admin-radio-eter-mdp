@@ -41,7 +41,33 @@
     margin-left: 0;
 }
 
-.reportPage button{
+.reportPage form button{
     margin-left: auto;
 
+}
+
+.reportPage .btnPanel{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reportPage .btnPanel button{
+    margin-left: 0;
+}
+
+.reportPage .currentImage{
+    width: 50%;
+    aspect-ratio: 4/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: var(--mediumGrey);
+}
+
+.reportPage .currentImage img{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
 }

@@ -5,7 +5,7 @@ const ButtonToolbar = ({ name, icon, command, event}) => {
     const onClickEvent = (!event || !command) ? () => {} : event(command);
 
     return(
-        <button onClick={onClickEvent}>
+        <button onClick={onClickEvent} type='button'>
             {icon}
             <span className="label">{name}</span>
         </button>

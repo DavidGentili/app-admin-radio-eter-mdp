@@ -58,7 +58,7 @@ const ReportPage = () => {
             <Routes >
                 <Route path='nuevo' element={ <NewReportPage {...{refreshReports}} /> } /> 
                 <Route path='' element={ <ReportPanel {...{ reports, selectReport, sortReports }} />} />  
-                <Route path='editar' element={<EditReportPage {...{ selectReport }}/>  }/>
+                <Route path='editar' element={<EditReportPage {...{ selectedReport, refreshReports }}/>  }/>
                 <Route path='*' element={ <ErrorPage/> } />
             </Routes>
         </main>

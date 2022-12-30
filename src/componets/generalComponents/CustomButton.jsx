@@ -6,6 +6,7 @@ const getClassName = {
     secondary: () => 'secondaryBtn',
     normal: () => 'normal'
 }
+
 const CustomButton = (props) => {
     const { onClickEvent = () => {}, text, type, buttonType, disabled, loading, children } = props;
     const className = getClassName[getClassName[type] ? type : 'normal']();

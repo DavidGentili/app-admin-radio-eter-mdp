@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import useRichTextEditorModal from '../hooks/useRichTextEditorModal'
+import useRichTextEditorModal from  '../../hooks/useRichTextEditorModal'
 
 const MediaButtonToolbar = ({ icon, type, addMedia }) => {
 
@@ -7,8 +7,8 @@ const MediaButtonToolbar = ({ icon, type, addMedia }) => {
     const richTextEditorModal = useRichTextEditorModal();
 
     const openModal = () => {
-        const callback = ({ url, text }) => {
-            addMedia(type, url, text)
+        const callback = ({ url, alt }) => {
+            addMedia(type, url, alt)
         }
         
         richTextEditorModal({
@@ -19,7 +19,7 @@ const MediaButtonToolbar = ({ icon, type, addMedia }) => {
 
     return (
         <>
-            <button onClick={openModal} >{icon}</button>
+            <button onClick={openModal} type='button'>{icon}</button>
         </>
         
     )
