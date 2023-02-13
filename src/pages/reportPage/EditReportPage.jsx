@@ -8,6 +8,7 @@ import CustomButton from '../../componets/generalComponents/CustomButton';
 import SelectFile from '../../componets/generalComponents/SelectFile';
 import RichTextEditor from '../../componets/richTextEditor/RichTextEditor';
 import ErrorPage from '../errorPage/ErrorPage';
+import InputTags from '../../componets/generalComponents/InputTags'
 
 //Services
 import { deleteReport, updateReport } from '../../services/report';
@@ -21,11 +22,14 @@ const EditReportPage = ({ selectedReport, refreshReports }) => {
 
     const { id, title, description, mainMediaUrl, active } = selectedReport
     const initialContent = selectedReport && selectedReport.content ? selectedReport.content : ''
+    const currentTags = selectedReport?.tags || []
 
     const [content, setContent] = useState(initialContent);
     const [mainMedia, setMainMedia] = useState(null);
     const [loadingUpdate, setLoadingUpdate] = useState(false);
     const [loadingDelete, setLoadingDelete] = useState(false);
+    const [tags, setTags] = useState(currentTags)
+
     const selectMedia = useSelectMedia();
     const setMessage = useMessage();
     const navigate = useNavigate();
@@ -60,6 +64,7 @@ const EditReportPage = ({ selectedReport, refreshReports }) => {
             ...Object.fromEntries(new FormData(e.target)),
             content,
             mainMediaUrl : mainMedia && mainMedia.url ? mainMedia.url : undefined,
+            tags
         }, selectedReport)
         .then(({ data }) => {
             setMessage({ message : data.message, type : 'success' });
@@ -89,6 +94,7 @@ const EditReportPage = ({ selectedReport, refreshReports }) => {
             <label>Publicado <input type="checkbox" name="active" id="" defaultChecked={active} /></label>
             <label>Imagen Principal</label>
             <SelectFile openModal={selectMediaEvent} currentFile={mainMedia} />
+            <InputTags tags={tags} setTags={setTags} />
             <RichTextEditor value={content} setValue={setContent} />
             <div className="btnPanel">
                 <CustomButton text='Eliminar informe' buttonType='button' type='danger' onClickEvent={deleteEvent} loading={loadingDelete} disabled={loadingDelete | loadingUpdate} />

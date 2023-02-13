@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 
@@ -14,14 +14,17 @@ import { createNewReport } from '../../services/report';
 
 //Hooks
 import useMessage from '../../hooks/useMessage';
+import InputTags from '../../componets/generalComponents/InputTags';
 
 const NewReportPage = ({ refreshReports }) => {
   
     const [ content, setContent ] = useState('');
     const [ mainMedia, setMainMedia ] = useState(null);
+    const [ tags, setTags ] = useState([]);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const setMessage = useMessage();
+    const inputTags = useRef(null);
 
     const selectMedia = useSelectMedia();
 
@@ -39,6 +42,7 @@ const NewReportPage = ({ refreshReports }) => {
             ...Object.fromEntries(new FormData(e.target)),
             content,
             mainMediaUrl : mainMedia && mainMedia.url ? mainMedia.url : '',
+            tags
         })
         .then(({ data }) => {
             refreshReports();
@@ -63,6 +67,8 @@ const NewReportPage = ({ refreshReports }) => {
             <label>Publicado <input type="checkbox" name="active" id="" /></label>
             <label>Imagen Principal</label>
             <SelectFile openModal={selectMediaEvent} currentFile={mainMedia} />
+            <InputTags tags={tags} setTags={setTags} />
+
             <RichTextEditor value={content} setValue={setContent} />
             <CustomButton text='Agregar informe' buttonType='submit' type='primary' loading={loading} disabled={loading}/>
         </form>

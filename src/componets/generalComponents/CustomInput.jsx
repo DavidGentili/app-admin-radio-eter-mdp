@@ -4,7 +4,7 @@ import { React, useState, forwardRef } from "react";
 const supportedTypes = ["text", "email", "password"];
 
 const CustomInput = forwardRef( (props, ref) => {
-    const { name, type, placeholder, focus, value, disabled} = props
+    const { name, type, placeholder, focus, value, disabled, onKey = () => {}} = props
     const [notEmptyInput, setNotEmptyInput] = useState( value ? true : false);
 
   return (
@@ -22,6 +22,7 @@ const CustomInput = forwardRef( (props, ref) => {
                 onChange={(e) => {
                     setNotEmptyInput(e.target.value.length === 0 ? false : true);
                 }}
+                onKeyDown={onKey}
         />
       <span>{placeholder}</span>
     </label>

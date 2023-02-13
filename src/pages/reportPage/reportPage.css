@@ -71,3 +71,68 @@
     height: auto;
     overflow: hidden;
 }
+
+.reportPage .tags {
+    width: 100%;
+}
+
+.reportPage .tags label{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 16px auto;
+}
+
+
+.reportPage .tags label input {
+    width: 80%;
+}
+
+.reportPage .tags label button {
+    width: 20%;
+    align-items: flex-end;
+}
+
+.reportPage .tags .tagContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 16px;
+}
+
+.reportPage .tags .tagContainer .tag {
+    background-color: var(--lightBlue);
+    padding: 8px 16px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--white);
+    cursor: default;
+    transition: .6s;
+}
+
+.reportPage .tags .tagContainer .tag:hover {
+    scale: 1.05;
+}
+
+.reportPage .tags .tagContainer .tag button {
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: none;
+    fill: var(--white);
+    display: flex;
+    opacity: .6;
+    transition: .6s;
+}
+
+.reportPage .tags .tagContainer .tag button:hover {
+    opacity: 1;
+} 
+
+.reportPage .tags .tagContainer .tag button .icon{
+    width: 100%;
+    height: 100%;
+}
