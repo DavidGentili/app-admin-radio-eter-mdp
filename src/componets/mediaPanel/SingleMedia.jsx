@@ -7,7 +7,7 @@ import useConfirmMessage from '../../hooks/useConfirmMessage';
 const SingleMedia = ({ file, selectFile, isSelect, deleteEvent}) => {
     const { url, name } = file;
 
-    const { setConfirmMessage } = useConfirmMessage();
+    const setConfirmMessage = useConfirmMessage();
 
     const selectEvent = (e) => {
         selectFile(file);
