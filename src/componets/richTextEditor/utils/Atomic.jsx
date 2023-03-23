@@ -1,7 +1,7 @@
 import React from 'react'
 
 const styleMedia = {
-    width : '100%',
+    width : '80%',
     heigth : 'auto',
 }
 
