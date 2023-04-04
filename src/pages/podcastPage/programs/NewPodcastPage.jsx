@@ -62,7 +62,6 @@ export default function NewPodcastPage() {
 
             <CustomButton buttonType='submit' type='primary' loadingButton={isLoading} disabled={isLoading} >Crear podcast</CustomButton>
 
-
         </form>
     )
 }

@@ -5,6 +5,9 @@ import useSelectMedia from '../../../hooks/useSelectMedia';
 import SelectFile from '../../../componets/generalComponents/SelectFile';
 import PodcastLinks from './PodcastLinks';
 import CustomButton from '../../../componets/generalComponents/CustomButton';
+import { deletePodcast, updatePodcast } from '../../../services/podcast';
+import useMessage from '../../../hooks/useMessage';
+import { useNavigate } from 'react-router-dom';
 
 export default function EditPodcastPage({ currentPodcast }) {
 
@@ -15,6 +18,8 @@ export default function EditPodcastPage({ currentPodcast }) {
     const [currentFile, setCurrentFile] = useState(null);
     const [isLoading, setLoading] = useState(false)
 
+    const setMessage = useMessage();
+    const navigate = useNavigate();
     const selectMedia = useSelectMedia();
 
     const returnFile = (file) => {
@@ -27,12 +32,42 @@ export default function EditPodcastPage({ currentPodcast }) {
 
     const submit = (e) => {
         e.preventDefault();
+        setLoading(true);
+        const form = Object.fromEntries(new FormData(e.target));
+        const data = { id, ...form, tags, currentFile };
+        updatePodcast(data)
+            .then((res) => {
+                setLoading(false);
+                navigate('../')
+            })
+            .catch(e => {
+                setMessage({ message: e, type: 'error' })
+                setLoading(false);
+            })
+
+    }
+
+    const deleteEvent = (e) => {
+        setLoading(true);
+        deletePodcast(id)
+            .then(() => {
+                setLoading(false);
+                setMessage({ message: 'Se elimino  correctamente el podcast', type: 'success' });
+                navigate('../');
+            })
+            .catch(e => {
+                setLoading(false)
+                setMessage({ message: e, type: 'error' });
+            })
     }
 
     return (
         <div className="currentPodcast">
-            <img src="" alt="" />
             <form onSubmit={submit}>
+                <div className="currentImage">
+                    {imgUrl ? <img src={imgUrl} alt="" /> : <p> El podcast no tiene imagen principal </p>}
+
+                </div>
                 <CustomInput
                     name='title'
                     placeholder='Titulo'
@@ -49,7 +84,11 @@ export default function EditPodcastPage({ currentPodcast }) {
 
                 <PodcastLinks {...{ spotify, youtube, google, soundcloud }} />
 
-                <CustomButton buttonType='submit' type='primary' loadingButton={isLoading} disabled={isLoading} >Actualizar podcast</CustomButton>
+                <div className="btnPanel">
+                    <CustomButton text='Eliminar podcast' buttonType='button' type='danger' onClickEvent={deleteEvent} loading={isLoading} disabled={isLoading} />
+                    <CustomButton buttonType='submit' type='primary' loadingButton={isLoading} disabled={isLoading} >Actualizar podcast</CustomButton>
+
+                </div>
 
             </form>
         </div>

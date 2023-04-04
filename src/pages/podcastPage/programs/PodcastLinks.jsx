@@ -23,7 +23,7 @@ export default function PodcastLinks({ spotify, youtube, google, soundcloud }) {
             />
             <CustomInput
                 name='soundcloud'
-                placeholder='SoundCloud'
+                placeholder='Soundcloud'
                 value={soundcloud || ''}
             />
         </div>

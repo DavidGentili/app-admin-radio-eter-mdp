@@ -86,3 +86,27 @@
     color: var(--lightBlue);
     font-size: 16px;
 }
+
+.podcastPage .podcastProgramPage .currentImage {
+    width: 80%;
+    margin: auto;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mediumGrey);
+}
+
+.podcastPage .podcastProgramPage .currentImage img {
+    width: 100%;
+}
+
+.podcastPage .podcastProgramPage .currentImage p {
+    text-align: center;
+}
+
+.podcastPage .podcastProgramPage .btnPanel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
