@@ -29,16 +29,16 @@ const NewProgramPage = () => {
         e.preventDefault();
         setloadingButton(true);
         const form = Object.fromEntries(new FormData(e.target));
-        createNewProgram({...form, file : currentFile})
-        .then(({data}) => {
-            setMessage({ message : data.message, type: 'success'});
-            setloadingButton(false);
-            navigate('../')
-        })
-        .catch(e => {
-            setloadingButton(false);
-            setMessage({ message: e, type : 'error' });
-        })
+        createNewProgram({ ...form, file: currentFile })
+            .then(({ data }) => {
+                setMessage({ message: data.message, type: 'success' });
+                setloadingButton(false);
+                navigate('../')
+            })
+            .catch(e => {
+                setloadingButton(false);
+                setMessage({ message: e, type: 'error' });
+            })
     }
 
     const returnFile = (file) => {
@@ -46,7 +46,7 @@ const NewProgramPage = () => {
     }
 
     const openModalEvent = (e) => {
-        selectMedia({ callback : returnFile });
+        selectMedia({ callback: returnFile });
     }
 
     return (
@@ -63,10 +63,10 @@ const NewProgramPage = () => {
                 <label htmlFor="" className='label'>Hora de finalizacion</label>
                 <input type="time" name="finishHour" />
             </div>
-            
+
             <label htmlFor='highlighted' className='label' >Destacado <input type="checkbox" name="highlighted" id="highlighted" /> </label>
-            
-            <SelectFile openModal={openModalEvent} currentFile={currentFile} />       
+
+            <SelectFile openModal={openModalEvent} currentFile={currentFile} />
 
             <CustomButton buttonType='submit' type='primary' loadingButton={loadingButton} disabled={loadingButton} >Crear programa</CustomButton>
 

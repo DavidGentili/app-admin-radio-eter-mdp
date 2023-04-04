@@ -1,0 +1,88 @@
+.podcastPage {
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.podcastPage .podcastProgramPage {
+    width: 100%;
+}
+
+.podcastPage .transmissionPage {
+    width: 100%;
+}
+
+.podcastPage>a.single {
+    color: var(--lightBlue);
+}
+
+.podcastPage .navMenu {
+    margin: 16px 0px 24px 0;
+    width: 100%;
+    display: flex;
+    gap: 16px;
+}
+
+.podcastPage .navMenu a {
+    color: var(--mediumGrey);
+    padding: 4px;
+    opacity: .7;
+    transition: .6s;
+}
+
+.podcastPage .navMenu a:hover {
+    opacity: 1;
+}
+
+.podcastPage .navMenu a.active {
+    opacity: 1;
+    color: var(--lightBlue);
+}
+
+.podcastPage .headerPanel {
+    display: grid;
+    grid-template-columns: 6fr 2fr 2fr;
+    gap: 12px;
+}
+
+.podcastPage .podcastProgramPage .single {
+    grid-template-columns: 6fr 2fr 2fr;
+}
+
+.podcastPage .podcastProgramPage>a {
+    margin-left: auto;
+    margin-top: 64px;
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+    padding: 0;
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.podcastPage .podcastProgramPage>form {
+    width: 80%;
+    background-color: var(--white);
+    border-radius: 36px;
+    box-shadow: 5px 5px 20px #24242440;
+    padding: 36px 48px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.podcastPage .podcastProgramPage>form .customInput {
+    margin: 0;
+}
+
+.podcastPage .podcastProgramPage>form .links {
+    width: 80%;
+    display: grid;
+    gap: 16px;
+}
+
+.podcastPage .podcastProgramPage>form .links h6 {
+    color: var(--lightBlue);
+    font-size: 16px;
+}

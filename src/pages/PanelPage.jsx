@@ -13,6 +13,7 @@ import LoadingPage from '../componets/generalComponents/LoadingPage';
 import EmissionPage from './emissionPage/EmissionPage';
 import MediaPage from './mediaPage/MediaPage';
 import ReportPage from './reportPage/ReportPage';
+import PodcastPage from './podcastPage/PodcastPage';
 
 
 //Contexts
@@ -73,7 +74,7 @@ const PanelPage = () => {
                         <Route path='emisiones/*' element={ <EmissionPage/> } />
                         <Route path='media/*' element={ <MediaPage/> } />
                         <Route path='*' element={ <main> <ErrorPage /> </main>}/>
-
+                        <Route path='podcast/*' element={ <PodcastPage/> } />
                     </Routes>
 
                 </div>

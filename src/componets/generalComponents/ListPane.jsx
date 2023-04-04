@@ -10,6 +10,7 @@ const ListPane = ({ elements, headers, sortAction }) => {
     if(!headers)
         return null;
 
+
     return (
         <>
             <section className="listPane">
