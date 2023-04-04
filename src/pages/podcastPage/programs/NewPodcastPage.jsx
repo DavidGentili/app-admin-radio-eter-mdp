@@ -7,6 +7,7 @@ import SelectFile from '../../../componets/generalComponents/SelectFile';
 import { createPodcast } from '../../../services/podcast';
 import useMessage from '../../../hooks/useMessage';
 import { useNavigate } from 'react-router-dom';
+import PodcastLinks from './PodcastLinks';
 
 export default function NewPodcastPage() {
 
@@ -57,27 +58,9 @@ export default function NewPodcastPage() {
 
             <SelectFile openModal={openModalEvent} currentFile={currentFile} />
 
-            <div className="links">
-                <h6>Links</h6>
-                <CustomInput
-                    name='spotify'
-                    placeholder='Spotify'
-                />
-                <CustomInput
-                    name='youtube'
-                    placeholder='Youtube'
-                />
-                <CustomInput
-                    name='google'
-                    placeholder='Google Podcast'
-                />
-                <CustomInput
-                    name='soundcloud'
-                    placeholder='SoundCloud'
-                />
-            </div>
+            <PodcastLinks />
 
-            <CustomButton buttonType='submit' type='primary' loadingButton={isLoading} disabled={isLoading} >Crear programa</CustomButton>
+            <CustomButton buttonType='submit' type='primary' loadingButton={isLoading} disabled={isLoading} >Crear podcast</CustomButton>
 
 
         </form>

@@ -59,7 +59,7 @@
     font-weight: 400;
 }
 
-.podcastPage .podcastProgramPage>form {
+.podcastPage .podcastProgramPage form {
     width: 80%;
     background-color: var(--white);
     border-radius: 36px;
@@ -72,17 +72,17 @@
     align-items: flex-start;
 }
 
-.podcastPage .podcastProgramPage>form .customInput {
+.podcastPage .podcastProgramPage form .customInput {
     margin: 0;
 }
 
-.podcastPage .podcastProgramPage>form .links {
+.podcastPage .podcastProgramPage form .links {
     width: 80%;
     display: grid;
     gap: 16px;
 }
 
-.podcastPage .podcastProgramPage>form .links h6 {
+.podcastPage .podcastProgramPage form .links h6 {
     color: var(--lightBlue);
     font-size: 16px;
 }

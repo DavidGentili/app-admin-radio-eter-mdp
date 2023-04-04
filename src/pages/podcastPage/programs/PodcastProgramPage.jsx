@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import PodcastPanel from './PodcastPanel';
 import ErrorPage from '../../errorPage/ErrorPage';
 import NewPodcastPage from './NewPodcastPage';
+import EditPodcastPage from './EditPodcastPage';
 
 export default function PodcastProgramPage() {
 
@@ -33,7 +34,7 @@ export default function PodcastProgramPage() {
             <Routes>
                 <Route index element={<PodcastPanel {...{ podcasts, setPodcasts, selectPodcast, sortPodcast }} />} />
                 <Route path='/nuevo' element={<NewPodcastPage />} />
-                <Route path='/editar' element={<></>} />
+                <Route path='/editar' element={<EditPodcastPage currentPodcast={currentPodcast} />} />
                 <Route path='*' element={<ErrorPage />} />
             </Routes>
         </div>
