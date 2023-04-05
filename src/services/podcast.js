@@ -63,10 +63,36 @@ export async function updatePodcast(form) {
     }
 }
 
+export async function updateOrderOfEpisodes(episodes, id) {
+    try {
+        const body = {
+            podcastId : id,
+            episodesId: episodes.map(ep => { return {episodeId : ep.id, order : ep.order}})
+        }
+        console.log(body)
+        const { data } = await instance.put('/podcast', body, { headers: getHeaders() })
+        return data;
+    } catch (e) {
+        throw e.response ? e.response.data.message : e;
+    }
+}
+
 export async function deletePodcast(id) {
     try {
 
         const { data } = await instance.delete('/podcast', { data: { podcastId: id }, headers: getHeaders() })
+        return data;
+    } catch (e) {
+        throw e.response ? e.response.data.message : e;
+    }
+}
+
+export async function getEpisodesOfPodcast(id) {
+    try {
+        const { data } = await instance.get('podcast/episode', {
+            params: { podcastId: id },
+            headers: getHeaders(),
+        })
         return data;
     } catch (e) {
         throw e.response ? e.response.data.message : e;

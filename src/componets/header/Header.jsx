@@ -17,14 +17,14 @@ const Header = ({ userName, location, subMenus }) => {
                 <NavLink to='/'> <HomeIcon/> </NavLink>
                 <Link to='/my-user'>{userName}</Link>
             </div>
-
+{/* 
             <div className="subMenus">
                 { subMenus &&
                     subMenus.map(option => {
                         return <Link key={option.goTo} to={option.goTo} >{option.text}</Link> 
                     })
                 }
-            </div>
+            </div> */}
         </header>
     )
 }

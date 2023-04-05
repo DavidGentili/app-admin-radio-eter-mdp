@@ -1,0 +1,7 @@
+.podcastPage .episodePage .single {
+    grid-template-columns: 3fr 3fr 1fr 1fr;
+}
+
+.podcastPage .episodePage .single .order {
+    color: var(--mediumGrey);
+}

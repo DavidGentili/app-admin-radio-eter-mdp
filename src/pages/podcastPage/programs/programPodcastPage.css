@@ -1,0 +1,49 @@
+.podcastPage .podcastProgramPage .headerPanel {
+    display: grid;
+    grid-template-columns: 6fr 2fr 2fr;
+    gap: 12px;
+}
+
+.podcastPage .podcastProgramPage .single {
+    grid-template-columns: 6fr 2fr 2fr;
+}
+
+.episodeOfPodcastPanel {
+    width: 80%;
+    background-color: var(--white);
+    border-radius: 36px;
+    box-shadow: 5px 5px 20px #24242440;
+    padding: 36px 48px;
+    margin: 64px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.episodeOfPodcastPanel h4 {
+    font-size: 20px;
+    color: var(--lightBlue);
+}
+
+.episodeOfPodcastPanel .body {
+    display: grid;
+    gap: 12px;
+    font-size: 18px;
+    color: var(--black);
+}
+
+.episodeOfPodcastPanel .body .episode {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 1fr 9fr;
+    border-radius: 8px;
+    padding: 8px 12px;
+    background-color: #F6F6F6;
+    transition: .6s;
+
+}
+
+.episodeOfPodcastPanel .body .episode:hover {
+    background-color: #4BC1EA40;
+}

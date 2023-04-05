@@ -16,7 +16,6 @@ export default function EpisodePanel({ episodes, setEpisodes, selectEpisode, sor
     })
 
     const headers = [
-        { command: 'order', field: 'Orden' },
         { command: 'title', field: 'Titulo' },
         { command: 'podcastTitle', field: 'Podcast' },
         { command: 'active', field: 'Activo' },

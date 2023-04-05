@@ -8,6 +8,7 @@ import CustomButton from '../../../componets/generalComponents/CustomButton';
 import { deletePodcast, updatePodcast } from '../../../services/podcast';
 import useMessage from '../../../hooks/useMessage';
 import { useNavigate } from 'react-router-dom';
+import EpisodeOfPodcastPanel from './EpisodeOfPodcastPanel'
 
 export default function EditPodcastPage({ currentPodcast }) {
 
@@ -91,6 +92,7 @@ export default function EditPodcastPage({ currentPodcast }) {
                 </div>
 
             </form>
+            <EpisodeOfPodcastPanel id={id} />
         </div>
     )
 }

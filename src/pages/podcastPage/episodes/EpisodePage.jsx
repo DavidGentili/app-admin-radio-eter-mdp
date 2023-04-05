@@ -6,6 +6,8 @@ import NewEpisodePage from './NewEpisodePage';
 import EditEpisodePage from './EditEpisodePage';
 import ErrorPage from '../../errorPage/ErrorPage';
 
+import './episodePage.css';
+
 export default function EpisodePage() {
 
     const [episodes, setEpisodes] = useState([]);

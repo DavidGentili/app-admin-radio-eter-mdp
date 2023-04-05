@@ -5,6 +5,8 @@ import ErrorPage from '../../errorPage/ErrorPage';
 import NewPodcastPage from './NewPodcastPage';
 import EditPodcastPage from './EditPodcastPage';
 
+import './programPodcastPage.css'
+
 export default function PodcastProgramPage() {
 
     const [podcasts, setPodcasts] = useState([]);

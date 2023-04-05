@@ -38,15 +38,7 @@
     color: var(--lightBlue);
 }
 
-.podcastPage .podcastProgramPage .headerPanel {
-    display: grid;
-    grid-template-columns: 6fr 2fr 2fr;
-    gap: 12px;
-}
 
-.podcastPage .podcastProgramPage .single {
-    grid-template-columns: 6fr 2fr 2fr;
-}
 
 .podcastPage .episodePage>a,
 .podcastPage .podcastProgramPage>a {
@@ -112,18 +104,9 @@
     justify-content: space-between;
 }
 
-
-
 .podcastPage .episodePage .headerPanel {
     display: grid;
-    grid-template-columns: 1fr 3fr 3fr 1fr 1fr;
+    grid-template-columns: 3fr 3fr 1fr 1fr;
     gap: 12px;
 }
 
-.podcastPage .episodePage .single {
-    grid-template-columns: 1fr 3fr 3fr 1fr 1fr;
-}
-
-.podcastPage .episodePage .single .order {
-    color: var(--mediumGrey);
-}
