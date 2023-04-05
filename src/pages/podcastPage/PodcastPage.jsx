@@ -4,6 +4,7 @@ import { Routes, Route, NavLink, Link } from 'react-router-dom'
 
 import './podcastPage.css';
 import PodcastProgramPage from './programs/PodcastProgramPage';
+import EpisodePage from './episodes/EpisodePage';
 
 export default function PodcastPage() {
 
@@ -22,8 +23,8 @@ export default function PodcastPage() {
                         <Link to='./episodios' className='single'>Episodios</Link>
                     </>
                 } />
-                <Route path='/programas/*' element={<PodcastProgramPage/>} />
-                <Route path='/episodios/*' element={<></>} />
+                <Route path='/programas/*' element={<PodcastProgramPage />} />
+                <Route path='/episodios/*' element={<EpisodePage />} />
             </Routes>
         </main>
     )
