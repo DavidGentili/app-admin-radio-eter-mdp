@@ -813,6 +813,72 @@ form .labelInputFile .icon{
     height: 100%;
 }
 
+/*-------------------CHECKBOX----------------------*/
+
+.checkLabel {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+input[type ="checkbox"] {
+    position: relative;
+    width: 48px;
+    height: 24px;
+    appearance: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: .6s;
+    /* visibility: hidden; */
+}
+
+input[type ="checkbox"]::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
+    position: absolute;
+    z-index: 2;
+    left: 0px;
+    background-color: #909090;
+    opacity: .4;
+    transition: .6s;
+}
+
+input[type = "checkbox"]::after {
+    content: "";
+    width: 55%;
+    height: 110%;
+    border-radius: 100%;
+    background-color: #fff;
+    box-shadow: 0px 0px 8px #24242440;
+    position: absolute;
+    z-index: 3;
+    left: -5%;
+    transition: .6s;
+}
+
+input[type = "checkbox"]:hover::after {
+    box-shadow: 0px 0px 16px #24242460;
+}
+
+input[type ="checkbox"]:checked:before{
+    background-color: #1976D2;
+}
+
+input[type ="checkbox"]:checked::after {
+    left: 55%;
+    background-color: #1976D2;
+    box-shadow: 0px 0px 8px #1976D240;
+
+}
+
+input[type = "checkbox"]:checked:hover::after {
+    box-shadow: 0px 0px 16px #1976D260;
+
+}
+
 /*-------------------ANIMATIONS----------------------*/
 
 @keyframes showElement {

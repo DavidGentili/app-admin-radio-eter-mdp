@@ -41,7 +41,7 @@ export async function createPodcast(form) {
 
 export async function updatePodcast(form) {
     try {
-        const { id, title, description, tags, spotify, youtube, google, soundcloud, currentFile } = form;
+        const { id, title, description, tags, spotify, youtube, google, soundcloud, currentFile, active } = form;
 
         const urls = { spotify, youtube, google, soundcloud };
         const imgUrl = currentFile ? currentFile.url : undefined;
@@ -52,9 +52,9 @@ export async function updatePodcast(form) {
             description,
             urls,
             tags,
-            imgUrl
+            imgUrl,
+            active: active ? true : false,
         }
-        console.log(body)
         checkNewPodcastData(body);
         const { data } = await instance.put('/podcast', body, { headers: getHeaders() })
         return data;
@@ -66,8 +66,8 @@ export async function updatePodcast(form) {
 export async function updateOrderOfEpisodes(episodes, id) {
     try {
         const body = {
-            podcastId : id,
-            episodesId: episodes.map(ep => { return {episodeId : ep.id, order : ep.order}})
+            podcastId: id,
+            episodesId: episodes.map(ep => { return { episodeId: ep.id, order: ep.order } })
         }
         console.log(body)
         const { data } = await instance.put('/podcast', body, { headers: getHeaders() })

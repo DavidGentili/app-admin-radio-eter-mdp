@@ -36,7 +36,7 @@ export async function updateEpisode(form) {
         const { id, title, description, podcastId, currentFile, spotify, youtube, google, soundcloud, active } = form;
         const urls = { spotify, youtube, google, soundcloud };
         const imgUrl = currentFile ? currentFile.url : undefined;
-        const body = { episodeId: id, title, description, podcastId, imgUrl, urls, active };
+        const body = { episodeId: id, title, description, podcastId, imgUrl, urls, active: active ? true : false };
         console.log(body)
         const { data } = await instance.put('/episode', body, { headers: getHeaders() });
         return data;
@@ -45,10 +45,10 @@ export async function updateEpisode(form) {
     }
 }
 
-export async function deleteEpisode({ episodeId, podcastId }){
+export async function deleteEpisode({ episodeId, podcastId }) {
     try {
-        
-        const { data } = await instance.delete('/podcast/episode', { data: { podcastId, episodeId}, headers: getHeaders() });
+
+        const { data } = await instance.delete('/podcast/episode', { data: { podcastId, episodeId }, headers: getHeaders() });
         return data;
     } catch (e) {
         throw e.response ? e.response.data.message : e;

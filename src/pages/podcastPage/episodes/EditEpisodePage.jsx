@@ -13,7 +13,7 @@ import usePodcast from '../../../hooks/usePodcast';
 
 export default function EditEpisodePage({ currentEpisode }) {
 
-    const { id, title, description, imgUrl, urls, podcastId } = currentEpisode;
+    const { id, title, description, imgUrl, urls, podcastId, active } = currentEpisode;
     const { spotify, youtube, soundcloud, google } = urls
     const { podcasts } = usePodcast();
     const [isLoading, setLoading] = useState(false);
@@ -54,16 +54,16 @@ export default function EditEpisodePage({ currentEpisode }) {
 
     const deleteEvent = (e) => {
         setLoading(true);
-        deleteEpisode({ podcastId, episodeId : id})
-        .then(() => {
-            setLoading(false);
-            setMessage({message: 'El episodio se ha borrado con exito', type: 'success'})
-            navigate('../')
-        })
-        .catch(e => {
-            setLoading(false);
-            setMessage({message: e, type: 'error'})
-        })
+        deleteEpisode({ podcastId, episodeId: id })
+            .then(() => {
+                setLoading(false);
+                setMessage({ message: 'El episodio se ha borrado con exito', type: 'success' })
+                navigate('../')
+            })
+            .catch(e => {
+                setLoading(false);
+                setMessage({ message: e, type: 'error' })
+            })
     }
 
     return (
@@ -88,12 +88,15 @@ export default function EditEpisodePage({ currentEpisode }) {
                 {
                     podcasts.length > 0
                         ?
-                        <select name="podcastId"  defaultValue={podcastId}>
+                        <select name="podcastId" defaultValue={podcastId}>
                             {podcasts.map(podcast => <option key={podcast.id} value={podcast.id}>{podcast.title}</option>)}
                         </select>
                         :
                         <p>No hay podcast cargados</p>
                 }
+
+                <label className='checkLabel'>Activo <input type="checkbox" name='active' defaultChecked={active} /></label>
+
 
                 <SelectFile openModal={openModalEvent} currentFile={currentFile} />
 

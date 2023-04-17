@@ -79,6 +79,8 @@ export default function EditPodcastPage({ currentPodcast }) {
                     placeholder='Descripcion'
                     value={description}
                 />
+
+                <label className='checkLabel'>Activo <input type="checkbox" name='active' defaultChecked={active}/></label>
                 <InputTags tags={localTags} setTags={setLocalTags} />
 
                 <SelectFile openModal={openModalEvent} currentFile={currentFile} />
