@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { getPodcastPrograms } from '../../../services/podcast';
 import ListPane from '../../../componets/generalComponents/ListPane';
 import SinglePodcast from '../../../componets/singleComponents/SinglePodcast';
+import LoadingPage from '../../../componets/generalComponents/LoadingPage';
 
 export default function PodcastPanel({ podcasts, setPodcasts, selectPodcast, sortPodcast }) {
+
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
         getPodcastPrograms()
@@ -13,6 +16,7 @@ export default function PodcastPanel({ podcasts, setPodcasts, selectPodcast, sor
             .catch(e => {
 
             })
+            .finally(() => setLoading(false));
     }, [])
 
     const headers = [
@@ -31,6 +35,12 @@ export default function PodcastPanel({ podcasts, setPodcasts, selectPodcast, sor
     ))
 
     return (
-        <ListPane {...{ elements: singles, headers, sortAction: sortPodcast }} />
+        <>
+            {isLoading ?
+                <LoadingPage />
+                :
+                <ListPane {...{ elements: singles, headers, sortAction: sortPodcast }} />
+            }
+        </>
     )
 }
