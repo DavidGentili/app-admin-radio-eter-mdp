@@ -15,7 +15,7 @@ const Header = ({ userName, location, subMenus }) => {
             <div className="actions">
                 <button onClick={() => {navigate(-1)}}> <ArrowIcon/> </button>
                 <NavLink to='/'> <HomeIcon/> </NavLink>
-                <Link to='/my-user'>{userName}</Link>
+                <Link to='/my-user'>{userName || 'Usuario'}</Link>
             </div>
 {/* 
             <div className="subMenus">
