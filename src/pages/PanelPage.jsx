@@ -12,6 +12,9 @@ import ErrorPage from '..//pages/errorPage/ErrorPage'
 import LoadingPage from '../componets/generalComponents/LoadingPage';
 import EmissionPage from './emissionPage/EmissionPage';
 import MediaPage from './mediaPage/MediaPage';
+import ReportPage from './reportPage/ReportPage';
+import PodcastPage from './podcastPage/PodcastPage';
+
 
 //Contexts
 import UserContext from '../context/UserContext';
@@ -65,12 +68,13 @@ const PanelPage = () => {
                     <Routes >
                         <Route path='usuarios/*' element={<UsersPage />} />
                         <Route path='my-user' element={ <MyUser/> } />
+                        <Route path='informes/*' element={ <ReportPage />} />
                         <Route path='publicidad/*' element={ <AdPage /> } />
                         <Route path='' element={<HomePage menuOptions={ user ? filterOptions(menuOptions,user) : []}/>} />
                         <Route path='emisiones/*' element={ <EmissionPage/> } />
                         <Route path='media/*' element={ <MediaPage/> } />
                         <Route path='*' element={ <main> <ErrorPage /> </main>}/>
-
+                        <Route path='podcast/*' element={ <PodcastPage/> } />
                     </Routes>
 
                 </div>

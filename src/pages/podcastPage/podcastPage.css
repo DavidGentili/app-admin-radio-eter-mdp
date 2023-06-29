@@ -1,0 +1,112 @@
+.podcastPage {
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.podcastPage .podcastProgramPage {
+    width: 100%;
+}
+
+.podcastPage .episodePage {
+    width: 100%;
+}
+
+.podcastPage>a.single {
+    color: var(--lightBlue);
+}
+
+.podcastPage .navMenu {
+    margin: 16px 0px 24px 0;
+    width: 100%;
+    display: flex;
+    gap: 16px;
+}
+
+.podcastPage .navMenu a {
+    color: var(--mediumGrey);
+    padding: 4px;
+    opacity: .7;
+    transition: .6s;
+}
+
+.podcastPage .navMenu a:hover {
+    opacity: 1;
+}
+
+.podcastPage .navMenu a.active {
+    opacity: 1;
+    color: var(--lightBlue);
+}
+
+
+
+.podcastPage .episodePage>a,
+.podcastPage .podcastProgramPage>a {
+    margin-left: auto;
+    margin-top: 64px;
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+    padding: 0;
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.podcastPage form {
+    width: 80%;
+    background-color: var(--white);
+    border-radius: 36px;
+    box-shadow: 5px 5px 20px #24242440;
+    padding: 36px 48px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.podcastPage form .customInput {
+    margin: 0;
+}
+
+.podcastPage form .links {
+    width: 80%;
+    display: grid;
+    gap: 16px;
+}
+
+.podcastPage .links h6 {
+    color: var(--lightBlue);
+    font-size: 16px;
+}
+
+.podcastPage .currentImage {
+    width: 80%;
+    margin: auto;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mediumGrey);
+}
+
+.podcastPage .currentImage img {
+    width: 100%;
+}
+
+.podcastPage .currentImage p {
+    text-align: center;
+}
+
+.podcastPage .btnPanel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.podcastPage .episodePage .headerPanel {
+    display: grid;
+    grid-template-columns: 3fr 3fr 1fr 1fr;
+    gap: 12px;
+}
+

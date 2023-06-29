@@ -15,16 +15,16 @@ const Header = ({ userName, location, subMenus }) => {
             <div className="actions">
                 <button onClick={() => {navigate(-1)}}> <ArrowIcon/> </button>
                 <NavLink to='/'> <HomeIcon/> </NavLink>
-                <Link to='/my-user'>{userName}</Link>
+                <Link to='/my-user'>{userName || 'Usuario'}</Link>
             </div>
-
+{/* 
             <div className="subMenus">
                 { subMenus &&
                     subMenus.map(option => {
                         return <Link key={option.goTo} to={option.goTo} >{option.text}</Link> 
                     })
                 }
-            </div>
+            </div> */}
         </header>
     )
 }

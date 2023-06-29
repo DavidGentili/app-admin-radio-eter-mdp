@@ -8,6 +8,7 @@ import LoadingPage from '../../componets/generalComponents/LoadingPage';
 
 //Services
 import { getAds } from '../../services/ad';
+import ListPane from '../../componets/generalComponents/ListPane';
 
 
 const AdPanel = ({selectAd, ads, sortAd, setAds}) => {
@@ -27,22 +28,22 @@ const AdPanel = ({selectAd, ads, sortAd, setAds}) => {
     if(loadingPanel)
         return <LoadingPage />
 
-    return (
-        <>
-            <div className="adPanel">
-                <div className="headerPanel">
-                    <button onClick={(e) => {sortAd('name')}}>Nombre <ChevronIcon/> </button>
-                    <button onClick={(e) => {sortAd('link')}}>Link <ChevronIcon/> </button>
-                    <button onClick={(e) => {sortAd('type')}}>tipo <ChevronIcon/> </button>
-                    <p>Acciones</p>
-                </div>
-                { (ads.length > 0) &&
-                    ads.map(ad => <SingleAd key={ad.id} {...ad} selectAd={selectAd(ad)}/>)        
-                }
-            </div>
-            <Link to='./nuevo' className='primaryBtn'> + </Link>
-        </>
-    )
+    const singles = ads.map(ad => <SingleAd key={ad.id} {...ad} selectAd={selectAd(ad)} />)
+    const headers = [
+        {
+            command : 'name',
+            field : 'Nombre',
+        },
+        {
+            command : 'link',
+            field : 'Link',
+        },{
+            command : 'type',
+            field : 'Tipo',
+        }
+    ]
+
+    return <ListPane {...{ elements : singles, headers, sortAction : sortAd}} />
 }
 
 export default AdPanel

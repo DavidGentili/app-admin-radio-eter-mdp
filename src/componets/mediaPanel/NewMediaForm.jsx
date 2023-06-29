@@ -16,7 +16,7 @@ const NewMediaForm = ( { refreshScreen } ) => {
     const [loadingBtn, setLoadingBtn] = useState(false);
     const [inputValue, setInputValue] = useState(false);
 
-    const { setMessage } = useMessage()
+    const setMessage = useMessage()
 
     const changeInputStateEvent = (e) => {
         setInputValue(e.target.value !== "" ? true : false);

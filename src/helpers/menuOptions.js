@@ -1,18 +1,18 @@
 import  { UserIcon, PodcastIcon, ReportsIcon, ProgramsIcon, AdIcon, MediaIcon }  from '../componets/Icons';
 
 const menuOptions = [
-    // {
-    //     Icon: PodcastIcon,
-    //     text: 'Podcast',
-    //     goTo: '/podcast',
-    //     aceptedSecurityLevels: ['editor', 'admin', 'master'],
-    // },
-    // {
-    //     Icon: ReportsIcon,
-    //     text: 'Informes',
-    //     goTo: '/informes',
-    //     aceptedSecurityLevels: ['editor', 'admin', 'master'],
-    // },
+    {
+        Icon: PodcastIcon,
+        text: 'Podcast',
+        goTo: '/podcast',
+        aceptedSecurityLevels: ['editor', 'admin', 'master'],
+    },
+    {
+        Icon: ReportsIcon,
+        text: 'Informes',
+        goTo: '/informes',
+        aceptedSecurityLevels: ['editor', 'admin', 'master'],
+    },
     {
         Icon: ProgramsIcon,
         text: 'Emisiones',

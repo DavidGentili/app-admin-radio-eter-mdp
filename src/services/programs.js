@@ -23,7 +23,7 @@ const checkNewProgramData = (data) => {
 const getNewProgramData = (form) => {
     const { name, startHour, finishHour, file } = form
     const data = {
-        highlighted: (form.highlighted && form.highlighted) === 'on' ? true : false,
+        highlighted: (form.highlighted && form.highlighted === 'on') ? true : false,
         days : daysValues.map(function(day) {
             return form[day] ? true : false; 
         }),

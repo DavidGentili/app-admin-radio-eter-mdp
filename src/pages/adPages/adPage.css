@@ -2,12 +2,7 @@
     align-content: space-between;
 }
 
-.adPanel{
-    width: 100%;
-}
-
-.adPanel .headerPanel{
-    width: 100%;
+.adPage .headerPanel{
     display: grid;
     grid-template-columns: 1fr 1fr .4fr .2fr;
     gap: 12px;

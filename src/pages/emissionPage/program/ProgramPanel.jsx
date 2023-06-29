@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 
 //Components
 import { ChevronIcon } from '../../../componets/Icons';
@@ -8,6 +7,7 @@ import LoadingPage from '../../../componets/generalComponents/LoadingPage';
 
 //Services
 import { getPrograms } from '../../../services/programs'
+import ListPane from '../../../componets/generalComponents/ListPane';
 
 
 const ProgramPanel = ({ programs, setPrograms, selectCurrentProgram, sortProgram}) => {
@@ -22,27 +22,35 @@ const ProgramPanel = ({ programs, setPrograms, selectCurrentProgram, sortProgram
         })
     }, [])
 
+    const headers = [
+        {
+            command : 'name',
+            field : 'Nombre',
+        },
+        {
+            command : undefined,
+            field : 'Dias'
+        },
+        {
+            command : 'highlighted',
+            field : 'Destacado',
+        },
+        {
+            command : undefined,
+            field : 'Inicio',
+        },
+        {
+            command : undefined,
+            field : 'Fin',
+        },
+    ]
+
+    const singles = programs.map(program => <SingleProgram key={program.id} {...program} selectCurrentProgram={selectCurrentProgram(program)} />);
+
     if(loadingPanel)
         return <LoadingPage />
 
-    return (
-        <>
-            <div className='programPanel'>
-                <div className="headerPanel">
-                    <button onClick={(e) => {sortProgram('name')}}>Nombre <ChevronIcon/> </button>
-                    <p>Dias</p>
-                    <button onClick={(e) => {sortProgram('highlighted')}}>Destacado <ChevronIcon/> </button>
-                    <p>Inicio</p>
-                    <p>Fin</p>
-                    <p>Acciones</p>
-                </div>
-                { programs.length !== 0 &&
-                    programs.map(program => <SingleProgram key={program.id} {...program} selectCurrentProgram={selectCurrentProgram(program)} />)
-                }
-            </div>
-            <Link to='./nuevo' className='primaryBtn'> + </Link>
-        </>
-    )
+    return <ListPane headers={headers} elements={singles} sortAction={sortProgram}/>
 }
 
 export default ProgramPanel

@@ -1,13 +1,9 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
 
 import SingleUser from '../../componets/singleComponents/SingleUser';
-import CustomButton from '../../componets/generalComponents/CustomButton'
-import { ChevronIcon } from '../../componets/Icons'
+import ListPane from '../../componets/generalComponents/ListPane';
 
 const UserPanel = ({ users, selectUser, setUsers }) => {
-
-    const navigate = useNavigate();
 
     const sortUser = (key) => {
         const sortArray = [...users]
@@ -17,30 +13,29 @@ const UserPanel = ({ users, selectUser, setUsers }) => {
         setUsers(sortArray);
     }
 
-    const navigateToNewUser = (e) => {
-        e.preventDefault();
-        navigate('./nuevo');
-    }
+    const singles = users.map((user) => <SingleUser key={user.id} user={user} selectUser={selectUser(user)} />);
 
-    return (
-        <>
-            <section className='userPanel'>
-                <div className="headerPanel">
-                    <button onClick={(e) => {sortUser('name')}}>Usuario <ChevronIcon/> </button>
-                    <button onClick={(e) => {sortUser('email')}}>Mail <ChevronIcon/></button>
-                    <button onClick={(e) => {sortUser('securityLevel')}}>Nivel de seguridad <ChevronIcon/></button>
-                    <button onClick={(e) => {sortUser('state')}}>Estado <ChevronIcon/></button>
-                    <p>Acciones</p>
-                </div>
-                {
-                    users.length === 0 ? <p>No hay usuarios</p>
-                    :
-                    users.map((user) => <SingleUser key={user.id} user={user} selectUser={selectUser(user)} />)
-                }
-            </section>
-            <CustomButton type='primary' text='+' onClickEvent={navigateToNewUser} />
-        </>
-    )
-    }
+    const headers = [
+        {
+            command : 'name',
+            field : 'Usuario',
+        },
+        {
+            command : 'email',
+            field : 'Mail',
+        },
+        {
+            command : 'securityLevel',
+            field : 'Nivel de Seguridad',
+        },
+        {
+            command : 'state',
+            field : 'Estado',
+        },
+    ]
+
+
+    return <ListPane {...{headers, elements : singles, sortAction : sortUser}} />
+}
 
 export default UserPanel

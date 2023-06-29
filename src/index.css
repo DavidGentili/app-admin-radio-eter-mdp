@@ -182,7 +182,7 @@ button:disabled{
     height: auto;
     border-radius: 12px;
     text-align: center;
-    position: absolute;
+    position: fixed;
     z-index: 10;
     top: 16px;
     left: 0;
@@ -708,13 +708,18 @@ form .labelInputFile .icon{
     opacity: 1;
 }
 
-/*-------------------HEADER PANEL----------------------*/
+/*-------------------LIST PANE----------------------*/
+
+.listPane{
+    width: 100%;
+}
 
 .headerPanel{
+    width: 100%;
     padding: 16px 24px;
     border-bottom: 2px solid var(--lightBlack);
     color: var(--lightBlack);
-}
+    display: flex;}
 
 .headerPanel p{
     padding: 6px 12px;
@@ -740,6 +745,138 @@ form .labelInputFile .icon{
 
 .headerPanel button .icon{
     width: 8px;
+}
+
+/*-------------------INPUT TAGS----------------------*/
+.tags {
+    width: 100%;
+}
+
+.tags label{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 16px auto;
+}
+
+
+.tags label input {
+    width: 80%;
+}
+
+.tags label button {
+    width: 20%;
+    align-items: flex-end;
+}
+
+.tags .tagContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 16px;
+}
+
+.tags .tagContainer .tag {
+    background-color: var(--lightBlue);
+    padding: 8px 16px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--white);
+    cursor: default;
+    transition: .6s;
+}
+
+.tags .tagContainer .tag:hover {
+    scale: 1.05;
+}
+
+.tags .tagContainer .tag button {
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: none;
+    fill: var(--white);
+    display: flex;
+    opacity: .6;
+    transition: .6s;
+}
+
+.tags .tagContainer .tag button:hover {
+    opacity: 1;
+} 
+
+.tags .tagContainer .tag button .icon{
+    width: 100%;
+    height: 100%;
+}
+
+/*-------------------CHECKBOX----------------------*/
+
+.checkLabel {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+input[type ="checkbox"] {
+    position: relative;
+    width: 48px;
+    height: 24px;
+    appearance: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: .6s;
+    /* visibility: hidden; */
+}
+
+input[type ="checkbox"]::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
+    position: absolute;
+    z-index: 2;
+    left: 0px;
+    background-color: #909090;
+    opacity: .4;
+    transition: .6s;
+}
+
+input[type = "checkbox"]::after {
+    content: "";
+    width: 55%;
+    height: 110%;
+    border-radius: 100%;
+    background-color: #fff;
+    box-shadow: 0px 0px 8px #24242440;
+    position: absolute;
+    z-index: 3;
+    left: -5%;
+    transition: .6s;
+}
+
+input[type = "checkbox"]:hover::after {
+    box-shadow: 0px 0px 16px #24242460;
+}
+
+input[type ="checkbox"]:checked:before{
+    background-color: #1976D2;
+}
+
+input[type ="checkbox"]:checked::after {
+    left: 55%;
+    background-color: #1976D2;
+    box-shadow: 0px 0px 8px #1976D240;
+
+}
+
+input[type = "checkbox"]:checked:hover::after {
+    box-shadow: 0px 0px 16px #1976D260;
+
 }
 
 /*-------------------ANIMATIONS----------------------*/
