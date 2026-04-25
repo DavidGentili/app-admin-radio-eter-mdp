@@ -14,6 +14,7 @@ import EmissionPage from './emissionPage/EmissionPage';
 import MediaPage from './mediaPage/MediaPage';
 import ReportPage from './reportPage/ReportPage';
 import PodcastPage from './podcastPage/PodcastPage';
+import PlatformContentPages from './platformContentPages/PlatformContentPages';
 
 
 //Contexts
@@ -75,6 +76,7 @@ const PanelPage = () => {
                         <Route path='media/*' element={ <MediaPage/> } />
                         <Route path='*' element={ <main> <ErrorPage /> </main>}/>
                         <Route path='podcast/*' element={ <PodcastPage/> } />
+                        <Route path='contenido/*' element={ <PlatformContentPages/> } />
                     </Routes>
 
                 </div>
