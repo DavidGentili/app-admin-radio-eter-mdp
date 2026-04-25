@@ -1,4 +1,4 @@
-import  { UserIcon, PodcastIcon, ReportsIcon, ProgramsIcon, AdIcon, MediaIcon }  from '../componets/Icons';
+import { UserIcon, PodcastIcon, ReportsIcon, ProgramsIcon, AdIcon, MediaIcon, PlatformContentIcon } from '../componets/Icons';
 
 const menuOptions = [
     {
@@ -20,10 +20,10 @@ const menuOptions = [
         aceptedSecurityLevels: ['admin', 'master'],
     },
     {
-        Icon : MediaIcon,
-        text : 'Multimedia',
-        goTo : '/media',
-        aceptedSecurityLevels : ['editor', 'admin', 'master']
+        Icon: MediaIcon,
+        text: 'Multimedia',
+        goTo: '/media',
+        aceptedSecurityLevels: ['editor', 'admin', 'master']
     },
     {
         Icon: AdIcon,
@@ -32,11 +32,18 @@ const menuOptions = [
         aceptedSecurityLevels: ['admin', 'master'],
     },
     {
+        Icon: PlatformContentIcon,
+        text: 'Contenido',
+        goTo: '/contenido',
+        aceptedSecurityLevels: ['admin', 'master'],
+    },
+    {
         Icon: UserIcon,
         text: 'Usuarios',
         goTo: '/usuarios',
         aceptedSecurityLevels: ['master'],
-    }
+    },
+
 ]
 
 export default menuOptions;
