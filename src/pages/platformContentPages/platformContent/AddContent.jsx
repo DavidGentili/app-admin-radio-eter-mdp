@@ -7,6 +7,7 @@ import CustomButton from '../../../componets/generalComponents/CustomButton';
 
 //Hooks
 import useSelectMedia from '../../../hooks/useSelectMedia';
+import useMessage from '../../../hooks/useMessage';
 
 //Services
 import { addContent } from '../../../services/content';
@@ -15,9 +16,7 @@ export default function AddContent({ platformId, refreshContent }) {
 
     const [currentFile, setCurrentFile] = useState(null);
     const selectMedia = useSelectMedia();
-
-
-
+    const setMessage = useMessage();
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -27,6 +26,7 @@ export default function AddContent({ platformId, refreshContent }) {
             title: form.title,
             src: currentFile.url,
             link: form.link,
+            popup: form.popup === 'true',
         })
         .then(({ data }) => {
             setMessage({ message : data?.message, type : 'success' });
@@ -51,6 +51,13 @@ export default function AddContent({ platformId, refreshContent }) {
         <form onSubmit={handleSubmit} className='addContentForm'>
             <CustomInput name='title' placeholder='Nombre' />
             <CustomInput name='link' placeholder='Link' />
+            <label htmlFor='popup' className='popupSelect'>
+                Apertura
+                <select name='popup' id='popup' defaultValue='false'>
+                    <option value='false'>pestaña</option>
+                    <option value='true'>ventana</option>
+                </select>
+            </label>
             <SelectFile currentFile={currentFile} openModal={openModalEvent} />
             <CustomButton text='Agregar contenido' buttonType='submit' type='primary' />
         </form>

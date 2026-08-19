@@ -53,6 +53,21 @@
     font-size: 16px;
 }
 
+.currentContent .addContentForm .popupSelect {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--mediumGrey);
+    margin: 0;
+}
+
+.currentContent .addContentForm .popupSelect select {
+    width: 140px;
+    margin: 0;
+}
+
 .currentContent > button {
     margin-left: auto;
 }
@@ -95,6 +110,12 @@
     font-size: 16px;
     font-weight: 500;
     color: var(--lightBlack);
+}
+
+.currentContent .contentsList .singleContent .contentOpening {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--mediumGrey);
 }
 
 

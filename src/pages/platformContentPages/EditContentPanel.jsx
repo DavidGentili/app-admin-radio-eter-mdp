@@ -66,7 +66,7 @@ export default function EditContentPanel({ selectedContent, refreshContent }) {
 
                 <ContentList contents={contents} refreshContent={refreshContent} platformId={selectedContent.id} />
 
-                <CustomButton text='Eliminar publicidad' type='danger' loading={loadingDangerBtn} disabled={loadingDangerBtn || loadingPrimaryBtn} onClickEvent={deleteEvent} />
+                <CustomButton text='Eliminar contenido' type='danger' loading={loadingDangerBtn} disabled={loadingDangerBtn || loadingPrimaryBtn} onClickEvent={deleteEvent} />
             </div>
     )
 }

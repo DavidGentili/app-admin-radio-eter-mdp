@@ -12,7 +12,7 @@ import { removeContent } from '../../../services/content';
 
 export default function SingleContent({ content, refreshContent, platformId }) {
 
-    const { title, src, order, link, active } = content;
+    const { title, src, order, link, active, popup } = content;
     const navigate = useNavigate();
     const setMessage = useMessage();
 
@@ -34,6 +34,7 @@ export default function SingleContent({ content, refreshContent, platformId }) {
         <div className='singleContent'>
             <img src={src} alt={title} />
             <h6>{title}</h6>
+            <span className='contentOpening'>{popup ? 'ventana' : 'pestaña'}</span>
             {link ? <p>{link}</p> : <span className='empty'>No hay link</span>}
             <button className='deleteContent' onClick={deleteContent}> <TrashIcon/> Eliminar contenido </button>
         </div>
